@@ -81,59 +81,59 @@
 <ul class="pagination pagination-sm">
 <#if ( paginator.pageCurrent - offsetPrev > 1 )>
 <li class="page-item">
-	<a class="page-link" href="${paginator.firstPageLink?xhtml}">
+	<a class="page-link" href="${paginator.firstPageLink}">
 		${paginator.labelFirst}
 	</a>
 </li>
 </#if>
 <#if (paginator.pageCurrent > 1) >
 <li class="page-item previous">
-	<a class="page-link" href="${paginator.previousPageLink?xhtml}">
+	<a class="page-link" href="${paginator.previousPageLink}">
 		${paginator.labelPrevious}
 	</a>
 </li>
 <#else>
 <li class="page-item disabled">
-	<a class="page-link" href="${paginator.firstPageLink?xhtml}">${paginator.labelPrevious}</a>
+	<a class="page-link" href="${paginator.firstPageLink}">${paginator.labelPrevious}</a>
 </li>
 </#if>
 <#if ( paginator.pageCurrent - offsetPrev > 1 )>
 <li class="page-item">
-	<a class="page-link" href="${(paginator.pagesLinks?first).url?xhtml}"><strong>...</strong></a>
+	<a class="page-link" href="${(paginator.pagesLinks?first).url}"><strong>...</strong></a>
 </li>
 </#if>
 <#list paginator.pagesLinks as link>
 <#if ( link.index == paginator.pageCurrent )>
 	<li class="page-item active">
-		<a class="page-link" href="${link.url?xhtml}">${link.name}</a>
+		<a class="page-link" href="${link.url}">${link.name}</a>
 	</li>
 <#else>
 	<li class="page-item">
-		<a class="page-link" href="${link.url?xhtml}">${link.name}</a>
+		<a class="page-link" href="${link.url}">${link.name}</a>
 	</li>
 </#if>
 </#list>
 <#if ( paginator.pageCurrent + offsetNext < paginator.pagesCount )>
 <li class="page-item">
-	<a class="page-link" href="${(paginator.pagesLinks?last).url?xhtml}"><strong>...</strong></a>
+	<a class="page-link" href="${(paginator.pagesLinks?last).url}"><strong>...</strong></a>
 </li>
 </#if>
 <#if (paginator.pageCurrent < paginator.pagesCount) >
 <li class="page-item next">
-	<a class="page-link" href="${paginator.nextPageLink?xhtml}">
+	<a class="page-link" href="${paginator.nextPageLink}">
 	${paginator.labelNext}
 	</a>
 </li>
 <#if ( paginator.pageCurrent + offsetNext < paginator.pagesCount )>
 	<li class="page-item next">
-		<a class="page-link" href="${paginator.lastPageLink?xhtml}">
+		<a class="page-link" href="${paginator.lastPageLink}">
 			${paginator.labelLast}
 		</a>
 	</li>
 </#if>
 <#else>
 <li class="page-item disabled">
-	<a class="page-link" href="${paginator.lastPageLink?xhtml}">${paginator.labelNext}</a>
+	<a class="page-link" href="${paginator.lastPageLink}">${paginator.labelNext}</a>
 </li>
 </#if>
 </ul>
@@ -168,13 +168,13 @@
 <#macro item_navigationSite item_navigator>
 <div id="item-navigator">
 <#if (item_navigator.currentItemId > 0)>
-<a href="${item_navigator.previousPageLink?xhtml}" title="#i18n{portal.util.labelPrevious}">
+<a href="${item_navigator.previousPageLink}" title="#i18n{portal.util.labelPrevious}">
 	<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-arrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18" /><path d="M8 12l4 4" /><path d="M8 12h8" /><path d="M12 8l-4 4" /></svg>
 	#i18n{portal.util.labelPrevious}
 </a>
 </#if>
 <#if (item_navigator.currentItemId < item_navigator.listItemSize - 1) >
-<a href="${item_navigator.nextPageLink?xhtml}" title="#i18n{portal.util.labelNext}">
+<a href="${item_navigator.nextPageLink}" title="#i18n{portal.util.labelNext}">
 	#i18n{portal.util.labelNext}
 	<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18" /><path d="M16 12l-4 -4" /><path d="M16 12h-8" /><path d="M12 16l4 -4" /></svg>
 </a>
