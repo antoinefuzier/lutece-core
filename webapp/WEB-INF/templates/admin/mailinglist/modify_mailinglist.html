@@ -15,7 +15,7 @@
             <#else>
                 <@alert type='info' iconTitle='circle-info' titleLevel='h3' title='#i18n{portal.mailinglist.modify_mailinglist.message.noUsers} Blak azpdij azidjpazd jjazdji' />
             </#if>
-            <@offcanvas targetUrl='jsp/admin/mailinglist/AddUsers.jsp?id_mailinglist=${mailinglist.id!}' targetElement="#add-user-form" redirectForm=false id="mailinglist-add-user" title="#i18n{portal.mailinglist.modify_mailinglist.buttonAddUsers}" btnTitle="#i18n{portal.mailinglist.modify_mailinglist.buttonAddUsers}"  btnIcon="plus" position="end" />
+            <@offcanvas targetUrl='jsp/admin/mailinglist/AddUsers.jsp?id_mailinglist=' + (mailinglist.id!) targetElement="#add-user-form" redirectForm=false id="mailinglist-add-user" title="#i18n{portal.mailinglist.modify_mailinglist.buttonAddUsers}" btnTitle="#i18n{portal.mailinglist.modify_mailinglist.buttonAddUsers}"  btnIcon="plus" position="end" />
         </@pageHeader>
         <@tform method='post' action='jsp/admin/mailinglist/DoModifyMailingList.jsp' boxed=true>
             <@input type='hidden' id='id_mailinglist' name='id_mailinglist' value='${mailinglist.id}' />

@@ -39,7 +39,7 @@
                 <@manageFeatureItem class='item-labels'>
 				    <@manageFeatureItemColumn class='searchable' auto=true ><strong>${workgroup.key}</strong> - ${workgroup.description}</@manageFeatureItemColumn>
 				    <@manageFeatureItemColumn align='end'>
-                        <@offcanvas targetUrl='jsp/admin/workgroup/ModifyWorkgroup.jsp?workgroup_key=${workgroup.key}' targetElement='#modify_workgroup_form' redirectForm=false id='template-modify-workgroup_${workgroup.key}' title='#i18n{portal.util.modify_workgroup.titleModificationForm}' btnTitle='#i18n{portal.workgroup.modify_workgroup.titleModificationForm}' btnTitle='#i18n{portal.util.labelModify}' btnIcon='edit me-1' position='end' />
+                        <@offcanvas targetUrl='jsp/admin/workgroup/ModifyWorkgroup.jsp?workgroup_key=' + workgroup.key targetElement='#modify_workgroup_form' redirectForm=false id='template-modify-workgroup_' + workgroup.key title='#i18n{portal.util.modify_workgroup.titleModificationForm}' btnTitle='#i18n{portal.workgroup.modify_workgroup.titleModificationForm}' btnTitle='#i18n{portal.util.labelModify}' btnIcon='edit me-1' position='end' />
                         <@aButton href='jsp/admin/workgroup/AssignUsersWorkgroup.jsp?workgroup_key=${workgroup.key}' title='#i18n{portal.workgroup.manage_workgroups.buttonLabelAssignUsers} ' buttonIcon='user'   />
                         <@aButton href='jsp/admin/workgroup/RemoveWorkgroup.jsp?workgroup_key=${workgroup.key}' title='#i18n{portal.workgroup.manage_workgroups.buttonLabelDelete} ' buttonIcon='trash' color='danger' class='ms-1'  />
                     </@manageFeatureItemColumn>
@@ -49,7 +49,7 @@
         <#else>
             <@empty />
         </#if>
-	    <#if workgroups_list?size gt 5><@paginationAdmin paginator=paginator showcount=1 combo=0 /></#if>	
+	    <#if workgroups_list?size gt 5><@paginationAdmin paginator=paginator showcount=1 combo=0 /></#if>
 	</@pageColumn>
 </@pageContainer>
 <script type="module">

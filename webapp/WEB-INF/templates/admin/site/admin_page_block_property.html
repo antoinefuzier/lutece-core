@@ -3,8 +3,8 @@
 		<@pageHeader title='#i18n{portal.site.admin_page.tabPageManagement}' />
 		<@div id='properties'>
 		<@tform method='post' action='jsp/admin/site/DoModifyPage.jsp' params='enctype="multipart/form-data"'>
-		<@input type='hidden' name='page_id' value='${page.id}' />
-		<@input type='hidden' name='token' value='${token}' />
+		<@input type='hidden' name='page_id' value=page.id />
+		<@input type='hidden' name='token' value=token />
 		<#if authorization != "1">
 		<@div class='d-flex justify-content-end pt-3'>
 			<@button type='submit' buttonIcon='check' title='#i18n{portal.site.admin_page.buttonModify}' color='primary ms-auto' size='' />
@@ -12,7 +12,7 @@
 		<@row>
 			<@columns>
 				<@formGroup labelFor='page_name' labelKey='#i18n{portal.site.admin_page.labelName}' mandatory=true rows=2>
-					<@input type='text' id='page_name' name='page_name' value='${page.name!}' />
+					<@input type='text' id='page_name' name='page_name' value=(page.name!) />
 				</@formGroup>
 				<@formGroup labelFor='child_page_description' labelKey='#i18n{portal.site.admin_page.labelDescription}' rows=2>
 					<@input type='textarea' name='page_description' rows=2	>${page.description!}</@input>
@@ -30,7 +30,7 @@
 		<@row>
 			<@columns>
 				<@formGroup labelFor='theme' labelKey='#i18n{portal.site.admin_page.labelTheme}' rows=2>
-					<@select name='theme' default_value='${page.codeTheme}' items=page_themes_list />
+					<@select name='theme' default_value=page.codeTheme items=page_themes_list />
 				</@formGroup>
 			</@columns>
 		</@row>	
@@ -38,7 +38,7 @@
 		<@row>
 			<@columns sm=3>
 				<@formGroup labelFor='page_order_list' labelKey='#i18n{portal.site.admin_page.labelOrderPage}' rows=2>
-					<@select name='order' default_value='${page.order}' items=page_order_list />
+					<@select name='order' default_value=page.order items=page_order_list />
 				</@formGroup>
 			</@columns>
 			<@columns>
@@ -46,12 +46,12 @@
 				<@formGroup labelFor='parent_id' labelKey='#i18n{portal.site.admin_page.labelParentPageId}' rows=2>
 				<@row>
 					<@columns sm=4>
-						<@input type='number' name='parent_id' value='${page.parentPageId}' />
+						<@input type='number' name='parent_id' value=page.parentPageId />
 					</@columns>
 				</@row>
 				</@formGroup>
 			<#else>	
-				<@input type='hidden' name='parent_id' value='${page.parentPageId}' />
+				<@input type='hidden' name='parent_id' value=page.parentPageId />
 			</#if>
 			</@columns>
 		</@row>
@@ -70,7 +70,7 @@
 					<#if !page.isManualDateUpdate><#assign disabled = true></#if>
 						<@inputGroup>
 							<@inputGroupItem type='text'><@icon style='calendar' /></@inputGroupItem>
-							<@input type='date' id='manual_update_date' name='manual_update_date' value='${page_update_date!}' disabled=disabled />
+							<@input type='date' id='manual_update_date' name='manual_update_date' value=(page_update_date!) disabled=disabled />
 						</@inputGroup>
 					</@formGroup>
 				</@div>
@@ -80,7 +80,7 @@
 		<@row>
 			<@columns class='d-flex justify-content-center '>
 				<@figure class="position-relative border-2 border-black">
-					<@img id='preview_image' url='${image_url}' class='img-thumbnail img-fluid p-5' alt='#i18n{portal.site.admin_page.addNewImage}' title='#i18n{portal.site.admin_page.titlePictureProperties}' params='aria-hidden="true"' />
+					<@img id='preview_image' url=image_url class='img-thumbnail img-fluid p-5' alt='#i18n{portal.site.admin_page.addNewImage}' title='#i18n{portal.site.admin_page.titlePictureProperties}' params='aria-hidden="true"' />
 					<@button color='danger' buttonIcon='trash' class='position-absolute bottom-0 end-0 rounded' size='sm' id='deleteImage' label='#i18n{portal.site.util.labelRemove}' />
 				</@figure>
 			</@columns>
@@ -98,7 +98,7 @@
 		<@row>
 			<@columns>
 				<@formGroup labelFor='roles_list' labelKey='#i18n{portal.site.admin_page.labelRole}' rows=2>
-					<@select name='role' default_value='${page.role}' items=page_roles_list sort=true />
+					<@select name='role' default_value=page.role items=page_roles_list sort=true />
 				</@formGroup>
 			</@columns>
 			<@columns>

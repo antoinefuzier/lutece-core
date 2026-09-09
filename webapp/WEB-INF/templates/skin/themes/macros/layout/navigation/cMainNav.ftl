@@ -122,7 +122,8 @@ Snippet:
             </#if>
             <#if hasLogin>
                 <li class="nav-item navbar-user<#if loginClass?has_content > ${loginClass!}</#if> ms-md-auto" aria-label="#i18n{portal.theme.labelAccount}">
-                    ${pageinclude_userlogin?default("")}
+                    <#-- The login page include provides the rendered authentication link. -->
+                    ${( pageinclude_userlogin!'' )?no_esc}
                 </li>
             </#if>
             <@translationMenu />
@@ -181,7 +182,8 @@ Snippet:
                     </#if>
                     <#if hasLogin>
                         <li class="nav-item navbar-user<#if loginClass?has_content > ${loginClass!}</#if>" aria-label="#i18n{portal.theme.labelAccount}">
-                            ${pageinclude_userlogin?default("")}
+                            <#-- The login page include provides the rendered authentication link. -->
+                            ${( pageinclude_userlogin!'' )?no_esc}
                         </li>
                     </#if>
                     <@translationMenu />

@@ -63,14 +63,15 @@
 </#list>
 <li class="nav-item dropdown">
     <button class="btn btn-sm btn-outline-primary dropdown-toggle notranslate lang-btn" translate="no" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    ${defaultLangLabel}
+    <#-- Labels are a fixed local map containing numeric HTML entities for flags. -->
+    ${defaultLangLabel?no_esc}
     </button>
     <ul class="dropdown-menu dropdown-menu-end w-100 p-0 notranslate" translate="no">
         <#if langSearch == '1'><li class="lang-search-li"><input type="text" class="form-control form-control-sm border-0 border-bottom rounded-0" id="lang-search" placeholder="Search..." autocomplete="off"></li></#if>
         <#list availableLangs as l>
             <#if allowedLangs?seq_contains(l.code?lower_case)>
                 <#local itemClass = 'nav-link dropdown-item' + (l.code?lower_case == defaultLang)?then(' active', '')>
-                <li class="nav-item"><a class="${itemClass}" href="#" data-lang="${l.code}">${l.label}</a></li>
+                <li class="nav-item"><a class="${itemClass}" href="#" data-lang="${l.code}">${l.label?no_esc}</a></li>
             </#if>
         </#list>
     </ul>

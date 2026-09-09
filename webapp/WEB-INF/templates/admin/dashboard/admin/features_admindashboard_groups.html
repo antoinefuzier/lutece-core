@@ -26,7 +26,7 @@
                         </@tform>
                     </@manageFeatureItemColumn>
                     <@manageFeatureItemColumn align='end'>
-                        <@offcanvas targetUrl='jsp/admin/features/ModifyGroup.jsp?group_id=${group.id}' targetElement='#modify-group-form' id='group-modify-${group.id}' title='#i18n{portal.features.modify_group.title}' btnTitle='#i18n{portal.util.labelModify}' btnIcon='edit' btnColor='primary me-1' position='end' />
+                        <@offcanvas targetUrl='jsp/admin/features/ModifyGroup.jsp?group_id=' + group.id targetElement='#modify-group-form' id='group-modify-' + group.id title='#i18n{portal.features.modify_group.title}' btnTitle='#i18n{portal.util.labelModify}' btnIcon='edit' btnColor='primary me-1' position='end' />
                         <@tform type='inline' align="middle" class="ml-1" method='post' action='jsp/admin/features/RemoveGroup.jsp'>
                             <@input type='hidden' name='group_id' value='${group.id}' />
                             <@button type='submit' title='#i18n{portal.features.manage_groups.buttonDelete}' buttonIcon='trash' color='danger' />

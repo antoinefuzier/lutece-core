@@ -50,7 +50,7 @@
                                     <#if !groupName?has_content>
                                         <#assign prefix=groupItem.key?keep_before(".site_property")  >
                                         <#if groupCol?trim?has_content>
-                                        <#assign groupName>#i18n{${prefix}.site_property.${groupCol}.group.title}</#assign>
+                                        <#assign groupName = i18n( prefix + '.site_property.' + groupCol + '.group.title' )>
                                         <#if groupName?trim?has_content><@h level=3>${groupName!}</@h></#if>
                                         </#if>
                                     </#if>

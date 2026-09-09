@@ -3,9 +3,9 @@
 		<@pageHeader title='#i18n{portal.site.admin_page.titleAddChildPage}' />
 		<@div id='childpage'>
 			<@tform method='post' action='jsp/admin/site/DoCreateChildPage.jsp' params='enctype="multipart/form-data"'>
-			<@input type='hidden' name='page_id' value='${page.id}' />
+			<@input type='hidden' name='page_id' value=page.id />
 			<@input type='hidden' name='node_status' value='1' />
-			<@input type='hidden' name='token' value='${token}' />
+			<@input type='hidden' name='token' value=token />
 			<#if authorization != "1">
 			<@div class='d-flex justify-content-end pt-3'>
 				<@button type='submit' buttonIcon='plus' title='#i18n{portal.site.admin_page.buttonAdd}' color='primary ms-auto' size='' />
@@ -31,7 +31,7 @@
 			<@row>
 				<@columns>
 					<@formGroup labelFor='theme' labelKey='#i18n{portal.site.admin_page.labelTheme}' rows=2>
-						<@select name='theme' default_value='${page.codeTheme}' items=page_themes_list />
+						<@select name='theme' default_value=page.codeTheme items=page_themes_list />
 					</@formGroup>
 				</@columns>
 			</@row>
@@ -39,7 +39,7 @@
 			<@row>
 			<@columns sm=3>
 				<@formGroup labelFor='page_order_list' labelKey='#i18n{portal.site.admin_page.labelOrderPage}' rows=2>
-					<@select name='order' default_value='${page.order}' items=page_order_list />
+					<@select name='order' default_value=page.order items=page_order_list />
 				</@formGroup>
 			</@columns>
 			<@columns>
@@ -47,12 +47,12 @@
 				<@formGroup labelFor='parent_id' labelKey='#i18n{portal.site.admin_page.labelParentPageId}' rows=2>
 				<@row>
 					<@columns sm=4>
-						<@input type='text' name='parent_id' value='${page.id}' />
+						<@input type='text' name='parent_id' value=page.id />
 					</@columns>
 				</@row>
 				</@formGroup>
 			<#else>	
-				<@input type='hidden' name='parent_id' value='${page.id}' />
+				<@input type='hidden' name='parent_id' value=page.id />
 			</#if>
 			</@columns>
 		</@row>
@@ -71,7 +71,7 @@
 					<#if !page.isManualDateUpdate><#assign disabled = true></#if>
 						<@inputGroup>
 							<@inputGroupItem type='text'><@icon style='calendar' /></@inputGroupItem>
-							<@input type='date' id='manual_update_date' name='manual_update_date' value='${page_update_date!}' disabled=disabled />
+							<@input type='date' id='manual_update_date' name='manual_update_date' value=(page_update_date!) disabled=disabled />
 						</@inputGroup>
 					</@formGroup>
 				</@div>
@@ -81,7 +81,7 @@
 		<@row>
 			<@columns class='d-flex justify-content-center '>
 				<@figure class="position-relative border-2 border-black">
-					<@img id='preview_image' url='${image_url}' class='img-thumbnail img-fluid p-5' alt='#i18n{portal.site.admin_page.addNewImage}' title='#i18n{portal.site.admin_page.titlePictureProperties}' params='aria-hidden="true"' />
+					<@img id='preview_image' url=image_url class='img-thumbnail img-fluid p-5' alt='#i18n{portal.site.admin_page.addNewImage}' title='#i18n{portal.site.admin_page.titlePictureProperties}' params='aria-hidden="true"' />
 					<@button color='danger' buttonIcon='trash' class='position-absolute bottom-0 end-0 rounded' size='sm' id='deleteImage' label='#i18n{portal.site.util.labelRemove}' />
 				</@figure>
 			</@columns>
@@ -99,7 +99,7 @@
 		<@row>
 			<@columns>
 				<@formGroup labelFor='roles_list' labelKey='#i18n{portal.site.admin_page.labelRole}' rows=2>
-					<@select name='role' default_value='${page.role}' items=page_roles_list sort=true />
+					<@select name='role' default_value=page.role items=page_roles_list sort=true />
 				</@formGroup>
 			</@columns>
 			<@columns>
