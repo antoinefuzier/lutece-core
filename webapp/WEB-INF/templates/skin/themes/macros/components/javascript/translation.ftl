@@ -92,7 +92,7 @@
 <style>html.lang-translating body{visibility:hidden!important}</style>
 <script blocking="render">
 (function() {
-    var defaultLang = '${defaultLang}';
+    var defaultLang = '${defaultLang?js_string?no_esc}';
     // Returns the language the page is about to be translated into, or null.
     // Mirrors the auto-translate logic in translationInit so we only hide the
     // page when a translation will actually happen.
@@ -130,7 +130,7 @@
 <#if allowedLangs?size == 0 || (allowedLangs?size == 1 && allowedLangs[0]?lower_case == defaultLang?lower_case)><#return></#if>
 <div id="google_translate_element" style="display:none;"></div>
 <script  blocking="render" >
-const defaultLang = '${defaultLang}';
+const defaultLang = '${defaultLang?js_string?no_esc}';
 
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({

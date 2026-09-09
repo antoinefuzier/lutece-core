@@ -53,7 +53,7 @@ window.__formValidationConfig = {
     validClass: '${dskey("portal.theme.site_property.formvalidation.validClass")!}',
     errorFeedbackClass: '${dskey("portal.theme.site_property.formvalidation.errorFeedbackClass")!}',
     helpClass: '${dskey("portal.theme.site_property.formvalidation.helpClass")!}',
-    errorIconSvg: '${(dskey("portal.theme.site_property.formvalidation.errorIconSvg")!"")?js_string}',
+    errorIconSvg: '${(dskey("portal.theme.site_property.formvalidation.errorIconSvg")!"")?js_string?no_esc}',
     messages: {
         required: '<@_fvMsg "portal.theme.site_property.formvalidation.msg.required" "portal.theme.formvalidation.msg.required" />',
         email: '<@_fvMsg "portal.theme.site_property.formvalidation.msg.email" "portal.theme.formvalidation.msg.email" />',

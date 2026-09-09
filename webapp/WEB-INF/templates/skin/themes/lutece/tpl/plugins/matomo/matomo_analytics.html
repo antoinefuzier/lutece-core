@@ -19,7 +19,7 @@ _paq.push([function() {
 }]);
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
-(function(){ var u=(("https:" == document.location.protocol) ? "${server_https_url}" : "${server_http_url}");
+(function(){ var u=(("https:" == document.location.protocol) ? "${server_https_url?js_string?no_esc}" : "${server_http_url?js_string?no_esc}");
 _paq.push(['setSiteId', ${site_id}]);
 _paq.push(['setTrackerUrl', u+'matomo.php']);
 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'matomo.js';
@@ -60,7 +60,7 @@ document.querySelectorAll(".btn-matomo").forEach(function(element) {
 <!-- End Matomo Code -->
 <#else>
 tarteaucitron.user.matomoId = ${site_id};
-var u=("https:" == document.location.protocol) ? "${server_https_url}" : "${server_http_url}";
+var u=("https:" == document.location.protocol) ? "${server_https_url?js_string?no_esc}" : "${server_http_url?js_string?no_esc}";
 tarteaucitron.user.matomoHost = u;
 </#if>
 <#else>

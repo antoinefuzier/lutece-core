@@ -25,8 +25,8 @@ Snippet:
 <#macro adminDashboardPanel title='' navTitle='' parentId='' childId='' icon='' color='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#assign parentId=parentId />
-<@tabPanel id='${childId}' params='title="${title}" data-nav="${navTitle}" data-icon="${icon}" data-color="${color}"'>
-<@pageHeader title="${title}" />
+<@tabPanel id=childId title=title dataNav=navTitle dataIcon=icon dataColor=color>
+<@pageHeader title=title />
 <#nested>
 </@tabPanel>
 </#macro>

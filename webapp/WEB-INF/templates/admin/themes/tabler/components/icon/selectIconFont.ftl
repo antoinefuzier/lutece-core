@@ -236,7 +236,7 @@ Snippet:
 		list.addEventListener('keydown', onKey);
 	}
 
-	fetch('${iconsUrl}')
+	fetch('${iconsUrl?js_string?no_esc}')
 		.then(function(r) { return r.json(); })
 		.then(function(data) {
 			var frag = document.createDocumentFragment();

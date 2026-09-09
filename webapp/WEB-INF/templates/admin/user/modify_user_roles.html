@@ -13,11 +13,11 @@
         <@tform role='form' method='post' action='jsp/admin/user/DoModifyUserRoles.jsp'>
         <@tabs>
             <@tabList>
-                <@tabLink href='jsp/admin/user/ModifyUser.jsp?id_user=${user.userId}' title='#i18n{portal.users.actions.labelUser}' />
-                <#if defaultModeUsed> <@tabLink href='jsp/admin/user/ModifyUserPassword.jsp?id_user=${user.userId}' title='#i18n{portal.users.actions.labelPassword}' /></#if>
-                <@tabLink href='jsp/admin/user/ModifyUserRights.jsp?id_user=${user.userId}' title='#i18n{portal.users.actions.labelRights}' />
-                <@tabLink active=true href='jsp/admin/user/ModifyUserRoles.jsp?id_user=${user.userId}' title='#i18n{portal.users.actions.labelRoles}' />
-                <@tabLink href='jsp/admin/user/ModifyUserWorkgroups.jsp?id_user=${user.userId}' title='#i18n{portal.users.actions.labelWorkgroups}' />
+                <@tabLink href='jsp/admin/user/ModifyUser.jsp?id_user=' + user.userId title='#i18n{portal.users.actions.labelUser}' />
+                <#if defaultModeUsed> <@tabLink href='jsp/admin/user/ModifyUserPassword.jsp?id_user=' + user.userId title='#i18n{portal.users.actions.labelPassword}' /></#if>
+                <@tabLink href='jsp/admin/user/ModifyUserRights.jsp?id_user=' + user.userId title='#i18n{portal.users.actions.labelRights}' />
+                <@tabLink active=true href='jsp/admin/user/ModifyUserRoles.jsp?id_user=' + user.userId title='#i18n{portal.users.actions.labelRoles}' />
+                <@tabLink href='jsp/admin/user/ModifyUserWorkgroups.jsp?id_user=' + user.userId title='#i18n{portal.users.actions.labelWorkgroups}' />
             </@tabList>
             <@tabContent>
                 <@div class='d-flex justify-content-between pb-3'>

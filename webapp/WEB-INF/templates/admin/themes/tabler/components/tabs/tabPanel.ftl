@@ -23,9 +23,9 @@ Snippet:
     </@tabPanel>
 
 -->
-<#macro tabPanel id class='' params='' active=false deprecated...>
+<#macro tabPanel id class='' title='' dataNav='' dataIcon='' dataColor='' params='' active=false deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="tab-pane fade<#if active> show active</#if><#if class?has_content> ${class}</#if>" role="tabpanel" id="${id}" aria-labelledby="${id}-tab"<#if params?has_content> ${params}</#if>>
+<div class="tab-pane fade<#if active> show active</#if><#if class?has_content> ${class}</#if>" role="tabpanel" id="${id}" aria-labelledby="${id}-tab"<#if title?has_content> title="${title}"</#if><#if dataNav?has_content> data-nav="${dataNav}"</#if><#if dataIcon?has_content> data-icon="${dataIcon}"</#if><#if dataColor?has_content> data-color="${dataColor}"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </div>
 </#macro>

@@ -30,9 +30,9 @@ Snippet:
     </@link>
 
 -->
-<#macro link href='' class='' id='' name='' label='' linkIcon='' title='' alt='' target='' params='' deprecated...>
+<#macro link href='' class='' id='' name='' label='' linkIcon='' title='' alt='' target='' role='' ariaSelected='' ariaControls='' dataBsToggle='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<a href="${href}"<#if class?has_content> class="${class}"</#if><#if id?has_content> id="${id}"</#if><#if name?has_content> name="${name}"</#if><#if target?has_content> target="${target}"</#if><#if title?has_content> title="${title}"</#if><#if alt?has_content> alt="${alt}"</#if><#if params?has_content> ${params}</#if>>
+<a href="${href}"<#if class?has_content> class="${class}"</#if><#if id?has_content> id="${id}"</#if><#if name?has_content> name="${name}"</#if><#if target?has_content> target="${target}"</#if><#if title?has_content> title="${title}"</#if><#if alt?has_content> alt="${alt}"</#if><#if role?has_content> role="${role}"</#if><#if ariaSelected?has_content> aria-selected="${ariaSelected}"</#if><#if ariaControls?has_content> aria-controls="${ariaControls}"</#if><#if dataBsToggle?has_content> data-bs-toggle="${dataBsToggle}"</#if><#if params?has_content> ${params}</#if>>
 <#if linkIcon?has_content><@icon style=linkIcon class='me-1' /> </#if><#if label?has_content>${label}<#else><#nested></#if>
 </a>
 </#macro>

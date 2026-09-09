@@ -59,7 +59,7 @@ window.orejimeConfig = {
       isExempt: true
 		}
 	],
-	privacyPolicyUrl: '${privacyLink}',
+	privacyPolicyUrl: '${privacyLink?js_string?no_esc}',
   forceModal: false,
   forceBanner: false,
   logo: './themes/skin/parisfr/images/header-logo-paris.svg'

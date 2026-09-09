@@ -80,7 +80,7 @@ Snippet:
 (function(){
 	if ( document.querySelector( 'table th div.dropdown.lutece-table-sort' ) && !document.querySelector( 'script[src$="admin-table-sort.js"]' ) ) {
 		var s = document.createElement( 'script' );
-		s.src = "${commonsThemePath}${commonsJsPath}admin-table-sort.js";
+		s.src = "${(commonsThemePath + commonsJsPath + 'admin-table-sort.js')?js_string?no_esc}";
 		document.head.appendChild( s );
 	}
 })();

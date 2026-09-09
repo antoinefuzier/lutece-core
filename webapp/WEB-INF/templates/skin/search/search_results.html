@@ -94,10 +94,10 @@
                     <@cFormCheck type="radio" labelClass='filter-check' id="filter-all" name="datefilter" value="all" checked=(selected_datefilter!'') == 'all' label='Toutes dates' />
                     <@cFieldset id='date_filter' legend='#i18n{portal.search.search_results.dateFilter}' >
                         <@cField label='#i18n{portal.search.search_results.dateFilterAfter}' for='date_after'>
-                            <@cInputDate name='date_after' label='#i18n{portal.search.search_results.dateFilterAfter}' value='${date_after_value!""}' format='${date_picker_format!"dd/mm/yyyy"}' showFormat='${date_picker_format!"dd/mm/yyyy"}' />
+                            <@cInputDate name='date_after' label='#i18n{portal.search.search_results.dateFilterAfter}' value='${date_after_value!""}' format='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' showFormat='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' />
                         </@cField>
                         <@cField label='#i18n{portal.search.search_results.dateFilterBefore}' for='date_before' >
-                            <@cInputDate name='date_before' label='#i18n{portal.search.search_results.dateFilterBefore}' value='${date_before_value!""}' format='${date_picker_format!"dd/mm/yyyy"}' showFormat='${date_picker_format!"dd/mm/yyyy"}' />
+                            <@cInputDate name='date_before' label='#i18n{portal.search.search_results.dateFilterBefore}' value='${date_before_value!""}' format='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' showFormat='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' />
                         </@cField>
                     </@cFieldset>
                 </@cBlock>
@@ -193,7 +193,7 @@
 <script>
 (function() {
     // Format used by the datepicker for both display and submission (matches the server locale pattern).
-    const currentdateFormat = '${date_picker_format!"dd/mm/yyyy"}';
+    const currentdateFormat = '${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}';
 
     // The themeDatepicker wrapper keeps the visible input under its original id and exposes the instance on it.
     // Driving the instance with setDate() updates the visible field AND the hidden name="..." field that is submitted.

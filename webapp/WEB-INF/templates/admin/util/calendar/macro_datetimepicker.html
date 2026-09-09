@@ -165,7 +165,7 @@ function updateInputDate(input,dateValue) {
 <script>
 // Get list of browser locale and filter to current locale
 const browserCurrentLocale = getBrowserLocales( ).filter( lang => lang.startsWith( '<@getLanguageInLocale language=language />' ))[0];
-loadStyle( '${libUrl}bootstrap-flatpickr.min.css' );
+loadStyle( '${(libUrl + 'bootstrap-flatpickr.min.css')?js_string?no_esc}' );
 <#assign datePickerIsLoaded = true />
 </script>
 </#if>

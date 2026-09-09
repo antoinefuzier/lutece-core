@@ -57,7 +57,7 @@ tarteaucitron.services.monparis = {
 
 tarteaucitron.init({
     "bodyPosition": "top",          /* Tag positionné en haut pour accessibilité */
-    "privacyUrl": "${privacyLink}", /* Privacy policy url */
+    "privacyUrl": "${privacyLink?js_string?no_esc}", /* Privacy policy url */
     "hashtag": "#${hashtag}",       /* Open the panel with this hashtag */
     "cookieName": "${cookiename}",  /* Cookie name */
     "orientation": "bottom",        /* Banner position (top - bottom) */
@@ -137,8 +137,8 @@ function cleanTarteaucitronRoot() {
       // Add new link after privacyLink
       const newLink = document.createElement('a');
       newLink.id = 'tarteaucitronConsentUrl';
-      newLink.href = '${alertConfidentialityLink}';
-      newLink.textContent = '${alertConfidentialityLabel}';
+      newLink.href = '${alertConfidentialityLink?js_string?no_esc}';
+      newLink.textContent = '${alertConfidentialityLabel?js_string?no_esc}';
       privacyLink.insertAdjacentHTML('afterend', newLink.outerHTML);
     } else if (typeof tarteaucitron !== 'undefined') {
       // Wait a bit more for DOM elements to be created

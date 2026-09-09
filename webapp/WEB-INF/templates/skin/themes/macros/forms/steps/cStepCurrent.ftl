@@ -195,7 +195,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		const at = saveStep.querySelector('.alert-title');
 		const btnReset = document.createElement('button');
 		btnReset.classList.add('btn', 'btn-tertiary', 'ms-sm');
-		btnReset.innerHTML = "${'#i18n{portal.theme.labelRemoveSaveStep}'?js_string}";
+		btnReset.innerHTML = "${'#i18n{portal.theme.labelRemoveSaveStep}'?js_string?no_esc}";
 		btnReset.setAttribute('type', 'button');
 		btnReset.setAttribute('data-bs-target', '#reset-stepModal');
 		btnReset.setAttribute('data-bs-toggle', 'modal');

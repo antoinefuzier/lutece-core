@@ -49,7 +49,7 @@ Snippet:
 <#if items?has_content>
 <#if sort=true>
 <#list items?sort_by("name") as item>
-<#if default_value="${item.code}">
+<#if default_value?string == item.code?string>
 	<option selected="selected" title="${item.name}" value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
 <#else>
 	<option value="${item.code}" title="${item.name}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
@@ -63,7 +63,7 @@ Snippet:
 	<#else>
 		<#assign item_new = "${item.name}">
 	</#if>
-	<#if default_value="${item.code}">
+	<#if default_value?string == item.code?string>
 		<option selected="selected" title="${item.name}" value="${item.code}" >${item_new}</option>
 	<#else>
 		<option title="${item.name}" value="${item.code}" >${item_new}</option>
@@ -71,7 +71,7 @@ Snippet:
 	</#list>
 <#else>
 	<#list items as item>
-	<#if default_value="${item.code}">
+	<#if default_value?string == item.code?string>
 		<option selected="selected" title="${item.name}" value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>
 	<#else>
 		<option title="${item.name}" value="${item.code}" <#if !item.name?has_content>label="${i18n("portal.util.labelEmpty")}"</#if>>${item.name}</option>

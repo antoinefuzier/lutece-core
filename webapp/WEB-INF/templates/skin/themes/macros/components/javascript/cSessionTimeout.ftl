@@ -64,10 +64,10 @@ Snippet:
     window.__sessionTimeoutConfig = Object.assign({
         timeoutDuration: ${sessionTimeoutDuration},
         warningDelay: ${sessionWarningDelay},
-        keepAliveUrl: "${sessionKeepAliveUrl?js_string}",
-        loginUrl: "${sessionLoginUrl?js_string}",
+        keepAliveUrl: "${sessionKeepAliveUrl?js_string?no_esc}",
+        loginUrl: "${sessionLoginUrl?js_string?no_esc}",
         maxExtensions: ${sessionMaxExtensions},
-        position: "${sessionPosition?js_string}"
+        position: "${sessionPosition?js_string?no_esc}"
     }, pluginConfig, {
         messages: Object.assign({
             warningTitle: "#i18n{portal.theme.sessiontimeout.warningTitle}",

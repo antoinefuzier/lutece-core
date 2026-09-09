@@ -281,7 +281,7 @@ document.addEventListener( "DOMContentLoaded", function(e){
     <#if pmConfirmFieldId?has_content>const fieldConfirmDest = document.getElementById('${pmConfirmFieldId!}');</#if>
     btnGenerate.addEventListener( "click", (e) => {
       <#if pmUrl?has_content>
-        fetch("${pmUrl!}", {
+        fetch("${pmUrl!?js_string?no_esc}", {
         method: "GET",
         headers: {
             "Accept": "application/json"

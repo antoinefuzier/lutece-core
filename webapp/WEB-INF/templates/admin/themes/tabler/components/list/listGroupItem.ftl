@@ -22,9 +22,9 @@ Snippet:
     </@listGroupItem>
 
 -->
-<#macro listGroupItem id='' class='' active=false params='' deprecated...>
+<#macro listGroupItem id='' class='' active=false dataPortletTypeId='' dataPortletTypeIcon='' dataPortletTypeHref='' dataPortletTypeName='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<li class="list-group-item list-group-item-action<#if class?has_content> ${class}</#if><#if active> active</#if>"<#if id?has_content> id="${id}"</#if><#if active> aria-current="true"</#if><#if params?has_content> ${params}</#if>>
+<li class="list-group-item list-group-item-action<#if class?has_content> ${class}</#if><#if active> active</#if>"<#if id?has_content> id="${id}"</#if><#if active> aria-current="true"</#if><#if dataPortletTypeId?has_content> data-portlet-type-id="${dataPortletTypeId}"</#if><#if dataPortletTypeIcon?has_content> data-portlet-type-icon="${dataPortletTypeIcon}"</#if><#if dataPortletTypeHref?has_content> data-portlet-type-href="${dataPortletTypeHref}"</#if><#if dataPortletTypeName?has_content> data-portlet-type-name="${dataPortletTypeName}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </li>
 </#macro>
