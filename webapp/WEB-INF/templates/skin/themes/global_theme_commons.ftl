@@ -11,20 +11,23 @@
 <#assign commonsGlobalThemeVersion><#if !dskey('theme.globalThemeVersion')?starts_with('DS') && dskey('theme.globalThemeVersion') !=''>${dskey('theme.globalThemeVersion')}<#else>1.0</#if></#assign>
 <#-- Path                 -->
 <#assign commonsSiteSharedPath='themes/shared/' /> 
-<#assign commonsSiteThemePath='themes/skin/${commonsGlobalThemeCode}/' /> 
+<#assign commonsSiteThemePath = 'themes/skin/' + commonsGlobalThemeCode + '/' />
 <#assign commonsSharedThemePath='themes/skin/shared/' />
-<#assign commonsTplPath='${commonsGlobalThemeCode}/tpl/' />
+<#assign commonsTplPath = commonsGlobalThemeCode + '/tpl/' />
 <#assign commonsSiteJsPath='js/' /> 
 <#assign commonsSiteJsModulesPath='js/modules/' /> 
 <#assign commonsSiteCssPath='css/' /> 
 <#assign commonsSiteImagesPath='images/' /> 
 <#assign commonsMacrosPath='macros/' />
-<#assign commonsFtlPath='${commonsGlobalThemeCode}/macros/' />
+<#assign commonsFtlPath = commonsGlobalThemeCode + '/macros/' />
 <#-- Theme Macros                                                               -->
 <#-- MACRO cTpl : If find theme template then use it else use current template  -->
 <#macro cTpl tpl=''>
-<#local tplName><#if tpl=''>${.caller_template_name?keep_after("skin/")}<#else>${tpl}</#if></#local>
-<#local tplPath='../themes/${commonsGlobalThemeCode}/tpl/${tplName}' >
+<#local tplName = tpl />
+<#if !tplName?has_content>
+<#local tplName = .caller_template_name?keep_after('skin/') />
+</#if>
+<#local tplPath = '../themes/' + commonsGlobalThemeCode + '/tpl/' + tplName />
 <#assign optTemp = .get_optional_template( tplPath )>
 <#if optTemp.exists>
 <@optTemp.include />
@@ -34,7 +37,7 @@
 </#macro>
 <#-- MACRO cMacro : If find theme macro then use it else use current one -->
 <#macro cMacro name='' group='' >
-<#local macroPath='../themes/${commonsGlobalThemeCode}/macros/${group}/${name}.ftl' >
+<#local macroPath = '../themes/' + commonsGlobalThemeCode + '/macros/' + group + '/' + name + '.ftl' />
 <#assign macroTheme = .get_optional_template( macroPath )>
 <#if macroTheme.exists><@macroTheme.include /><#else><#include commonsMacrosPath + group + '/' + name + '.ftl' /></#if>
 </#macro>
