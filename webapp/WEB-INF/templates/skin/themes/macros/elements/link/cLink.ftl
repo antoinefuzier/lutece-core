@@ -39,9 +39,9 @@ Snippet:
     </@cLink>
 
 -->
-<#macro cLink href label title='' nestedPos='after' target='' showTarget=false class='' id='' params='' deprecated...>
+<#macro cLink href label title='' nestedPos='after' target='' showTarget=false class='' id='' params='' ariaLabel='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<a href="${href!}" <#if id!=''> id="${id!}"</#if> <#if class !='' >class="${class!}"</#if><#if title!=''> title="${title!}<#if target='_blank'> #i18n{portal.theme.newWindowLink}</#if>"</#if><#if target!=''> target="${target}"</#if><#if params!=''> ${params}</#if> > 
+<a href="${href!}" <#if id!=''> id="${id!}"</#if> <#if class !='' >class="${class!}"</#if><#if title!=''> title="${title!}<#if target='_blank'> #i18n{portal.theme.newWindowLink}</#if>"</#if><#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if target!=''> target="${target}"</#if><#if params!=''> ${params}</#if> >
 <#if nestedPos!='after'><#nested></#if>
 <#if label!=''><span class="link-label">${label!}</span></#if> 
 <#if nestedPos='after'> <#nested></#if>

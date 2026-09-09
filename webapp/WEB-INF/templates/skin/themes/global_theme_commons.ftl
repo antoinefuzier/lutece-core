@@ -6,7 +6,8 @@
 -->
 <#-- THEME LINKS AND LABELS VARIABLES -->
 <#-- Theme Code           -->
-<#assign commonsGlobalThemeCode><#if !dskey('theme.globalThemeCode')?starts_with('DS') && dskey('theme.globalThemeCode') !=''>${dskey('theme.globalThemeCode')}<#else>lutece</#if></#assign>
+<#assign configuredThemeCode = dskey('theme.globalThemeCode')!'' />
+<#assign commonsGlobalThemeCode = ( configuredThemeCode?has_content && !configuredThemeCode?starts_with('DS') )?then( configuredThemeCode, 'lutece' ) />
 <#assign commonsGlobalThemeVersion><#if !dskey('theme.globalThemeVersion')?starts_with('DS') && dskey('theme.globalThemeVersion') !=''>${dskey('theme.globalThemeVersion')}<#else>1.0</#if></#assign>
 <#-- Path                 -->
 <#assign commonsSiteSharedPath='themes/shared/' /> 
@@ -35,10 +36,10 @@
 <#macro cMacro name='' group='' >
 <#local macroPath='../themes/${commonsGlobalThemeCode}/macros/${group}/${name}.ftl' >
 <#assign macroTheme = .get_optional_template( macroPath )>
-<#if macroTheme.exists><@macroTheme.include /><#else><#include "${commonsMacrosPath}${group}/${name}.ftl" /></#if>
+<#if macroTheme.exists><@macroTheme.include /><#else><#include commonsMacrosPath + group + '/' + name + '.ftl' /></#if>
 </#macro>
 <#-- THEME SPEC                            -->
-<#include "${commonsGlobalThemeCode}/_theme.ftl" />
+<#include commonsGlobalThemeCode + '/_theme.ftl' />
 <#-- MACROS LIST                            -->
 <#include "theme_commons_macros.ftl" />
 <#-- BANNER MANAGEMENT        -->

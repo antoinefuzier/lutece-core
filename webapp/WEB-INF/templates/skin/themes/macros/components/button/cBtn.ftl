@@ -40,14 +40,14 @@ Snippet:
     </@cBtn>
 
 -->
-<#macro cBtn label class='primary' btnClass='' noclass=false href='' id='' params='' type='submit' nestedPos='before' disabled=false size='' deprecated...>
+<#macro cBtn label class='primary' btnClass='' noclass=false href='' id='' params='' type='submit' nestedPos='before' disabled=false size='' ariaLabel='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if href=''>
-<button class="<#if !noclass>btn btn-</#if>${class!}<#if size == 'mini'> btn-mini</#if>" type="${type!}"<#if id!=''> id="${id!}"</#if><#if params!=''>${params!}</#if><#if disabled> disabled</#if>>
+<button class="<#if !noclass>btn btn-</#if>${class!}<#if size == 'mini'> btn-mini</#if>" type="${type!}"<#if id!=''> id="${id!}"</#if><#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if params!=''>${params!}</#if><#if disabled> disabled</#if>>
 <#if nestedPos='before'><#nested></#if><#if label!=''><span class="btn-label ${btnClass!}">${label!}</span></#if><#if nestedPos='after'><#nested></#if>
 </button>
 <#else>
-<a href="${href!}" class="btn btn-${class!}" <#if id!=''> id="${id!}"</#if><#if params!=''>${params!}</#if><#if disabled> disabled</#if>> 
+<a href="${href!}" class="btn btn-${class!}" <#if id!=''> id="${id!}"</#if><#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if params!=''>${params!}</#if><#if disabled> disabled</#if>>
 <#if nestedPos='before'><#nested></#if><#if label!=''><span class="btn-label ${btnClass!}">${label!}</span></#if><#if nestedPos='after'><#nested></#if>
 </a>
 </#if>

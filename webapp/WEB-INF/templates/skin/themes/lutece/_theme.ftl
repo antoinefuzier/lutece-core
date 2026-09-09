@@ -31,7 +31,7 @@
 <script src="${commonsSiteJsPath}site.js?theme=${commonsGlobalThemeCode!}${commonsGlobalThemeVersion}"></script>
 </#macro>
 <#-- MAIN VARS MANAGEMENT               -->
-<#assign mainSite>Lutece</#assign>
+<#assign mainSite = 'Lutece' />
 <#-- LINKS MANAGEMENT                   -->
 <#assign hasSiteMap><#if !dskey('portal.theme.site_property.menu.siteMapMenu.checkbox')?starts_with('DS') &&  dskey('portal.theme.site_property.menu.siteMapMenu.checkbox') =='1'>true<#else>false</#if></#assign>
 <#assign urlMainSite>https://${mainSite?lower_case}.paris.fr</#assign>

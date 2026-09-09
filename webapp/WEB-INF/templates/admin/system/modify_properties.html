@@ -55,7 +55,7 @@
                                         </#if>
                                     </#if>
                                     <#if groupItem.key?ends_with( ".select.options" ) || groupItem.key?ends_with( ".radio.options" )>
-                                        <@input type='hidden' class='hidden-options' name=groupItem.key value=groupItem.value?html />
+                                        <@input type='hidden' class='hidden-options' name=groupItem.key value=groupItem.value />
                                     <#else>
                                         <#assign labelText=groupItem.label>
                                         <#if groupItem.key?ends_with( ".checkbox" )><#assign labelText=''></#if>
@@ -64,9 +64,9 @@
                                             <@boxBody class='searchable'>
                                             <@formGroup class='property' labelKey=labelText labelFor=groupItem.key helpKey=helpText params=' data-property="${groupItem.key}"' rows=2>
                                                 <#if groupItem.key?ends_with( ".textblock" )>
-                                                    <@input type='textarea' name=groupItem.key id=groupItem.key>${groupItem.value?html}</@input>
+                                                    <@input type='textarea' name=groupItem.key id=groupItem.key>${groupItem.value}</@input>
                                                 <#elseif groupItem.key?ends_with( ".htmlblock" )>
-                                                    <@input type='textarea' name=groupItem.key id=groupItem.key class='richtext'>${groupItem.value?html}</@input>
+                                                    <@input type='textarea' name=groupItem.key id=groupItem.key class='richtext'>${groupItem.value}</@input>
                                                 <#elseif groupItem.key?ends_with( ".checkbox" )>
                                                     <#if groupItem.value == "1">
                                                         <@checkBox orientation='switch' name=groupItem.key id=groupItem.key labelKey=groupItem.label  value='1' checked=true />
@@ -78,7 +78,7 @@
                                                     <#assign optionsKey = groupItem.key + ".options">
                                                     <#assign optionsRaw = dskey(optionsKey)!''>
                                                     <#if optionsRaw?starts_with('DS')><#assign optionsRaw = ''></#if>
-                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value?html id='${groupItem.key}_value' />
+                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value id='${groupItem.key}_value' />
                                                     <select class="form-select property-select" id="${groupItem.key}" data-target="${groupItem.key}_value">
                                                     <#list optionsRaw?split('|') as opt>
                                                         <#assign optValue = opt?trim>
@@ -89,7 +89,7 @@
                                                     <#assign optionsKey = groupItem.key + ".options">
                                                     <#assign optionsRaw = dskey(optionsKey)!''>
                                                     <#if optionsRaw?starts_with('DS')><#assign optionsRaw = ''></#if>
-                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value?html id='${groupItem.key}_value' />
+                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value id='${groupItem.key}_value' />
                                                     <div class="property-radio" data-target="${groupItem.key}_value">
                                                         <#list optionsRaw?split('|') as opt>
                                                             <#assign optValue = opt?trim>
@@ -100,13 +100,13 @@
                                                     </div>
                                                 <#elseif groupItem.key?contains( "color" )>
                                                     <@inputGroup class='color-wrapper-input'>
-                                                        <@input type='text' class='color-input' name=groupItem.key id=groupItem.key value=groupItem.value?html />
+                                                        <@input type='text' class='color-input' name=groupItem.key id=groupItem.key value=groupItem.value />
                                                         <@inputGroupItem>
-                                                            <input type="color" class="color-input" name="color-input" value="${groupItem.value?html}" colorspace="display-p3" alpha>
+                                                            <input type="color" class="color-input" name="color-input" value="${groupItem.value}" colorspace="display-p3" alpha>
                                                         </@inputGroupItem>
                                                     </@inputGroup>
                                                 <#else>
-                                                    <@input type='text' name=groupItem.key id=groupItem.key value=groupItem.value?html />
+                                                    <@input type='text' name=groupItem.key id=groupItem.key value=groupItem.value />
                                                 </#if>
                                             </@formGroup>
                                             </@boxBody>

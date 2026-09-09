@@ -48,9 +48,9 @@ Snippet:
             </@cTitle>
             <@cSection type='span' class='d-none d-sm-block'>
             <#if actionHref !=''>
-                <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref params='aria-label="${i18n(actionAriaLabelKey, title)?html}" ${actionParams!}' />
+                <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
             <#elseif actionName !=''>
-                <@cBtn class='secondary btn-sm-block' label=actionLabel! params='name="${actionName}"value="${idx!}" aria-label="${i18n(actionAriaLabelKey, title)?html}" formnovalidate' />
+                <@cBtn class='secondary btn-sm-block' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
             </#if>
             </@cSection>    
         </@cContainer>    
@@ -62,9 +62,9 @@ Snippet:
             </@chList>
             <@cSection type='div' class='d-block d-sm-none mt-m'>
             <#if actionHref !=''>
-                <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref params='aria-label="${i18n(actionAriaLabelKey, title)?html}" ${actionParams!}' />
+                <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
             <#elseif actionName !=''>
-                <@cBtn class='secondary btn-sm-block' label=actionLabel! params='name="${actionName}"value="${idx!}" aria-label="${i18n(actionAriaLabelKey, title)?html}" formnovalidate' />
+                <@cBtn class='secondary btn-sm-block' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
             </#if>
             </@cSection>    
         </@cSection>
