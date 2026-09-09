@@ -43,7 +43,7 @@ Snippet:
 <@deprecatedWarning args=deprecated />	
 <#if groupStyle = 'success'><#local validation = 'is-valid'><#elseif groupStyle='error'><#local validation = 'is-invalid'></#if>
 <#if collapsed><#local class += ' collapse' /></#if>
-<div class="<#if formStyle='col'>row</#if><#if formStyle='horizontal' || formStyle='col' || formStyle='fullwidth'> mb-3<#elseif formStyle='inline' > g-3</#if><#if class!=''> ${class?trim}</#if><#if validation?? && validation!=''> ${validation}</#if>" <#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="<#if formStyle='col'>row</#if><#if formStyle='horizontal' || formStyle='col' || formStyle='fullwidth'> mb-3<#elseif formStyle='inline' > g-3</#if><#if class!=''> ${class?trim}</#if><#if validation?? && validation!=''> ${validation}</#if>" <#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 <#local displayLabelClass = displaySettings(hideLabel,'inline-flex') />
 <#local labelClass = labelClass >
 <#if rows=1>

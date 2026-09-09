@@ -30,7 +30,7 @@ Snippet:
 <@deprecatedWarning args=deprecated />
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
 <#local class += ' ' + alignmentSettings(align,'') + ' ' + displaySettings(hide,'inline-flex') />
-<span<#if class?trim!=''> class="${class?trim}"</#if><#if params!=''> ${params}</#if><#if id!=''> id="${id}"</#if>>
+<span<#if class?trim!=''> class="${class?trim}"</#if><#if params?has_content> ${params}</#if><#if id!=''> id="${id}"</#if>>
 	<#nested>
 </span>
 </#macro>

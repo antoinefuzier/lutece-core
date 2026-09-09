@@ -36,7 +36,7 @@ Snippet:
 -->
 <#macro timelineItem iconFace='check' iconBg='bg-primary' time='' label='' footer='' class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<li<#if class !=''> class="${class}"</#if><#if id !=''> id="${id}"</#if><#if params !=''> ${params}</#if>>
+<li<#if class !=''> class="${class}"</#if><#if id !=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#if iconFace !=''><div class="list-timeline-icon ${iconBg}"><@icon style=iconFace /></div></#if>
 	<div class="list-timeline-content">
 		<#if time !=''><div class="list-timeline-time">${time}</div></#if>

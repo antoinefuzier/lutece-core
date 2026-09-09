@@ -21,7 +21,7 @@ Snippet:
 -->
 <#macro progressBar description='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="progress"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="progress"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<div id="progressbar" class="progress-bar progress-bar-striped" role="progressbar">
 		<div id="complexity">0%</div>
 	</div>

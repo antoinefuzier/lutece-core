@@ -32,7 +32,7 @@ Snippet:
 -->
 <#macro link href='' class='' id='' name='' label='' linkIcon='' title='' alt='' target='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<a href="${href}"<#if class!=''> class="${class}"</#if><#if id!=''> id="${id}"</#if><#if name!=''> name="${name}"</#if><#if target!=''> target="${target}"</#if><#if title!=''> title="${title}"</#if><#if alt!=''> alt="${alt}"</#if><#if params!=''> ${params}</#if>>
+<a href="${href}"<#if class!=''> class="${class}"</#if><#if id!=''> id="${id}"</#if><#if name!=''> name="${name}"</#if><#if target!=''> target="${target}"</#if><#if title!=''> title="${title}"</#if><#if alt!=''> alt="${alt}"</#if><#if params?has_content> ${params}</#if>>
 <#if linkIcon !=''><@icon style=linkIcon class='me-1' /> </#if><#if label !=''>${label}<#else><#nested></#if>
 </a>
 </#macro>

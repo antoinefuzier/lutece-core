@@ -33,7 +33,7 @@ Snippet:
 <#macro btnGroup id='' class='' align='' size='' params='' ariaLabel='' hide=[]   deprecated...>
 <@deprecatedWarning args=deprecated />	
 <#local class += ' ' + displaySettings(hide,'inline-flex') + ' ' + alignmentSettings(align,'') />
-<div class="btn-group<#if size!=''> btn-group-${size}</#if><#if class!=''> ${class?trim}</#if>" role="group"<#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="btn-group<#if size!=''> btn-group-${size}</#if><#if class!=''> ${class?trim}</#if>" role="group"<#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </div>
 </#macro>

@@ -31,7 +31,7 @@ Snippet:
 -->
 <#macro smallBox color='' title='' text='' boxIcon='' titleLevel='div' unit='' url='' urlText='' id='' params='' fontSize='40px' deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="card card-sm mb-3 box-widget" draggable='true' <#if id!=''> id="${id}" data-id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="card card-sm mb-3 box-widget" draggable='true' <#if id!=''> id="${id}" data-id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<div class="card-body">
 		<div class="row align-items-center">
 			<div class="col-auto">

@@ -27,7 +27,7 @@ Snippet:
 -->
 <#macro figure caption='' captionPos='bottom' class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<figure<#if class!=''> class="${class}"</#if><#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if> />
+<figure<#if class!=''> class="${class}"</#if><#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if> />
 <#if captionPos='top'><#if caption!=''><figcaption>${caption}</figcaption></#if></#if>
 <#nested>
 </figure>

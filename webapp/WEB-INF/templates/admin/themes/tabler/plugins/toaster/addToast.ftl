@@ -22,7 +22,7 @@ Snippet:
 -->
 <#macro addToast title='' content='' titleImg='' titleInfo='' dismiss=true class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<div<#if id !=''> id="${id}"</#if> class="toast<#if class !=''> ${class}</#if>" role="alert" aria-live="assertive" aria-atomic="true"<#if params !=''> ${params}"</#if>>
+<div<#if id !=''> id="${id}"</#if> class="toast<#if class !=''> ${class}</#if>" role="alert" aria-live="assertive" aria-atomic="true"<#if params?has_content> ${params}"</#if>>
   <#if title !=''>
     <div class="toast-header">
       <#if titleImg !=''><img src="${titleImg}" class="rounded me-2" alt="..."></#if>

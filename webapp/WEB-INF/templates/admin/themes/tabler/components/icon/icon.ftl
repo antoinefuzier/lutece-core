@@ -147,5 +147,5 @@ Snippet:
         <#local iconStyle = style />
 </#switch>
 <#if cssStyle?trim !=''><#local iconStyle = iconStyle + cssStyle /></#if>
-<i class="${prefix}${iconStyle}<#if class!=''> ${class}</#if>" aria-hidden="true"<#if title!=''> title='${title}'</#if><#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>></i>
+<i class="${prefix}${iconStyle}<#if class!=''> ${class}</#if>" aria-hidden="true"<#if title!=''> title='${title}'</#if><#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>></i>
 </#macro>

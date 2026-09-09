@@ -54,7 +54,7 @@ Snippet:
 })();
 </script>
 </head>
-<body class="<#if loginIsCover?number == 1> d-flex flex-column</#if>" ${readMode!}<#if params!=''> ${params}</#if>>
+<body class="<#if loginIsCover?number == 1> d-flex flex-column</#if>" ${readMode!}<#if params?has_content> ${params}</#if>>
 <main class="<#if loginIsCover?number == 1>row g-0 flex-fill<#else>page page-center"</#if>">
 <#if loginIsCover?number == 0 && loginLayoutImg==''><div class="container container-tight py-4"> </#if>
 <#if loginIsCover?number == 1>

@@ -32,7 +32,7 @@ Snippet:
 <@deprecatedWarning args=deprecated />
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
 <#local class += ' ' + alignmentSettings(align,'') + ' ' + displaySettings(hide,'block') />
-<pre<#if class!=''> class="${class?trim}"</#if><#if params!=''> ${params}</#if><#if id!=''> ${id}</#if>>
+<pre<#if class!=''> class="${class?trim}"</#if><#if params?has_content> ${params}</#if><#if id!=''> ${id}</#if>>
 	<#nested>
 </pre>
 </#macro>

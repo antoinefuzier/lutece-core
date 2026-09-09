@@ -16,7 +16,7 @@ Parameters:
 -->
 <#macro infoBox color='' boxText='' boxIcon='' boxNumber='' unit='' bgColor='' progressBar='' progressDescription='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="card m-2 box-widget<#if bgColor!=''> ${bgColor}</#if>"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="card m-2 box-widget<#if bgColor!=''> ${bgColor}</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<div class="card-body">
 		<span class="info-box-icon<#if color!=''> ${color}</#if>"><@icon style=boxIcon /></span><#if boxText !=''><span class="info-box-text ml-2">${boxText}</span></#if>
 		<div class="info-box-content">

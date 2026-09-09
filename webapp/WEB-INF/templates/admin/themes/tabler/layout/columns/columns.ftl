@@ -77,7 +77,7 @@ Snippet:
 		<#local class += ' ' + responsiveDisplay('order',order) />
 	</#if>
 </#if>
-<${tag} class="<#if class?trim!=''>${class?trim}<#else>col</#if>"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<${tag} class="<#if class?trim!=''>${class?trim}<#else>col</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </${tag}>
 </#macro>

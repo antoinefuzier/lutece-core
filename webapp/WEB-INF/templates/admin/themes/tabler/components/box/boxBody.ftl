@@ -27,7 +27,7 @@ Snippet:
 <@deprecatedWarning args=deprecated />
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
 <#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
-<div class="card-body<#if class!=''> ${class}</#if>" <#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="card-body<#if class!=''> ${class}</#if>" <#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </div>
 </#macro>

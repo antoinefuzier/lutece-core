@@ -32,7 +32,7 @@ Snippet:
 -->
 <#macro tabLink class='' hide=[] id='' active=false href='' title='' tabLabel='' tabIcon='' tabClass='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<li class="nav-item<#if tabClass!=''> ${tabClass}</#if>"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<li class="nav-item<#if tabClass!=''> ${tabClass}</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 <#local tabLinkClass = class + ' nav-link' />
 <#if active><#local tabLinkClass += ' active' /></#if>
 <#local tabLinkSettings = 'role="tab" aria-selected="${active?c}" aria-controls="${href?remove_beginning("#")}"' />

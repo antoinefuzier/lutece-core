@@ -38,7 +38,7 @@ Snippet:
 -->
 <#macro boxHeader title='' i18nTitleKey='' titleClass='' titleLevel='h3' titleParams='' titleActions=false titleAuto=true hideTitle=[] showTitle=true collapsed=false id='' class='' params='' boxTools=false skipHeader=false deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="card-header<#if class!=''> ${class}</#if><#if skipHeader> skip-header</#if>"<#if id!=''> id="${id}"</#if><#if params !=''> ${params}</#if>>
+<div class="card-header<#if class!=''> ${class}</#if><#if skipHeader> skip-header</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<${titleLevel} class="card-title<#if titleClass!=''> ${titleClass}</#if><#if showTitle=false> visually-hidden</#if>"<#if titleParams !=''> ${titleParams}</#if>><#if title!=''>${title}</#if><#if i18nTitleKey!=''>#i18n{${i18nTitleKey}}</#if></${titleLevel}>
 	<#local nested><#nested></#local>
 	<#if nested?has_content>

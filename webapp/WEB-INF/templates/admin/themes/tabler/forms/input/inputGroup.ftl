@@ -32,7 +32,7 @@ Snippet:
 -->
 <#macro inputGroup id='' class='' size='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<div class="input-group<#if size!=''> input-group-${size}</#if><#if class!=''> ${class}</#if>"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="input-group<#if size!=''> input-group-${size}</#if><#if class!=''> ${class}</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </div>
 </#macro>

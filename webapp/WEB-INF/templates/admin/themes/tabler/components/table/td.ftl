@@ -56,7 +56,7 @@ Snippet:
 	</#list>
 	<#if valign!=''><#local class += ' align-' + valign /></#if>
 	<#if flex><#local class += ' d-flex' /></#if>
-	<td<#if class?trim != ''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if colspan gt 0> colspan="${colspan}"</#if><#if rowspan gt 0> rowspan="${rowspan}"</#if><#if params!=''> ${params}</#if>>
+	<td<#if class?trim != ''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if colspan gt 0> colspan="${colspan}"</#if><#if rowspan gt 0> rowspan="${rowspan}"</#if><#if params?has_content> ${params}</#if>>
 		<#nested>
 	</td>
 </#macro>

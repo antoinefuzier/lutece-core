@@ -36,7 +36,7 @@ Snippet:
 <#if label!='' >
 <div id="${progressId}-label" >${label}</div>
 </#if>
-<div class="progress"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="progress"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<div id="${progressId}" class="progress-bar progress-bar-${color}<#if token!=''> progressmanager</#if>" role="progressbar" style="width: ${value}%;" aria-valuenow="${value}" aria-valuemin="${min}" aria-valuemax="${max}" <#if token!=''>token="${token}" intervalTime=${intervalTime} showReport=${showReport?c}</#if> >
         <#if text=''>${value}%<#else>${text}</#if>
 	</div>       

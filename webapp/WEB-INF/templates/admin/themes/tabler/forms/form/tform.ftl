@@ -72,7 +72,7 @@ Snippet:
 <#if boxed>
 <div class="card<#if boxClass !=''> ${boxClass!}</#if>">
 <div class="card-body"></#if>
-<form <#if class!=''>class="${class?trim} <#if align='middle'>align-middle</#if>"</#if><#if id!=''> id="${id}"</#if><#if action!=''> action="${action}"</#if><#if method!=''> method="${method}"</#if><#if name!=''> name="${name}"</#if><#if role!=''> role="${role}"</#if><#if method='post' && enctype!=''> enctype='${enctype}'</#if><#if params!=''> ${params}</#if>>
+<form <#if class!=''>class="${class?trim} <#if align='middle'>align-middle</#if>"</#if><#if id!=''> id="${id}"</#if><#if action!=''> action="${action}"</#if><#if method!=''> method="${method}"</#if><#if name!=''> name="${name}"</#if><#if role!=''> role="${role}"</#if><#if method='post' && enctype!=''> enctype='${enctype}'</#if><#if params?has_content> ${params}</#if>>
 <#if required><@staticText>#i18n{portal.util.message.titleRequiredFields}</@staticText></#if>
 <#nested>
 </form>

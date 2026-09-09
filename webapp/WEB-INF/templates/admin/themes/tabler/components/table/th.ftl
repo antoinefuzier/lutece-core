@@ -55,7 +55,7 @@ Snippet:
 </#list>
 <#if valign!=''><#local class += ' align-' + valign /></#if>
 <#if flex><#local class += ' d-flex' /></#if>
-<th<#if class?trim != ''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if title!=''> title="${title}"</#if><#if scope!=''> scope="${scope}"</#if><#if colspan gt 0> colspan="${colspan}"</#if><#if rowspan gt 0> rowspan="${rowspan}"</#if><#if params!=''> ${params}</#if>>
+<th<#if class?trim != ''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if title!=''> title="${title}"</#if><#if scope!=''> scope="${scope}"</#if><#if colspan gt 0> colspan="${colspan}"</#if><#if rowspan gt 0> rowspan="${rowspan}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </th>
 </#macro>

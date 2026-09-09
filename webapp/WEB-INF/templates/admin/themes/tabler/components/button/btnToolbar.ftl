@@ -36,7 +36,7 @@ Snippet:
 <#macro btnToolbar id='' class='' vertical=false align='' ariaLabel='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
-<div class="btn-group<#if vertical>-vertical</#if><#if class!=''> ${class?trim}</#if>" role="toolbar"<#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="btn-group<#if vertical>-vertical</#if><#if class!=''> ${class?trim}</#if>" role="toolbar"<#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </div>
 </#macro>

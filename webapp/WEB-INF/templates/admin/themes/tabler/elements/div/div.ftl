@@ -37,7 +37,7 @@ Snippet:
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
 <#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
 <#if hide??><#local class += ' ' + displaySettings(hide,'block') /></#if>
-<div<#if class?trim!=''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div<#if class?trim!=''> class="${class?trim}"</#if><#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </div>
 </#macro>

@@ -26,7 +26,7 @@ Snippet:
 <#macro boxFooter class='' align='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
-<div class="card-footer<#if class!=''> ${class}</#if>"<#if id!=''> id="${id}"</#if><#if params!=''> ${params}</#if>>
+<div class="card-footer<#if class!=''> ${class}</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </div>
 </#macro>

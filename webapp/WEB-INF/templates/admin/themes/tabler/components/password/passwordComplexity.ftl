@@ -22,7 +22,7 @@ Snippet:
 -->
 <#macro passwordComplexity id description='' params='' inputId='password' value='0' >
 <@deprecatedWarning args=deprecated />
-<div class="lutece-progress-wrapper "<#if params!=''> ${params}</#if>>
+<div class="lutece-progress-wrapper "<#if params?has_content> ${params}</#if>>
     <progress id="${id}" value="0" max="100" class="lutece-progress lutece-progress-danger"></progress>
     <span id="${id}-text" class="lutece-progress-text">0%</span>
     <div aria-live="polite" class="visually-hidden" id="${id}-status"></div>
