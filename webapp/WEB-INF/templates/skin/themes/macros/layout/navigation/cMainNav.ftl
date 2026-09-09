@@ -55,7 +55,8 @@ Snippet:
 -->
 <#macro cMainNav title=favourite logoImg='' href='.' hasMenu=hasDefaultMenu?boolean hasUserThemeSwitch=hasUserThemeSwitch?boolean hasNestedMenu=true isSidebar=isMainSidebarMenu?boolean isSibebarCollapsible=isMainSidebarMenuCollapse?boolean sidebarMenuClass='' isOnlyHome=isBannerOnlyHome?boolean showDefaultMenu=true hasSearchMenu=hasSearchMenu?boolean typeSearch='field' searchUrl=urlDefaultSearch searchAction='jsp/site/Portal.jsp' searchSolr=false searchParams='' isFixed=isFixedMenu?boolean hasLogin=false loginClass='' mainClass='' id='' class='' role='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<#assign pageId><#if page_id??>${page_id!'1'}<#else>0</#if></#assign>
+<#assign pageId = '0' />
+<#if page_id??><#assign pageId = page_id?string /></#if>
 <#if isSidebar>
 <#assign isMainSidebarMenu=isSidebar >
 <#if mainSidebarMenuCols?? && mainSidebarMenuCols != ''><#local sidebarCol=mainSidebarMenuCols?number /><#else><#local sidebarCol=sidebarCol?number /></#if>
@@ -98,7 +99,7 @@ Snippet:
                 </@cMainNavItem>
             </#if>
             <#if hasMenu && hasSearchMenu && typeSearch='field'>
-                <#assign formSearchAction><#if searchAction=''>${urlSearch!}<#else>${searchAction!}</#if></#assign>
+                <#assign formSearchAction = ( searchAction == '' )?then( urlSearch!'', searchAction ) />
                 <@cMainNavItem title='' url='' class='ms-md-auto' >
                     <@cForm action=formSearchAction class='d-none d-md-none d-lg-block p-sm' params='role="search"'>
                         <input type="hidden" name="page" value="search<#if searchSolr>-solr</#if>">
@@ -161,7 +162,7 @@ Snippet:
                     <#nested>
                     </#if>
                     <#if hasMenu && hasSearchMenu>
-                        <#assign formSearchAction><#if searchAction=''>${urlSearch!}<#else>${searchAction!}</#if></#assign>
+                        <#assign formSearchAction = ( searchAction == '' )?then( urlSearch!'', searchAction ) />
                         <@cMainNavItem title='' url='' class='ms-md-auto' >
                             <@cForm action=formSearchAction class='d-none d-md-none d-lg-block p-sm' params='role="search"'>
                                 <input type="hidden" name="page" value="search<#if searchSolr>-solr</#if>">

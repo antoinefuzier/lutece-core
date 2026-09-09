@@ -33,7 +33,7 @@ Snippet:
 -->
 <#macro cRow class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<@cSection type='div' class='row ${class}' id=id params=params>
+<@cSection type='div' class='row ' + class id=id params=params>
 <#nested>
 </@cSection>
 </#macro>

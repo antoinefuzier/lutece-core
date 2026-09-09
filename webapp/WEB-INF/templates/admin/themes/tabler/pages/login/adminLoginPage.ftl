@@ -33,7 +33,8 @@ Snippet:
 <#macro adminLoginPage title='' site_name='LUTECE' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#local readMode><#if dskey('portal.site.site_property.layout.readmode.checkbox')?trim?starts_with('DS')><#else><#if dskey('portal.site.site_property.layout.readmode.checkbox')?number = 1> dir="rtl"</#if></#if></#local>
-<#local logoSvg><#attempt>${dskey('portal.site.site_property.logo_svg.textblock')}<#recover>${dskey('portal.site.site_property.logo_svg.textblock')}!=''?then(${dskey('portal.site.site_property.logo_svg.textblock')}, '')></#attempt></#local>
+<#-- This datastore value is the administrator-managed SVG logo, seeded by init_db_lutece_core.sql. -->
+<#local logoSvg = dskey('portal.site.site_property.logo_svg.textblock')!'' />
 <#local logoUrl = dskey('portal.site.site_property.logo_url')!'' />
 <#local loginIsCover = dskey('portal.site.site_property.layout.login.cover.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.login.cover.checkbox'), '0') />
 <#local loginIsCoverContain = dskey('portal.site.site_property.layout.login.cover.contain.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.login.cover.contain.checkbox'), '0') />
@@ -76,7 +77,7 @@ Snippet:
 							<@img url=logoUrl alt=site_name class='logo' params='aria-hidden="true" height="24" width="24"' />
 							<span class="ms-1 fs-2 d-inline-block">${site_name!''}</span>
 							<#else>
-							${logoSvg!}
+							${logoSvg?no_esc}
 							</#if>
 						</a>
 						<!-- END NAVBAR LOGO -->

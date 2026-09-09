@@ -27,7 +27,8 @@ Snippet:
 <#macro adminMessagePage title='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#local logoUrl = (dskey('portal.site.site_property.logo_url')!)?has_content?then(dskey('portal.site.site_property.logo_url')?trim, '')>
-<#local logoSvg = (dskey('portal.site.site_property.logo_svg.textblock')!)?has_content?then(dskey('portal.site.site_property.logo_svg.textblock'), '')>
+<#-- This datastore value is the administrator-managed SVG logo, seeded by init_db_lutece_core.sql. -->
+<#local logoSvg = dskey('portal.site.site_property.logo_svg.textblock')!''>
 <#local title=title />
 <#local alerttype='primary' />
 <#local iconcolor='primary' />
@@ -62,7 +63,7 @@ Snippet:
 		<@div class="text-center mb-4">
 			<@link href=".">
 				<#if logoUrl==''>
-						${logoSvg!}
+						${logoSvg?no_esc}
 					<#else>
             			<img src="${logoUrl}" width="32" height="32" alt="Logo du site" aria-hidden="true">
 					</#if>

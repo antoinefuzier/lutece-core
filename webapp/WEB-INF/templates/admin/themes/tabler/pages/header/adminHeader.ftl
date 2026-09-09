@@ -22,17 +22,18 @@ Snippet:
 <#local adminDarkMode = dskey('portal.site.site_property.layout.darkmode.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.darkmode.checkbox'), '0') />
 <#--  <#local userMenuMode><#attempt>${dskey('portal.site.site_property.layout.user.menumode.show.checkbox')?number}<#recover>0</#attempt></#local>  -->
 <#local readMode><#attempt><#if dskey('portal.site.site_property.layout.readmode.checkbox')?number = 1> dir="rtl"</#if><#recover></#attempt></#local>
-<#local layoutBoxed><#attempt><#if dskey('portal.site.site_property.layout.menu.boxed.checkbox')?number==1> layout-boxed</#if><#recover></#attempt></#local>
-<#local layoutFluid><#attempt><#if dskey('portal.site.site_property.layout.fluid.checkbox')?number==1> layout-fluid</#if><#recover></#attempt></#local>
-<#local bodyClass><#if layoutBoxed!=''>${layoutBoxed!}</#if><#if layoutFluid!=''> ${layoutFluid!}</#if></#local>
-<#local navbarSticky><#attempt><#if dskey('portal.site.site_property.layout.menu.sticky.checkbox')?number==1> sticky-top</#if><#recover></#attempt></#local>
-<#local menuCondensed><#attempt><#if dskey('portal.site.site_property.layout.menu.condensed.checkbox')?number==1>condensed</#if><#recover></#attempt></#local>
-<#local menuVertical><#attempt><#if dskey('portal.site.site_property.layout.menu.vertical.checkbox')?number==1>vertical</#if><#recover></#attempt></#local>
-<#local menuTransparent><#attempt><#if dskey('portal.site.site_property.layout.menu.transparent.checkbox')?number==1> navbar-transparent</#if><#recover></#attempt></#local>
+<#local layoutBoxed = ( dskey('portal.site.site_property.layout.menu.boxed.checkbox') == '1' )?then(' layout-boxed', '') />
+<#local layoutFluid = ( dskey('portal.site.site_property.layout.fluid.checkbox') == '1' )?then(' layout-fluid', '') />
+<#local bodyClass = layoutBoxed + layoutFluid />
+<#local navbarSticky = ( dskey('portal.site.site_property.layout.menu.sticky.checkbox') == '1' )?then(' sticky-top', '') />
+<#local menuCondensed = ( dskey('portal.site.site_property.layout.menu.condensed.checkbox') == '1' )?then('condensed', '') />
+<#local menuVertical = ( dskey('portal.site.site_property.layout.menu.vertical.checkbox') == '1' )?then('vertical', '') />
+<#local menuTransparent = ( dskey('portal.site.site_property.layout.menu.transparent.checkbox') == '1' )?then(' navbar-transparent', '') />
 <#local menuHome = dskey('portal.site.site_property.layout.menu.home.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.menu.home.checkbox'), '0') />
 <#local showSiteName = dskey('portal.site.site_property.show_site_name.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.show_site_name.checkbox'), '1') />
 <#local logoUrl = (dskey('portal.site.site_property.logo_url')!)?has_content?then(dskey('portal.site.site_property.logo_url')?trim, '')>
-<#local logoSvg = (dskey('portal.site.site_property.logo_svg.textblock')!)?has_content?then(dskey('portal.site.site_property.logo_svg.textblock'), '')>
+<#-- This datastore value is the administrator-managed SVG logo, seeded by init_db_lutece_core.sql. -->
+<#local logoSvg = dskey('portal.site.site_property.logo_svg.textblock')!''>
 <#local logoWidth><#attempt>${dskey('portal.site.site_property.logo.width')}<#recover>24</#attempt></#local>
 <#local logoHeight><#attempt>${dskey('portal.site.site_property.logo.height')}<#recover>24</#attempt></#local>
 <script>
@@ -88,8 +89,8 @@ if( localStorage.getItem('lutece-bo-readmode') === 'rtl' ){
           	<!-- BEGIN NAVBAR LOGO -->
           	<div class="navbar-brand navbar-brand-autodark<#if menuVertical != 'vertical'> navbar-horizontal pe-0 pe-md-3</#if>">
             	<a href="jsp/admin/AdminMenu.jsp" aria-label="${site_name}"> 
-					<#if logoSvg?trim !=''>
-						${logoSvg!} 
+					<#if logoSvg?has_content>
+						${logoSvg?no_esc}
 					<#else>
             			<img src="${logoUrl}" class="me-1" height="${logoHeight}" width="${logoWidth}" alt="Logo ${site_name}" aria-hidden="true">
 					</#if>

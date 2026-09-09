@@ -39,13 +39,14 @@ Snippet:
 <@div id="dashboard-widgets" class="dashboard-widgets">
 	<@div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3">
 		<@columns sm=4 class='widget-col' id='zone-1'>
-		${dashboard_zone_1!}
+		<#-- DashboardService generates the trusted HTML of installed dashboard components. -->
+		${( dashboard_zone_1!'' )?no_esc}
 		</@columns>
 		<@columns sm=4	class='widget-col' id='zone-2'>
-		${dashboard_zone_2!}
+		${( dashboard_zone_2!'' )?no_esc}
 		</@columns>
 		<@columns sm=4 class='widget-col' id='zone-3'>
-		${dashboard_zone_3!}
+		${( dashboard_zone_3!'' )?no_esc}
 		</@columns>
 	</@div>
 	<@div class="row">

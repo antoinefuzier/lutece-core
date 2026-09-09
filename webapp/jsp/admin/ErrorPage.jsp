@@ -155,7 +155,7 @@ out.println(cw.toString());
                 <li class="list-inline-item">
                     <a class="nav-link d-flex align-items-center" href="https://lutece.paris.fr" target="lutece" title="<%= I18nService.getLocalizedString(PROPERTY_LABELPORTAL, request.getLocale() ) %>">
                         <span class="me-2"></span>
-                        <img src="themes/admin/shared/images/poweredby.svg" style="height:15px" class="img-fluid theme-invert" alt="<%= I18nService.getLocalizedString(PROPERTY_LABELMADEBY, request.getLocale() ) %>">
+                        <img src="<%= AppPathService.getBaseUrl( request ) %>themes/admin/shared/images/poweredby.svg" style="height:15px" class="img-fluid theme-invert" alt="<%= I18nService.getLocalizedString(PROPERTY_LABELMADEBY, request.getLocale() ) %>">
                         <span class="visually-hidden">LUTECE</span>
                         <!-- <span class="text-muted ms-2" rel="noopener">Version</span> -->
                     </a>

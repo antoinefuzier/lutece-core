@@ -33,9 +33,9 @@ Snippet:
 <#macro cCol cols='' default='col' class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if cols!=''>
-    <#local cClass>col-${cols} ${class}</#local> 
+    <#local cClass = 'col-' + cols + ' ' + class />
 <#else>
-    <#local cClass>${default!} ${class}</#local>
+    <#local cClass = ( default!'' ) + ' ' + class />
 </#if>
 <@cSection type='div' class=cClass id=id params=params >
 <#nested>
