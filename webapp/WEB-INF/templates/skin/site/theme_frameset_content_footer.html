@@ -1,6 +1,7 @@
 <#-- Template to add content to footer in page_frameset.html theme template -->
 <@cTpl>
 <#-- Update ME -->
-${page_footer!}
+<#-- page_footer is rendered by PortalService from the configured footer template. -->
+${( page_footer!'' )?no_esc}
 <#-- End Update ME -->
 </@cTpl>

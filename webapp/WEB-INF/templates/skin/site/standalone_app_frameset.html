@@ -34,7 +34,8 @@
 </#if>
 <!-- Custom site styles include -->
 <link href="${thetheme.pathCss}/page_template_styles.css" rel="stylesheet">
-${plugins_css_links}
+<#-- LinksInclude builds these plugin stylesheet tags. -->
+${( plugins_css_links!'' )?no_esc}
 <!-- Custom site styles include -->
 <#assign optHeaderCss=.get_optional_template('theme_frameset_header_css.html')>
 <#if optHeaderCss.exists><@optHeaderCss.include /></#if>
@@ -45,7 +46,7 @@ ${plugins_css_links}
 <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#071f32">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-${rss?default("<!-- no RSS feed -->")}
+${( rss!"<!-- no RSS feed -->" )?no_esc}
 <!-- Site JS Include -->
 <#-- Template to add js to header in page_frameset.html theme template -->
 <!-- Included JS Files -->
@@ -58,7 +59,8 @@ ${rss?default("<!-- no RSS feed -->")}
 <!-- main container -->
 <#assign optMainContentHeader=.get_optional_template('theme_frameset_content_header.html')>
 <#if optMainContentHeader.exists><@optMainContentHeader.include /></#if>
-${page_content}
+<#-- page_content is the rendered page template and its portlets. -->
+${page_content?no_esc}
 <#if display_last_modified?? && display_last_modified><@cText class='text-right pt-3 pe-5'><@parisIcon name='clock' title='' class='main-danger-color' /> #i18n{portal.site.site_property.page.lastModified} ${last_modified!}</@cText></#if>
 <#assign optMainContentFooter=.get_optional_template('theme_frameset_content_footer.html')>
 <#if optMainContentFooter.exists><@optMainContentFooter.include /></#if>
@@ -74,7 +76,8 @@ ${page_content}
 <script src="themes/skin/parisfr/js/vendor/js/bootstrap.bundle.min.js"></script>
 </#if>
 <#-- Plugins JS includes   			-->
-${plugins_javascript_links!}
+<#-- LinksInclude builds these plugin script tags. -->
+${( plugins_javascript_links!'' )?no_esc}
 <!-- Theme - Base JS init  -->
 <script>
 var longMenu=${dskey('theme.site_property.menu.longMenu.checkbox')!};

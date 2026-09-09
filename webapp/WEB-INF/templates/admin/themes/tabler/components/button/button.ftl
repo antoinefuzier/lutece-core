@@ -56,7 +56,7 @@ Snippet:
 <#local params = params />
 	<#if cancel || color = 'default' || color='btn-default' || color='btn-secondary' || color='secondary'>
 		<#local buttonColor = 'default' />
-	<#elseif !cancel && color=''>
+	<#elseif !cancel && !color?has_content>
 		<#local buttonColor = 'primary' />
 	<#else>
 		<#local buttonColor = color />
@@ -65,7 +65,7 @@ Snippet:
 	<#local displayTitleClass = displaySettings( hideTitle,'inline-flex') />
 	<#-- Visibility of button title: backwards compatibility with Lutece v6, BS3 only -->
 	<#local showTitleClass = '' />
-	<#if style != ''>
+	<#if style?has_content>
 		<#if style?contains('card-control')>
 			<#if style?contains('collapse')>
 				<#local widgetAction = 'collapse' />
@@ -99,23 +99,23 @@ Snippet:
 	<#else>
 		<#local buttonSize = size />
 	</#if>	
-	<button class="<#if style!='close'>btn</#if><#if buttonSize!=''> btn-${buttonSize}</#if><#if buttonColor!='' && !dropdownMenu> btn-${buttonColor}</#if><#if btnStyle?? && btnStyle!=''> ${btnStyle}</#if><#if dropdownMenu> dropdown-toggle</#if><#if class!=''> ${class}</#if>" type="${type}"<#if tooltip!=''>title="${tooltip}"<#else><#if title!=''> title="${title}"</#if></#if><#if name!=''> name="${name}"</#if><#if id!=''> id="${id}"</#if><#if value!=''> value="${value}"</#if><#if ariaLabel!=''> aria-label="${ariaLabel}"</#if><#if params?has_content> ${params}</#if><#if disabled> disabled</#if><#if dropdownMenu> data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"</#if><#if widgetAction?? && widgetAction!=''><#if widgetAction = 'collapse' || widgetAction = 'modal'> data-bs-toggle="${widgetAction}"<#elseif widgetAction = 'remove'> data-bs-dismiss="alert"</#if></#if><#if buttonTargetId!=''> data-bs-target="${buttonTargetId}"</#if><#if cancel> formnovalidate</#if><#if formId!=''> form="${formId}"</#if>>
-		<#if buttonIcon!='' && iconPosition='left'>
+	<button class="<#if style!='close'>btn</#if><#if buttonSize?has_content> btn-${buttonSize}</#if><#if buttonColor?has_content && !dropdownMenu> btn-${buttonColor}</#if><#if btnStyle?? && btnStyle?has_content> ${btnStyle}</#if><#if dropdownMenu> dropdown-toggle</#if><#if class?has_content> ${class}</#if>" type="${type}"<#if tooltip?has_content>title="${tooltip}"<#else><#if title?has_content> title="${title}"</#if></#if><#if name?has_content> name="${name}"</#if><#if id?has_content> id="${id}"</#if><#if value?has_content> value="${value}"</#if><#if ariaLabel?has_content> aria-label="${ariaLabel}"</#if><#if params?has_content> ${params}</#if><#if disabled> disabled</#if><#if dropdownMenu> data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"</#if><#if widgetAction?? && widgetAction?has_content><#if widgetAction = 'collapse' || widgetAction = 'modal'> data-bs-toggle="${widgetAction}"<#elseif widgetAction = 'remove'> data-bs-dismiss="alert"</#if></#if><#if buttonTargetId?has_content> data-bs-target="${buttonTargetId}"</#if><#if cancel> formnovalidate</#if><#if formId?has_content> form="${formId}"</#if>>
+		<#if buttonIcon?has_content && iconPosition='left'>
 			<#local buttonIcon = buttonIcon />
 			<@icon style=buttonIcon />
 		</#if>
 		<#local nestedContent><#nested /></#local>
 		<#local hasNestedContent = nestedContent?has_content />
-		<#if !hasNestedContent><#if displayTitleClass!=''><span class="${displayTitleClass}"></#if>${title}<#if displayTitleClass!=''></span></#if></#if>
-		<#if hasNestedContent && !dropdownMenu><#if displayTitleClass!=''><span class="${displayTitleClass}"></#if><#nested><#if displayTitleClass!=''></span></#if></#if>
-		<#if title!='' && dropdownMenu><#if displayTitleClass!=''><span class="${displayTitleClass}"></#if>${title}<#if displayTitleClass!=''></span></#if></#if>
-		<#if buttonIcon!='' && iconPosition='right'>
+		<#if !hasNestedContent><#if displayTitleClass?has_content><span class="${displayTitleClass}"></#if>${title}<#if displayTitleClass?has_content></span></#if></#if>
+		<#if hasNestedContent && !dropdownMenu><#if displayTitleClass?has_content><span class="${displayTitleClass}"></#if><#nested><#if displayTitleClass?has_content></span></#if></#if>
+		<#if title?has_content && dropdownMenu><#if displayTitleClass?has_content><span class="${displayTitleClass}"></#if>${title}<#if displayTitleClass?has_content></span></#if></#if>
+		<#if buttonIcon?has_content && iconPosition='right'>
 			<#local buttonIcon = buttonIcon />
 			<@icon style=buttonIcon />
 		</#if>
 	</button>
 	<#if dropdownMenu>
-		<ul class="dropdown-menu"<#if id!=''> id="${id}-content" aria-labelledby="${id}-content"</#if>>
+		<ul class="dropdown-menu"<#if id?has_content> id="${id}-content" aria-labelledby="${id}-content"</#if>>
 			<#nested>
 		</ul>
 	</#if>

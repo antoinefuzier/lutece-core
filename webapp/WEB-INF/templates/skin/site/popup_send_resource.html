@@ -26,7 +26,7 @@
 			   	<form class="form form-inline" action="jsp/site/SendResource.jsp" method="post">
 			   		<@fieldSet>
 			   			<legend>#i18n{portal.site.popup_send_resource.title}</legend>
-			   			<#if error?? && error != "">
+						<#if error?? && error?has_content>
 			   				<div class="col-xs-12 col-sm-11 col-md-11 alert alert-danger">
 			   					${error}
 			   					<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -62,13 +62,13 @@
 							</div>
 							<#if resource??>
 								<div>
-									<legend><#if resource_url?? && resource_url != ""><a href="${base_url}${resource_url}"></#if>${resource.extendableResourceName}<#if resource_url?? && resource_url != ""></a></#if></legend>
-									<#if resource.extendableResourceImageUrl?? && resource.extendableResourceImageUrl != "">
-										<#if resource_url?? && resource_url != "">
+									<legend><#if resource_url?? && resource_url?has_content><a href="${base_url}${resource_url}"></#if>${resource.extendableResourceName}<#if resource_url?? && resource_url?has_content></a></#if></legend>
+									<#if resource.extendableResourceImageUrl?? && resource.extendableResourceImageUrl?has_content>
+										<#if resource_url?? && resource_url?has_content>
 											<a href="${base_url}${resource_url}">
 										</#if>
 										<img src="${resource.extendableResourceImageUrl}" alt="${resource.extendableResourceName}" title="${resource.extendableResourceName}" />
-										<#if resource_url?? && resource_url != "">
+										<#if resource_url?? && resource_url?has_content>
 											</a>
 										</#if>
 									</#if>

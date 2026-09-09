@@ -11,12 +11,12 @@ Parameters:
 @param - maxFileSize - number - optional - Max file size that can be uploaded, default 0
 @param - unit - string - optional - the unit used to show the file size, default ''
 @param - accept - string - optional - Mimit the extensions the user can upload, default ''
-@param - label - string - optional - label associated to the upload input default '#i18n{theme.labelUploadFiles}' 
+@param - label - string - optional - label associated to the upload input default '#i18n{theme.labelUploadFiles}'
 @param - showLabel - number - optional - Show label if equal to one, otherwise hide it , default 1
 @param - labelPos - number - optional - Set label before input if equal to one, otherwise set after input , default 1
 @param - labelSelect - string - optional - label associated to the upload input default '#i18n{theme.labelSelect}' - deprecated
 @param - labelSubmit - string - optional - label associated to the upload input default '#i18n{theme.labelSubmit}' - deprecated
-@param - formSubmitButtonName - string - optional - name of the submit "button" of the parent form, used in js to prevent validation of mandatory fields, default 'action_doSaveStep' 
+@param - formSubmitButtonName - string - optional - name of the submit "button" of the parent form, used in js to prevent validation of mandatory fields, default 'action_doSaveStep'
 @param - labelDelete - string - optional - label of the label button default '#i18n{theme.labelDelete}' - deprecated
 @param - required - boolean - optional - Set element as required, default false
 @param - disabled - boolean - optional - Disable element, default false
@@ -26,7 +26,7 @@ Parameters:
 @param - helpMsg - string - optional - Content of the help message for upload, default ''
 @param - errorMsg - string - optional - Content of the error message for upload, default ''
 @param - id - string - optional - the ID of the element, default ''
-@param - class - string - optional - the CSS class of the element, default '' 
+@param - class - string - optional - the CSS class of the element, default ''
 @param - params - optional - additional HTML attributes to include in the ckeckbox element default ''
 
 Snippet:
@@ -51,38 +51,38 @@ Snippet:
 -->
 <#macro inputDropFiles name handler={} type='dropzone' image=false nbFiles=0 nbUplodadedFiles=0 maxFileSize=0 unit='' accept='' label='#i18n{theme.labelUploadFiles}' showLabel=1 labelPos=1 labelSelect='#i18n{theme.labelSelect}' labelSubmit='#i18n{theme.labelSubmit}' formSubmitButtonName='action_doSaveStep' labelDelete='#i18n{theme.labelDelete}' required=false disabled=false multiple=true noJs=false helpMsg='' hasFiles=false errorMsg='' class='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<#local cId><#if id!=''>${id!}<#else>${name!}</#if></#local>
+<#local cId><#if id?has_content>${id!}<#else>${name!}</#if></#local>
 <#local nbFiles = nbFiles?number >
 <#local maxFileSize = maxFileSize?number >
 <#local isDisabled = ( nbFiles?number == nbUplodadedFiles?number || disabled )?then('true', 'false') />
 <#if handler?has_content>
 <#local deleteBtnName='_form_upload_delete_${cId}' >
 <@cInput type='hidden' name='asynchronousupload.handler' value=handler.handlerName />
-<div class="row group-files ${type} <#if image> image-file</#if><#if !multiple> one-file</#if><#if nbUplodadedFiles?number=nbFiles?number> no-file</#if><#if errorMsg!=''> is-invalid</#if>">
+<div class="row group-files ${type} <#if image> image-file</#if><#if !multiple> one-file</#if><#if nbUplodadedFiles?number=nbFiles?number> no-file</#if><#if errorMsg?has_content> is-invalid</#if>">
 	<div class="col">
-        <#if labelPos == 1 && label !=''><label id="lb${cId!}" class="<#if showLabel=0>visually-hidden visually-hidden-focusable</#if><#if errorMsg !=''> main-danger-color</#if>" for="${cId!}">${label}<#if required>&nbsp;<span class="main-danger-color" tabindex="0" title="#i18n{theme.labelMandatory}">*</span></#if></label></#if>
-        <#if helpMsg !=''><@cFormHelp idMsg helpMsg /></#if>	
+        <#if labelPos == 1 && label?has_content><label id="lb${cId!}" class="<#if showLabel=0>visually-hidden visually-hidden-focusable</#if><#if errorMsg?has_content> main-danger-color</#if>" for="${cId!}">${label}<#if required>&nbsp;<span class="main-danger-color" tabindex="0" title="#i18n{theme.labelMandatory}">*</span></#if></label></#if>
+        <#if helpMsg?has_content><@cFormHelp idMsg helpMsg /></#if>
         <#if type="dropzone">
-            <div id="group-${cId!}" class="input-group file-input<#if errorMsg!=''> is-invalid</#if>">
-                <input type="file" class="form-control ${cssClass!}<#if required> is-required</#if><#if handler?has_content> ${handler.handlerName}</#if><#if class!=''> ${class}</#if>"<#if required>aria-required="true"</#if> data-nbuploadedfiles="${nbUplodadedFiles}" name="${name}" id="${cId!}" <#if multiple>multiple="multiple"</#if><#if nbFiles gt 0> data-nof="${nbFiles}"</#if><#if maxFileSize gt 0> data-mfs="${maxFileSize}"</#if><#if accept !=''> accept="${accept}" data-atf="${accept}"</#if>>
+            <div id="group-${cId!}" class="input-group file-input<#if errorMsg?has_content> is-invalid</#if>">
+                <input type="file" class="form-control ${cssClass!}<#if required> is-required</#if><#if handler?has_content> ${handler.handlerName}</#if><#if class?has_content> ${class}</#if>"<#if required>aria-required="true"</#if> data-nbuploadedfiles="${nbUplodadedFiles}" name="${name}" id="${cId!}" <#if multiple>multiple="multiple"</#if><#if nbFiles gt 0> data-nof="${nbFiles}"</#if><#if maxFileSize gt 0> data-mfs="${maxFileSize}"</#if><#if accept?has_content> accept="${accept}" data-atf="${accept}"</#if>>
                 <span class="input-group-text">
                     <svg  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg> #i18n{asynchronousupload.action.browse.name}
-                </span> 
+                </span>
             </div>
-            <#if errorMsg !=''><@cFormError idMsg errorMsg /></#if>
+            <#if errorMsg?has_content><@cFormError idMsg errorMsg /></#if>
         <#elseif type="button">
             <div id="group-${cId!}" class="input-group">
-                <input type="file" <#if required>aria-required="true"</#if><#if helpMsg!=''> aria-labelledby="${cId}Help"</#if> name="${name}" id="${cId}" class="form-control<#if isDisabled?boolean> disabled</#if><#if required> is-required</#if><#if handler?has_content> ${handler.handlerName}</#if><#if class!=''> ${class}</#if>"<#if multiple> multiple</#if><#if nbFiles gt 0> data-nof="${nbFiles}"</#if><#if maxFileSize gt 0> data-mfs="${maxFileSize}"</#if><#if accept !=''> accept="${accept}" data-atf="${accept}"</#if>>
+                <input type="file" <#if required>aria-required="true"</#if><#if helpMsg?has_content> aria-labelledby="${cId}Help"</#if> name="${name}" id="${cId}" class="form-control<#if isDisabled?boolean> disabled</#if><#if required> is-required</#if><#if handler?has_content> ${handler.handlerName}</#if><#if class?has_content> ${class}</#if>"<#if multiple> multiple</#if><#if nbFiles gt 0> data-nof="${nbFiles}"</#if><#if maxFileSize gt 0> data-mfs="${maxFileSize}"</#if><#if accept?has_content> accept="${accept}" data-atf="${accept}"</#if>>
                 <span class="input-group-text">
                     <button hidden class="btn btn-link-primary" name="<#if handler.uploadSubmitPrefix?has_content>${handler.uploadSubmitPrefix}<#else>handler_</#if>${cId}" id="<#if handler.uploadSubmitPrefix?has_content>${handler.uploadSubmitPrefix}<#else>handler_</#if>${cId}" value="<#if handler.uploadSubmitPrefix?has_content>${handler.uploadSubmitPrefix}<#else>handler_</#if>${cId}" type="submit" >
                         <span class="file-input-text-noscript">#i18n{asynchronousupload.action.send.name}</span>
                         <span class="file-input-text-js" style="display:none;">#i18n{asynchronousupload.action.browse.name}</span>
                     </button>
-                </span>	
-            </div>	
-            <#if errorMsg !=''><@cFormError idMsg errorMsg /></#if>
-        </#if>	
-        <#if labelPos != 1 && label !=''><label id="lb${cId!}" class="<#if showLabel=0>visually-hidden visually-hidden-focusable<#else>mt-m</#if><#if errorMsg !=''> main-danger-color</#if>" for="${cId!}">${label}</label></#if>
+                </span>
+            </div>
+            <#if errorMsg?has_content><@cFormError idMsg errorMsg /></#if>
+        </#if>
+        <#if labelPos != 1 && label?has_content><label id="lb${cId!}" class="<#if showLabel=0>visually-hidden visually-hidden-focusable<#else>mt-m</#if><#if errorMsg?has_content> main-danger-color</#if>" for="${cId!}">${label}</label></#if>
     <#if !multiple>
     </div>
     <div class="col">

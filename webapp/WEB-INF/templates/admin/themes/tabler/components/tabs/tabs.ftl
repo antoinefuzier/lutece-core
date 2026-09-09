@@ -71,7 +71,7 @@ Snippet:
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
 <#if hide??><#local class += ' ' + displaySettings(hide,'block') /></#if>
 <#assign propagateTabStyle = style />
-<div class="card<#if color!=''> ${color}</#if><#if class?trim!=''> ${class?trim}</#if>"<#if id!=''> id="${id}"</#if><#if keepState> data-keep-state="true"</#if><#if params?has_content> ${params}</#if>>
+<div class="card<#if color?has_content> ${color}</#if><#if class?trim?has_content> ${class?trim}</#if>"<#if id?has_content> id="${id}"</#if><#if keepState> data-keep-state="true"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </div>
 <#if keepState>

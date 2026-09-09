@@ -67,18 +67,18 @@ if( localStorage.getItem('lutece-bo-readmode') === 'rtl' ){
 </#if>
 <#-- End of Optional Jquery Inclusion -->
 </head>
-<body<#if bodyClass!=''> class="${bodyClass!}"</#if> ${readMode} data-bs-theme-base="neutral" data-bs-theme-radius="2">
+<body<#if bodyClass?has_content> class="${bodyClass!}"</#if> ${readMode} data-bs-theme-base="neutral" data-bs-theme-radius="2">
 <@adminSkipNav />
 <#--  <div class="page" data-userdarkmode="${userDarkMode}" data-usermenu="${userMenuMode}">  -->
 <div class="page" data-userdarkmode="${userDarkMode}">
 <#if menuVertical == 'vertical'>
 <!--  BEGIN SIDEBAR  -->
-      <aside class="navbar navbar-vertical navbar-expand-lg<#if menuTransparent!=''>${menuTransparent}</#if>"<#if menuTransparent=''> data-bs-theme="dark"</#if> >
+      <aside class="navbar navbar-vertical navbar-expand-lg<#if menuTransparent?has_content>${menuTransparent}</#if>"<#if !menuTransparent?has_content> data-bs-theme="dark"</#if> >
       <div class="container-fluid">
 <#else>
 	<!-- BEGIN NAVBAR  -->
-	<#if navbarSticky !=''><div class="${navbarSticky!}"></#if>
-    <header class="navbar navbar-expand-md<#if navbarSticky !=''> ${navbarSticky!}</#if> d-print-none">
+	<#if navbarSticky?has_content><div class="${navbarSticky!}"></#if>
+    <header class="navbar navbar-expand-md<#if navbarSticky?has_content> ${navbarSticky!}</#if> d-print-none">
     	<div class="container-xl">
 </#if>
         <!-- BEGIN NAVBAR TOGGLER -->
@@ -207,7 +207,7 @@ if( localStorage.getItem('lutece-bo-readmode') === 'rtl' ){
 					<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow <#if menuVertical == 'vertical'>border-0 show</#if>">
 						<div class="dropdown-item text-muted">${dashboard_zone_4!}</div>
 						<div class="dropdown-item text-muted">${user.dateLastLogin!}</div>
-						<#if userMenuItems?has_content><#list userMenuItems as item>${item.content}</#list></#if>
+						<#if userMenuItems?has_content><#list userMenuItems as item>${item.content?no_esc}</#list></#if>
 						<div class="dropdown-divider"></div>
 						<#if user.userLevel == 0>
 						<a href="jsp/admin/AdminTechnicalMenu.jsp" class="dropdown-item">#i18n{portal.admindashboard.view_dashboards.title}</a>
@@ -306,7 +306,7 @@ if( localStorage.getItem('lutece-bo-readmode') === 'rtl' ){
 		</div>
 	</div>
 	</header>
-	<#if navbarSticky !=''></div></#if>
+	<#if navbarSticky?has_content></div></#if>
 	</#if>
 <#else>
 	<#if menuVertical == 'vertical'>

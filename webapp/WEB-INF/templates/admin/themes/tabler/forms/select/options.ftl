@@ -27,7 +27,7 @@ Snippet:
 <#if items??>
 	<#list items as item>
 		<#local idItem><#if id>${item.code}_${item?index}<#else></#if></#local>
-			<#local selectedItem = ( selected != '' )?then(( item.code?string == selected )?then('true', 'false'), item.selected?c) />
+			<#local selectedItem = selected?has_content?then(( item.code?string == selected )?then('true', 'false'), item.selected?c) />
 		<@option label=item.name value=item.code id=idItem class=class selected=selectedItem?boolean disabled=item.disabled params=params /> 
 	</#list>
 </#if>

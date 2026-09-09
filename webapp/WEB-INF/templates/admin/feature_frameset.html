@@ -1,4 +1,5 @@
 <@adminContentHeader />
 <@pageWrapper>
-${page_content}
+<#-- getAdminPage receives HTML rendered by an internal HtmlTemplate. -->
+${page_content?no_esc}
 </@pageWrapper>

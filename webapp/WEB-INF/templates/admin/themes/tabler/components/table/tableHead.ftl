@@ -32,7 +32,7 @@ Snippet:
 -->
 <#macro tableHead id='' class='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<thead<#if id!=''> id="${id}"</#if><#if class!=''> class="${class?trim}"</#if><#if params?has_content> ${params}</#if>>
+<thead<#if id?has_content> id="${id}"</#if><#if class?has_content> class="${class?trim}"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </thead>
 </#macro>

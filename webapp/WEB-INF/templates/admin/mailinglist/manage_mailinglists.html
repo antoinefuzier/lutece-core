@@ -6,13 +6,13 @@
 <#function buildSortSearchAttribute filter>
 <#assign sortSearchAttribute = "" />
 <#if filter??>
-    <#if filter.name?? && filter.name != "">
+    <#if filter.name?? && filter.name?has_content>
         <#assign sortSearchAttribute = sortSearchAttribute + "&amp;name=" + filter.name! />
     </#if>
-    <#if filter.description?? && filter.description != "">
+    <#if filter.description?? && filter.description?has_content>
         <#assign sortSearchAttribute = sortSearchAttribute + "&amp;description=" + filter.description! />
     </#if>
-    <#if filter.workgroup?? && filter.workgroup != "">
+    <#if filter.workgroup?? && filter.workgroup?has_content>
         <#assign sortSearchAttribute = sortSearchAttribute + "&amp;workgroup=" + filter.workgroup! />
     </#if>
 </#if>

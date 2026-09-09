@@ -9,7 +9,7 @@
 </#function>
 <#function isSelected nIdField default_values_list>
 <#list default_values_list as default_value>
-	<#if default_value.attributeField?exists && default_value.attributeField.idField = nIdField && default_value.value != "">  		
+	<#if default_value.attributeField?exists && default_value.attributeField.idField = nIdField && default_value.value?has_content>
 		<#return true>
 	</#if>
 </#list>
@@ -20,7 +20,7 @@
 <@select name='attribute_${attribute.idAttribute}' id='attribute_${attribute.idAttribute}' multiple=multiple>
 <#if !isMultiple( attribute.listAttributeFields )><@option label='#i18n{portal.users.attribute.labelAll}' value='' /></#if>
 <#list attribute.listAttributeFields as attributeField>
-	<#if attributeField.title?exists && attributeField.value != "">
+	<#if attributeField.title?exists && attributeField.value?has_content>
 		<@option value=attributeField.idField! label=attributeField.title! selected=(default_values_list?has_content && isSelected( attributeField.idField,default_values_list )) />
 	</#if>
 </#list>

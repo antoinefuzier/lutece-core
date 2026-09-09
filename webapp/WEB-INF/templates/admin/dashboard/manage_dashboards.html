@@ -76,7 +76,7 @@
           </@tr>
           <@tableHeadBodySeparator />
 				  <#list list_available_columns as column_refItem>
-          <#if column_refItem.code !=''>
+          <#if column_refItem.code?has_content>
             <#assign column_key=column_refItem.code />
             <#if map_column_order_status[column_key]?exists && !map_column_order_status[column_key]>
               <@tform method='post' action='jsp/admin/dashboard/DoReorderColumn.jsp' class='pull-right'>

@@ -23,7 +23,8 @@
             </@row>
             <@div id='lutece-admin-page-preview' class='d-flex flex-column align-items-center'>
                 <@p class='text-center' params='hidden'><@button id='btn-minimize' buttonIcon='minimize' title='#i18n{portal.site.admin_page.minimize}' params='style="height: 2rem;margin-top: 1rem "' /></@p>
-                ${page_block}
+                <#-- page_block is the HTML rendered by an internal admin block template. -->
+                ${page_block?no_esc}
                 <!-- HTML iframe to show FO  -->
                 <@div id='lutece-admin-site-preview-wrapper' class='d-flex justify-content-center w-100'>
                     <@div id='lutece-admin-site-preview-frame' class='desktop'>
@@ -34,7 +35,7 @@
         </@div>
     </@pageColumn>
 </@pageContainer>
-<#if page_message !="">
+<#if page_message?has_content>
 <@initToast>
 <@addToast content=page_message class='text-bg-warning border-0' />
 </@initToast>

@@ -57,10 +57,11 @@
     <@pageColumnBtn class="mb-3" hideSize="xl" title="#i18n{portal.admindashboard.view_dashboards.title}" idPageColumn="adminTechnicalMenu" />
         <@tabContent id="admin-tab-content">
             <#if column_content_1?has_content>
-                ${column_content_1}
+                <#-- DashboardService returns the rendered component HTML. -->
+                ${column_content_1?no_esc}
             </#if>
             <#if column_content_2?has_content>
-                ${column_content_2} 
+                ${column_content_2?no_esc}
             </#if>
         </@tabContent>
     </@pageColumn>

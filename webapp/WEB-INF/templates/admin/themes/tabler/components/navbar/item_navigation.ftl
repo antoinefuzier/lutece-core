@@ -28,12 +28,12 @@ Snippet:
 <#macro item_navigation item_navigator id='item-navigator' display='' align='' hideButtonTitle=[] buttonColor='info' buttonSize='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#local class = alignmentSettings(align,'') />
-<nav id="${id}" class="${class} <#if display!=''>d-inline</#if>">
+<nav id="${id}" class="${class} <#if display?has_content>d-inline</#if>">
 <#if (item_navigator.currentItemId > 0)>
-	<@aButton href='${item_navigator.previousPageLink}' title='#i18n{portal.util.labelPrevious}' buttonIcon='arrow-left' color='${buttonColor}' hideTitle=hideButtonTitle size='${buttonSize}' />
+	<@aButton href=item_navigator.previousPageLink title='#i18n{portal.util.labelPrevious}' buttonIcon='arrow-left' color=buttonColor hideTitle=hideButtonTitle size=buttonSize />
 </#if>
 <#if (item_navigator.currentItemId < item_navigator.listItemSize - 1) >
-	<@aButton href='${item_navigator.nextPageLink}' title='#i18n{portal.util.labelNext}' buttonIcon='arrow-right' color='${buttonColor}' hideTitle=hideButtonTitle size='${buttonSize}' />
+	<@aButton href=item_navigator.nextPageLink title='#i18n{portal.util.labelNext}' buttonIcon='arrow-right' color=buttonColor hideTitle=hideButtonTitle size=buttonSize />
 </#if>
 </nav>
 </#macro>

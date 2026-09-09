@@ -26,8 +26,8 @@ Snippet:
 <#macro boxBody class='' collapsed=false align='' id='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
-<#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
-<div class="card-body<#if class!=''> ${class}</#if>" <#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
+<#if align?has_content><#local class += ' ' + alignmentSettings(align,'') /></#if>
+<div class="card-body<#if class?has_content> ${class}</#if>" <#if id?has_content> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 	<#nested>
 </div>
 </#macro>

@@ -42,7 +42,8 @@
 <!-- Custom site styles include -->
 <link href="${commonsGlobalThemeCode}/${commonsSiteCssPath!}styles.css?theme=${commonsGlobalThemeCode!}${commonsGlobalThemeVersion}" crossorigin="anonymous" rel="stylesheet">
 </#if>
-${plugins_css_links}
+<#-- LinksInclude builds these plugin stylesheet tags. -->
+${( plugins_css_links!'' )?no_esc}
 <!-- Custom site styles include -->
 <#assign optHeaderCss=.get_optional_template('theme_frameset_header_css.html')>
 <#if optHeaderCss.exists><@optHeaderCss.include /></#if>
@@ -53,7 +54,7 @@ ${plugins_css_links}
 <link rel="mask-icon" href="themes/skin/${commonsGlobalThemeCode!}/${thetheme.pathImages}safari-pinned-tab.svg?theme=${commonsGlobalThemeCode!}${commonsGlobalThemeVersion}" color="#333333">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-${rss?default("<!-- no RSS feed -->")}
+${( rss!"<!-- no RSS feed -->" )?no_esc}
 <!-- Site JS Include -->
 <#-- Template to add js to header in page_frameset.html theme template -->
 <!-- Included JS Files -->
@@ -72,7 +73,7 @@ ${rss?default("<!-- no RSS feed -->")}
 <!-- jQuery JS is no more included ! -- USE optionnal lib Jquery if needed for compat purpose [https://github.com/lutece-platform/lutece-tech-library-theme-jquery] -->
 </#if>
 </head>
-<body id="body-page<#if data.homePage>-home<#elseif page_id=1>-<#if data.name !=''>${data.name?replace(' ','_')?lower_case!}<#else>xpage</#if><#else>-${page_id!}</#if>"<#if lutece_user??> class="logged"</#if> data-bs-target-icon="${isTargetDefaultIconShown!'false'}"<#if isLayoutFluid?? && isLayoutFluid?boolean> data-layout="fluid"</#if> dir="<#if isRtl?boolean>rtl<#else>ltr</#if>">
+<body id="body-page<#if data.homePage>-home<#elseif page_id=1>-<#if data.name?has_content>${data.name?replace(' ','_')?lower_case!}<#else>xpage</#if><#else>-${page_id!}</#if>"<#if lutece_user??> class="logged"</#if> data-bs-target-icon="${isTargetDefaultIconShown!'false'}"<#if isLayoutFluid?? && isLayoutFluid?boolean> data-layout="fluid"</#if> dir="<#if isRtl?boolean>rtl<#else>ltr</#if>">
 <!-- Accessibility Skip Nav Menu-->
 <@skipNav skipMenu=skipLinkMenu?boolean target=skipLinkMainId!'main' />
 <!-- Page Header -->
@@ -81,14 +82,16 @@ ${rss?default("<!-- no RSS feed -->")}
 <#if optMainNav.exists><@optMainNav.include /></#if>
 <#if page_id &gt; 1>
 <!-- breadcrumb -->
-${page_path}
+<#-- page_path is rendered by PortalService#formatPath. -->
+${page_path?no_esc}
 <!-- breadcrumb -->
 </#if>
 <#assign optMainContentHeader=.get_optional_template('${commonsGlobalThemeCode}theme_frameset_content_header.html')>
 <#if optMainContentHeader.exists><@optMainContentHeader.include /></#if>
-<main id="main"<#if mainNavClass !=''> class="${mainNavClass!}"</#if> role="main">
+<main id="main"<#if mainNavClass?has_content> class="${mainNavClass!}"</#if> role="main">
 <div class="main-content">
-${page_content}
+<#-- page_content is the rendered page template and its portlets. -->
+${page_content?no_esc}
 <#if display_last_modified?? && display_last_modified><@cText class='text-right pt-3 pr-5'><@cIcon name='clock' title='' class='main-danger-color' /> #i18n{portal.site.site_property.page.lastModified} ${last_modified!}</@cText></#if>
 </div>
 <#if page_id?? && isExtendInstalled?? && isExtendInstalled>
@@ -112,11 +115,11 @@ ${contextinclude_2!}
 <#assign urlDoLogout = dskey('mylutece.security.public_url.mylutece.url.doLogout')!''>
 <script>
 <#assign xssChars = dskey('portal.theme.site_property.xss.xssChars')!''>
-var xssChars='<#if xssChars != '' && !xssChars?starts_with('DS') >${dskey("portal.theme.site_property.xss.xssChars")!}</#if>';
+var xssChars='<#if xssChars?has_content && !xssChars?starts_with('DS') >${dskey("portal.theme.site_property.xss.xssChars")!}</#if>';
 <#assign xssMsg = dskey('portal.theme.site_property.xss.xssMsg')!''>
-var xssMsg='<#if xssMsg != '' && !xssMsg?starts_with('DS') >${dskey("portal.theme.site_property.xss.xssMsg")!}</#if>';
+var xssMsg='<#if xssMsg?has_content && !xssMsg?starts_with('DS') >${dskey("portal.theme.site_property.xss.xssMsg")!}</#if>';
 <#assign urlDoLogout = dskey('mylutece.security.public_url.mylutece.url.doLogout')!''>
-var urlDoLogout='<#if urlDoLogout != '' && !urlDoLogout?starts_with('DS') >${urlDoLogout?js_string}</#if>';
+var urlDoLogout='<#if urlDoLogout?has_content && !urlDoLogout?starts_with('DS') >${urlDoLogout?js_string}</#if>';
 </script>
 <#if themeJSLinks?? >
 <@themeJSLinks />
@@ -124,7 +127,8 @@ var urlDoLogout='<#if urlDoLogout != '' && !urlDoLogout?starts_with('DS') >${url
 <script src="${commonsGlobalThemeCode}/${commonsSiteJsPath}/vendor/js/bootstrap.bundle.min.js?theme=${commonsGlobalThemeCode}${commonsGlobalThemeVersion}"></script>
 </#if>
 <#-- Plugins JS includes   			-->
-${plugins_javascript_links!}
+<#-- LinksInclude builds these plugin script tags. -->
+${( plugins_javascript_links!'' )?no_esc}
 <!-- Theme - Base JS init  -->
 <#assign optJsFooter=.get_optional_template('theme_frameset_footer_js.html')>
 <#if optJsFooter.exists><@optJsFooter.include /></#if>

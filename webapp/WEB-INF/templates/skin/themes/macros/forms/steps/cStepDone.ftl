@@ -47,9 +47,9 @@ Snippet:
                 <@cText type='span'>${title?replace('- hidden','')}</@cText>
             </@cTitle>
             <@cSection type='span' class='d-none d-sm-block'>
-            <#if actionHref !=''>
+            <#if actionHref?has_content>
                 <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
-            <#elseif actionName !=''>
+            <#elseif actionName?has_content>
                 <@cBtn class='secondary btn-sm-block' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
             </#if>
             </@cSection>    
@@ -61,9 +61,9 @@ Snippet:
             <#nested>   
             </@chList>
             <@cSection type='div' class='d-block d-sm-none mt-m'>
-            <#if actionHref !=''>
+            <#if actionHref?has_content>
                 <@cLink label=actionLabel! class='btn btn-secondary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
-            <#elseif actionName !=''>
+            <#elseif actionName?has_content>
                 <@cBtn class='secondary btn-sm-block' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
             </#if>
             </@cSection>    

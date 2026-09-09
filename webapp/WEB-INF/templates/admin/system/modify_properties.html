@@ -41,17 +41,17 @@
                         <#if groupList?size gt 0>
                         <@row class='g-3' params=masonryRowParams>
                         <#list groupList?sort as groupCol>
-                        <#if groupCol?trim !=''>
+                        <#if groupCol?trim?has_content>
                         <@columns xs=12 sm=6 md=4 class='mb-3' params='data-prop="${groupCol}"'>
                            <@box class='properties-group'>
                               <@boxBody>
                                 <#assign groupName=''>
                                 <#list group.localizedDataList?filter( groupItem -> groupItem.group = groupCol ) as groupItem>
-                                    <#if groupName=''>
+                                    <#if !groupName?has_content>
                                         <#assign prefix=groupItem.key?keep_before(".site_property")  >
-                                        <#if groupCol?trim !=''>
+                                        <#if groupCol?trim?has_content>
                                         <#assign groupName>#i18n{${prefix}.site_property.${groupCol}.group.title}</#assign>
-                                        <#if groupName?trim !=''><@h level=3>${groupName!}</@h></#if>
+                                        <#if groupName?trim?has_content><@h level=3>${groupName!}</@h></#if>
                                         </#if>
                                     </#if>
                                     <#if groupItem.key?ends_with( ".select.options" ) || groupItem.key?ends_with( ".radio.options" )>
@@ -82,7 +82,7 @@
                                                     <select class="form-select property-select" id="${groupItem.key}" data-target="${groupItem.key}_value">
                                                     <#list optionsRaw?split('|') as opt>
                                                         <#assign optValue = opt?trim>
-                                                        <#if optValue != ''><option value="${optValue}"<#if optValue == groupItem.value> selected</#if>>${optValue?replace('_', ' ')}</option></#if>
+                                                        <#if optValue?has_content><option value="${optValue}"<#if optValue == groupItem.value> selected</#if>>${optValue?replace('_', ' ')}</option></#if>
                                                     </#list>
                                                     </select>
                                                 <#elseif groupItem.key?ends_with( ".radio" )>
@@ -93,7 +93,7 @@
                                                     <div class="property-radio" data-target="${groupItem.key}_value">
                                                         <#list optionsRaw?split('|') as opt>
                                                             <#assign optValue = opt?trim>
-                                                            <#if optValue != ''>
+                                                            <#if optValue?has_content>
                                                                 <@radioButton name='${groupItem.key}_radio' id='${groupItem.key}_${optValue}' labelKey=optValue?replace('_', ' ') value=optValue checked=(optValue == groupItem.value) orientation='inline' />
                                                             </#if>
                                                         </#list>

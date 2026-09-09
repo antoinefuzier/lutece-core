@@ -1,13 +1,13 @@
 <@coreAdminCSSLinks />
-<#if portletType.modifyScriptTemplate != "" ><#include portletType.modifyScriptTemplate /></#if>
+<#if portletType.modifyScriptTemplate?has_content ><#include portletType.modifyScriptTemplate /></#if>
 <@tform typ='inline' id='form-portlet' name='form' action='jsp/admin/${portletType.doModifyUrl}' params='target="_top"'>
 <@input type='hidden' name='portlet_id' value='${portlet.id}' />
 <@input type='hidden' name='portlet_type_id' value='${portletType.id}' />
 <@box class='manage-portlet'>
 	<@boxHeader title='${portletType.name}' boxTools=true >
-	<#if portletType.modifySpecificTemplate != "" || portletType.modifySpecificFormTemplate != "">
+	<#if portletType.modifySpecificTemplate?has_content || portletType.modifySpecificFormTemplate?has_content>
 		<@button buttonIcon='layout-navbar-expand' id='btn-toggle-properties' size='sm' color='default' title='#i18n{portal.util.labelMore}' hideTitle=['all'] params='aria-expanded="false"'/>
-	</#if>	
+	</#if>
 	</@boxHeader>
 	<@boxBody class='p-0'>
 		<@div id='portlet-properties'>
@@ -23,7 +23,7 @@
 					<@radioButton name='display_portlet_title' id='display_portlet_title_yes' value='0' orientation='h' checked=checked labelKey='#i18n{portal.site.create_portlet.radioButtonDisplayPortletTitleYes}' labelFor='display_portlet_title_yes'/>
 					<#if portlet.displayPortletTitle = 1><#assign checked = true><#else><#assign checked = false></#if>
 					<@radioButton name='display_portlet_title' id='display_portlet_title_no' value='1' orientation='h' checked=checked labelKey='#i18n{portal.site.create_portlet.radioButtonDisplayPortletTitleNo}' labelFor='display_portlet_title_no'/>
-				</@formGroup> 
+				</@formGroup>
 			</@columns>
 			<#if !portletType.id?starts_with('ALIAS') && !portletType.id?starts_with('BLOG') && !portletType.id?starts_with('HTML_UNTRANSFORMED') >
 				<@columns sm=4 md=2>
@@ -37,18 +37,18 @@
 					<@input type='text' name='page_id' value='${portlet.pageId}'  />
 				</@formGroup>
 			</@columns>
-			<@columns sm=2 md=1>	
+			<@columns sm=2 md=1>
 				<@formGroup labelFor='column' labelKey='#i18n{portal.site.create_portlet.labelColumn}' rows=2>
 					<@select name='column' default_value='${portlet.column}' items=portlet_columns_combo />
 				</@formGroup>
 			</@columns>
-			<@columns sm=2 md=1>		
+			<@columns sm=2 md=1>
 				<@formGroup labelFor='order' labelKey='#i18n{portal.site.create_portlet.labelOrder}' rows=2>
 					<@select name='order' default_value='${portlet.order}' items=portlet_order_combo />
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>
-				<@formGroup formStyle='' labelKey='#i18n{portal.site.create_portlet.labelAlias}' labelClass='mb-3' rows=2>	
+				<@formGroup formStyle='' labelKey='#i18n{portal.site.create_portlet.labelAlias}' labelClass='mb-3' rows=2>
 					<#if portlet.acceptAlias = 1><#assign checked = true><#else><#assign checked = false></#if>
 					<@radioButton name='accept_alias' id='accept_alias_yes' value='1' orientation='h' checked=checked labelKey='#i18n{portal.util.labelYes}' labelFor='accept_alias_yes' />
 					<#if portlet.acceptAlias = 0><#assign checked = true><#else><#assign checked = false></#if>
@@ -74,13 +74,13 @@
 			</@columns>
 			<@columns sm=1>
 				<@button type='submit' buttonIcon='check' title='#i18n{portal.site.create_portlet.buttonValidate}' class='btn-width-nolabel' size='' />
-			</@columns>	
+			</@columns>
 		</@row>
 		</@div>
 		<@row class='m-1'>
 			<@columns>
-				<#if portletType.modifySpecificTemplate != "" ><#include portletType.modifySpecificTemplate /></#if>
-				<#if portletType.modifySpecificFormTemplate != "" ><#include portletType.modifySpecificFormTemplate /></#if>
+				<#if portletType.modifySpecificTemplate?has_content ><#include portletType.modifySpecificTemplate /></#if>
+				<#if portletType.modifySpecificFormTemplate?has_content ><#include portletType.modifySpecificFormTemplate /></#if>
 			</@columns>
 		</@row>
 		<@row class='m-1'>
@@ -89,12 +89,12 @@
 					<@button type='submit' buttonIcon='check' title='#i18n{portal.site.create_portlet.buttonValidate}' color='primary' size='' />
 					<@aButton href='jsp/admin/site/AdminSite.jsp?page_id=${portlet.pageId}' params='target="_top"' color='secondary' buttonIcon='x' title='#i18n{portal.util.labelCancel}' size='' />
 				</@formGroup>
-			</@columns>	
+			</@columns>
 		</@row>
 	</@boxBody>
 </@box>
 </@tform>
-<#if portletType.modifyScriptTemplate != "" ><#include portletType.modifyScriptTemplate! /></#if>
+<#if portletType.modifyScriptTemplate?has_content ><#include portletType.modifyScriptTemplate! /></#if>
 <script>
 const btnProp = document.getElementById('btn-toggle-properties');
 const portletProp = document.getElementById('portlet-properties');

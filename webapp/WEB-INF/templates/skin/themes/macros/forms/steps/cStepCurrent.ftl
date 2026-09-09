@@ -8,7 +8,7 @@ Parameters:
 - title (string, required): the title of the step.
 - showTitle (boolean, optional): displays the step title header. Default: true.
 - titleLevel (number, optional): HTML heading level for the title tag. Default: 2.
-- formId -  string - optional - the id of the form to check default 'form-validate' 
+- formId -  string - optional - the id of the form to check default 'form-validate'
 - actionNextStep (string, optional): action name for the next step button. Default: ''.
 - titleNextStep (string, optional): title attribute for the next step button. Default: ''.
 - labelNextStep (string, optional): label of the next step button. Default: '#i18n{portal.theme.labelNextStep}'.
@@ -91,36 +91,36 @@ Snippet:
 		<#if hasMandatory><@cText class='mandatory-warning ms-xs'>#i18n{portal.theme.msgMandatory}</@cText></#if>
 		<@cBlock class='step-current-toolbar d-flex justify-content-center justify-content-sm-end'>
 			<@chList class='list-unstyled d-flex justify-content-end flex-column flex-sm-row align-items-center mt-0 me-xs'>
-			<#if actionPrevStep !='' && showPrevStep >
-				<#assign paramsPrevStep> name="${actionPrevStep}" formnovalidate<#if titlePrevStep !=''> title="${titlePrevStep}"</#if></#assign>
+			<#if actionPrevStep?has_content && showPrevStep >
+				<#assign paramsPrevStep> name="${actionPrevStep}" formnovalidate<#if titlePrevStep?has_content> title="${titlePrevStep}"</#if></#assign>
 				<@chItem>
 					<@cBtn class='tertiary ms-sm' id=actionPrevStep params=paramsPrevStep label=labelPrevStep />
 				</@chItem>
-			</#if> 
-			<#if actionSaveForBackUpStep !=''>
-				<#assign paramsSaveForBackUpStep> name="${actionSaveForBackUpStep}" formnovalidate<#if titleSaveForBackUpStep !=''> title="${titleSaveForBackUpStep}"</#if></#assign>
+			</#if>
+			<#if actionSaveForBackUpStep?has_content>
+				<#assign paramsSaveForBackUpStep> name="${actionSaveForBackUpStep}" formnovalidate<#if titleSaveForBackUpStep?has_content> title="${titleSaveForBackUpStep}"</#if></#assign>
 				<@chItem>
 					<@cBtn class='tertiary ms-sm' id=actionSaveForBackUpStep params=paramsSaveForBackUpStep label='#i18n{portal.theme.labelSaveStep}' />
 				</@chItem>
 			</#if>
-			<#if actionResetBackUpStep !=''>    
-				<#assign paramsResetBackUpStep> name="${actionResetBackUpStep}" formnovalidate<#if titleResetBackUpStep !=''> title="${titleResetBackUpStep}"</#if></#assign>
+			<#if actionResetBackUpStep?has_content>
+				<#assign paramsResetBackUpStep> name="${actionResetBackUpStep}" formnovalidate<#if titleResetBackUpStep?has_content> title="${titleResetBackUpStep}"</#if></#assign>
 				<@chItem id='reset-backup' >
 					<@cBtn class='tertiary  ms-sm' id=actionResetBackUpStep params=paramsResetBackUpStep label=labelResetBackUpStep />
 				</@chItem>
 			</#if>
-			<#if actionNextStep !=''>
-				<#assign paramsNextStep> name="${actionNextStep}"<#if titleNextStep !=''> title="${titleNextStep}"</#if></#assign>
+			<#if actionNextStep?has_content>
+				<#assign paramsNextStep> name="${actionNextStep}"<#if titleNextStep?has_content> title="${titleNextStep}"</#if></#assign>
 				<@chItem>
 					<@cBtn class='primary ms-sm' id=actionNextStep params=paramsNextStep label=labelNextStep />
 				</@chItem>
 			</#if>
-			<#if actionSaveStep !=''>    
-				<#assign paramsSaveStep> name="${actionSaveStep}" <#if titleSaveStep !=''> title="${titleSaveStep}"</#if></#assign>
+			<#if actionSaveStep?has_content>
+				<#assign paramsSaveStep> name="${actionSaveStep}" <#if titleSaveStep?has_content> title="${titleSaveStep}"</#if></#assign>
 				<@chItem>
 					<@cBtn class='secondary' id=actionSaveStep params=paramsSaveStep label=labelSaveStep />
 				</@chItem>
-			</#if>  
+			</#if>
 			</@chList>
 		</@cBlock>
 	</@cContainer>
@@ -136,7 +136,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		const firstInvalidElements = invalidElements[0];
 		const invalidElementStatusMsg = `<p class="visually-hidden" id="step-alert" tabindex="-1">#i18n{portal.theme.statusMsgStepValidationErrors}</p>`
 		document.querySelector('.step-current .step-content .container').insertAdjacentHTML( 'afterbegin', invalidElementStatusMsg );
-		document.querySelector('#step-alert').focus();	
+		document.querySelector('#step-alert').focus();
 		firstInvalidElements.scrollIntoView({ behavior: 'smooth', block: 'center' });
 		switch(firstInvalidElements.tagName.toLowerCase()) {
 			case 'legend':
@@ -164,17 +164,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			stepTitle.focus();
 		}
 	}
-	<#assign actionStep><#if actionNextStep !=''>${actionNextStep!}<#else>${actionSaveStep!}</#if></#assign>
-	const formValidate = document.getElementById('${formId!}')<#if actionStep?? && actionStep !=''>,formValidateButton = document.getElementById('${actionStep!}')</#if>;
+	<#assign actionStep = actionNextStep?has_content?then( actionNextStep, actionSaveStep ) />
+	const formValidate = document.getElementById('${formId!}')<#if actionStep?? && actionStep?has_content>,formValidateButton = document.getElementById('${actionStep!}')</#if>;
 	<#if step?number gt 1 >
-	<#if actionStep?? && actionStep !=''>
+	<#if actionStep?? && actionStep?has_content>
 	formValidateButton && formValidateButton.addEventListener('click', (e) => {
 		const invalids = document.querySelectorAll('.form-control:invalid','.form-control:user-invalid');
 		const arrInvalids = Array.prototype.slice.call(invalids);
 		arrInvalids.forEach( function( invalid ){
 			invalid.classList.add('is-invalid')
 			invalid.setAttribute('aria-invalid', 'true');
-			const isRequired = invalid.getAttributeNode('required'); 
+			const isRequired = invalid.getAttributeNode('required');
 			if( isRequired !='' ){
 				let pInvalid = document.createElement("p");
 				pInvalid.classList.add( 'invalid-feedback' );
@@ -211,7 +211,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	const btnValidateHidden = '<button class="visually-hidden" name="${actionStep}" aria-hidden="true" tabindex="-1" ></button>'
 	formValidate && formValidate.insertAdjacentHTML('afterbegin', btnValidateHidden );
 });
-</script> 
+</script>
 <script type="module" src="${commonsSharedThemePath}${commonsSiteJsModulesPath}theme-form-validation.js"></script>
 </@cSection>
 </#macro>

@@ -36,13 +36,13 @@ Snippet:
 <#if logoAltDS?has_content && !logoAltDS?starts_with('DS')><#local logoAlt=logoAltDS /><#else><#local logoAlt=mainSite /></#if>
 <#if !dskey('portal.theme.site_property.layout.footer.logoFooterUrl')?starts_with('DS') && dskey('portal.theme.site_property.layout.footer.logoFooterUrl') != ''><#local logoUrl = dskey('portal.theme.site_property.layout.footer.logoFooterUrl')><#else><#local logoUrl = urlMainSite></#if>
 <#if !dskey('theme.site_property.menu.sidebarMenu.checkbox')?starts_with('DS') && dskey('theme.site_property.menu.sidebarMenu.checkbox')?number == 1></div></div></#if>
-<footer class="social z-1" role="contentinfo"<#if params !=''> ${params!}</#if>>
+<footer class="social z-1" role="contentinfo"<#if params?has_content> ${params!}</#if>>
     <div class="row m-0">
-        <div class="col-12 <#if classColMain !=''> ${classColMain}</#if>">
+        <div class="col-12 <#if classColMain?has_content> ${classColMain}</#if>">
             <div class="main-footer justify-content-${align} py-4">
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-start w-100">
                     <a class="logo hide-icon-target" href="${logoUrl}" target="_blank">
-                        <@cImg src=logoFooter! class='d-inline-block' id='footer-img' alt='${logoAlt}' />
+                        <@cImg src=logoFooter! class='d-inline-block' id='footer-img' alt=logoAlt />
                     </a>
                     <hr aria-hidden="true">
                     <a class="site" title="#i18n{portal.theme.labelGoToSite} ${title}" href=".">${title}</a>
@@ -60,9 +60,9 @@ Snippet:
                 </div>
             </div>
         </div>
-        <div class="col-12 main-bg-color<#if classColSocial !=''> ${classColSocial}</#if> d-flex justify-align-items">
+        <div class="col-12 main-bg-color<#if classColSocial?has_content> ${classColSocial}</#if> d-flex justify-align-items">
             <div class="social-links">
-                <#if socialNested !=''><div class="d-flex justify-content-center align-items-center">${socialNested}</div></#if>
+                <#if socialNested?has_content><div class="d-flex justify-content-center align-items-center">${socialNested}</div></#if>
                 <h2 class="paris-footer-social-title text-center text-gray">#i18n{portal.theme.labelFollow}</h2>
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">

@@ -28,18 +28,18 @@ Snippet:
 -->
 <#macro cInputDropFilesItem name label idx handler image=false fileSize=0 ext='' unit='' maxChars=60 urlDl='' urlRm='' class='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<#local fileLabel><#if label?length gt maxChars>${label[0..maxChars]}...<#else>${label}</#if></#local>
+<#local fileLabel = ( label?length gt maxChars )?then( label[0..maxChars] + '...', label ) />
 <#if handler?has_content>
-    <#local handlerName>${handler.handlerName}</#local>
-    <#local cUrlDl>jsp/site/plugins/asynchronousupload/DoDownloadFile.jsp?fieldname=${name}&field_index=${idx}&fileName=${label}&asynchronousupload.handler=${handler.handlerName}</#local>
-    <#local cUrlRm></#local>
-    <#local cName>${handler.uploadCheckboxPrefix}${name}${idx}</#local>
-    <#local cId>${handler.uploadCheckboxPrefix}${name}${idx}</#local>
+    <#local handlerName = handler.handlerName />
+    <#local cUrlDl = 'jsp/site/plugins/asynchronousupload/DoDownloadFile.jsp?fieldname=' + name + '&field_index=' + idx + '&fileName=' + label + '&asynchronousupload.handler=' + handler.handlerName />
+    <#local cUrlRm = '' />
+    <#local cName = handler.uploadCheckboxPrefix + name + idx />
+    <#local cId = handler.uploadCheckboxPrefix + name + idx />
 <#else>
-    <#local cUrlDl>${urlDl}</#local>
-    <#local cUrlRm>${urlRm!}</#local>
-    <#local cName>_form_upload_checkbox_${name}${idx}</#local>
-    <#local cId>_form_upload_checkbox_${name}${idx}</#local>
+    <#local cUrlDl = urlDl />
+    <#local cUrlRm = urlRm!'' />
+    <#local cName = '_form_upload_checkbox_' + name + idx />
+    <#local cId = '_form_upload_checkbox_' + name + idx />
 </#if>
 <#if fileSize??>
 <#switch unit>
@@ -68,8 +68,8 @@ Snippet:
     </#if>
 </#switch>
 </#if>
-<#if ext = ''><#local ext=name?keep_after_last('.') /></#if>
-<li class="files-item<#if class!=''> ${class}</#if>" id="_file_uploaded_${name}${idx}">
+<#if !ext?has_content><#local ext=name?keep_after_last('.') /></#if>
+<li class="files-item<#if class?has_content> ${class}</#if>" id="_file_uploaded_${name}${idx}">
     <label class="files-item-label<#if image=true> image</#if>" for="${cId}">
         <#if image=true><img src="themes/shared/images/none.svg" alt="" width="80" height="80"></#if>
         <a href="${cUrlDl}" class="files-item-link" title="#i18n{portal.util.labelDownload} ${label}" data-type="${ext!}" data-img="">
@@ -77,7 +77,7 @@ Snippet:
             <span class="file-item-info"><#if fileSize?has_content>${octetNumber?string["0"]} ${octetUnit}</#if></span>
         </a>
     </label>
-    <button type="button" class="btn btn-link main-color deleteSingleFile p-0"<#if cUrlRm !=''> data-url="${cUrlRm!}"</#if> data-item="#_file_uploaded_${name}${idx}" fieldName="${name}" handlerName="${handlerName!}" index="${idx}" title="#i18n{portal.util.labelDelete} ${fileLabel}"> 
+    <button type="button" class="btn btn-link main-color deleteSingleFile p-0"<#if cUrlRm?has_content> data-url="${cUrlRm!}"</#if> data-item="#_file_uploaded_${name}${idx}" fieldName="${name}" handlerName="${handlerName!}" index="${idx}" title="#i18n{portal.util.labelDelete} ${fileLabel}">
         <@cIcon name='x' params='aria-hidden="true"' />
     </button>
 </li>

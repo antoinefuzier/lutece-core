@@ -40,5 +40,5 @@ Snippet:
 <#macro tableHeadBodySeparator id='' class='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 </thead>
-<tbody<#if id!=''> id="${id}"</#if><#if class!=''> class="${class?trim}"</#if><#if params?has_content> ${params}</#if>>
+<tbody<#if id?has_content> id="${id}"</#if><#if class?has_content> class="${class?trim}"</#if><#if params?has_content> ${params}</#if>>
 </#macro>

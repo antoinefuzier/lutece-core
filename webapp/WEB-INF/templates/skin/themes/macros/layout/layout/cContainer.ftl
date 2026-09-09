@@ -34,10 +34,10 @@ Snippet:
 <#local tpl=.caller_template_name?keep_after("skin/") />
 <@cTpl tpl=tpl>
 <#local cClass = 'container' />
-<#if class!=''>
-    <#if type!=''><#local cClass += '-' + type /></#if>
+<#if class?has_content>
+    <#if type?has_content><#local cClass += '-' + type /></#if>
     <#local cClass += ' ' + class />
-<#elseif type!=''>
+<#elseif type?has_content>
     <#local cClass += '-fluid' />
 </#if>
 <@cSection type='div' class=cClass id=id params=params>

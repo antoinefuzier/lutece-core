@@ -57,7 +57,7 @@ window.addEventListener( "load", function() {
 <!-- CNIL Consent -->
 <@cConsent title=favourite />
 <!-- End CNIL Consent -->
-<#if urlAccount !=''>
+<#if urlAccount?has_content>
 <!-- MyLutece User Connexion -->
 </#if>
 <#-- User message toastr notification - Parameter in back office - Menu Site / Site Properties -> Theme Paris.fr 	-->
@@ -65,8 +65,8 @@ window.addEventListener( "load", function() {
 <!-- ========================================================   -->
 <!-- USER MESSAGE NOTIF		                                   -->
 <!-- ========================================================   -->
-<#assign bannerMessageDuration>${dskey('portal.theme.site_property.bannerMessage.Duration')!}</#assign>
-<#assign bannerMessagePosition>${dskey('portal.theme.site_property.bannerMessage.Position')!}</#assign>
+<#assign bannerMessageDuration = dskey('portal.theme.site_property.bannerMessage.Duration')!'' />
+<#assign bannerMessagePosition = dskey('portal.theme.site_property.bannerMessage.Position')!'' />
 <@cInitToast showAll=true duration=bannerMessageDuration?number position=bannerMessagePosition >
     <@cToast title=dskey('portal.theme.site_property.bannerMessage.Title') content=dskey('portal.theme.site_property.bannerMessage.htmlblock') delay=bannerMessageDuration?number class='bg-${dskey(\'theme.site_property.bannerMessage.Type\')}' />
 </@cInitToast>

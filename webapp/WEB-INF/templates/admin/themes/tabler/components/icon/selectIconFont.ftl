@@ -36,7 +36,7 @@ Snippet:
 <input type="hidden" name="${name}" id="${id}" value="${defaultValue!}">
 <#-- Icon picker -->
 <div class="lutece-icon-picker" id="${id}-ctn">
-	<button type="button" class="lutece-icon-picker-btn<#if class?has_content> ${class}<#else> form-select</#if>" id="${id}-btn" <#if !searchShow>role="combobox" aria-controls="${id}-list" aria-activedescendant=""</#if> aria-haspopup="listbox" aria-expanded="false">
+	<button type="button" class="lutece-icon-picker-btn<#if class?has_content> ${class}<#else> form-select</#if>" id="${id}-btn" <#if !searchShow>role="combobox" aria-controls="${id}-list" aria-!activedescendant?has_content</#if> aria-haspopup="listbox" aria-expanded="false">
 		<span class="lutece-icon-picker-preview" id="${id}-pv">
 			<#if defaultValue?has_content>
 				<i class="${prefix} ${prefix}-${defaultValue}" aria-hidden="true"></i>

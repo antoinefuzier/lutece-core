@@ -35,7 +35,7 @@ Snippet:
 <#macro h level=2 id='' class='' hide=[] align='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#local class += ' ' + alignmentSettings( align,'' ) + ' ' + displaySettings( hide, 'inline-flex' ) />
-<h${level}<#if class?trim!=''> class="${class?trim}"</#if><#if params?has_content> ${params}</#if><#if id!=''> id="${id}"</#if>>
+<h${level}<#if class?trim?has_content> class="${class?trim}"</#if><#if params?has_content> ${params}</#if><#if id?has_content> id="${id}"</#if>>
 <#nested>
 </h${level}>
 </#macro>

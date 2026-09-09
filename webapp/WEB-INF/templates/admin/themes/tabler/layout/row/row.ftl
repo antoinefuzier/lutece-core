@@ -37,8 +37,8 @@ Snippet:
 <#macro row class='' id='' collapsed=false align='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if collapsed><#local class += ' ' + 'collapse' /></#if>
-<#if align!=''><#local class += ' ' + alignmentSettings(align,'') /></#if>
-<div class="row<#if class!=''> ${class}</#if>"<#if id!=''> id="${id}"</#if><#if params?has_content> ${params}</#if>>
+<#if align?has_content><#local class += ' ' + alignmentSettings(align,'') /></#if>
+<div class="row<#if class?has_content> ${class}</#if>"<#if id?has_content> id="${id}"</#if><#if params?has_content> ${params}</#if>>
 <#nested>
 </div>
 </#macro>

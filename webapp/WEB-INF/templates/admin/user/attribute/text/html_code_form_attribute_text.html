@@ -1,4 +1,4 @@
-<#if attribute.helpMessage?exists&&attribute.helpMessage!=''>
+<#if attribute.helpMessage?exists&&attribute.helpMessage?has_content>
 	<#assign helpKey = attribute.helpMessage>
 </#if>
 <@formGroup labelKey='${attribute.title}' labelFor='attribute_${attribute.idAttribute}' mandatory=attribute.mandatory helpKey=helpKey rows=2>
