@@ -17,9 +17,9 @@ Snippet:
 -->
 <#macro adminHeader site_name=site_name!'Lutece' admin_url=admin_url deprecated...>
 <@deprecatedWarning args=deprecated />
-<#local userReadMode><#attempt>${dskey('portal.site.site_property.layout.user.readmode.show.checkbox')?number}<#recover>0</#attempt></#local>
-<#local userDarkMode><#attempt>${dskey('portal.site.site_property.layout.user.darkmode.show.checkbox')?number}<#recover>0</#attempt></#local>
-<#local adminDarkMode><#attempt>${dskey('portal.site.site_property.layout.darkmode.checkbox')?number}<#recover>0</#attempt></#local>
+<#local userReadMode = dskey('portal.site.site_property.layout.user.readmode.show.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.user.readmode.show.checkbox'), '0') />
+<#local userDarkMode = dskey('portal.site.site_property.layout.user.darkmode.show.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.user.darkmode.show.checkbox'), '0') />
+<#local adminDarkMode = dskey('portal.site.site_property.layout.darkmode.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.darkmode.checkbox'), '0') />
 <#--  <#local userMenuMode><#attempt>${dskey('portal.site.site_property.layout.user.menumode.show.checkbox')?number}<#recover>0</#attempt></#local>  -->
 <#local readMode><#attempt><#if dskey('portal.site.site_property.layout.readmode.checkbox')?number = 1> dir="rtl"</#if><#recover></#attempt></#local>
 <#local layoutBoxed><#attempt><#if dskey('portal.site.site_property.layout.menu.boxed.checkbox')?number==1> layout-boxed</#if><#recover></#attempt></#local>
@@ -29,8 +29,8 @@ Snippet:
 <#local menuCondensed><#attempt><#if dskey('portal.site.site_property.layout.menu.condensed.checkbox')?number==1>condensed</#if><#recover></#attempt></#local>
 <#local menuVertical><#attempt><#if dskey('portal.site.site_property.layout.menu.vertical.checkbox')?number==1>vertical</#if><#recover></#attempt></#local>
 <#local menuTransparent><#attempt><#if dskey('portal.site.site_property.layout.menu.transparent.checkbox')?number==1> navbar-transparent</#if><#recover></#attempt></#local>
-<#local menuHome><#attempt>${dskey('portal.site.site_property.layout.menu.home.checkbox')?number}<#recover>0</#attempt></#local>
-<#local showSiteName><#attempt>${dskey('portal.site.site_property.show_site_name.checkbox')?number}<#recover>1</#attempt></#local>
+<#local menuHome = dskey('portal.site.site_property.layout.menu.home.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.layout.menu.home.checkbox'), '0') />
+<#local showSiteName = dskey('portal.site.site_property.show_site_name.checkbox')?matches('^[0-9]+$')?then(dskey('portal.site.site_property.show_site_name.checkbox'), '1') />
 <#local logoUrl = (dskey('portal.site.site_property.logo_url')!)?has_content?then(dskey('portal.site.site_property.logo_url')?trim, '')>
 <#local logoSvg = (dskey('portal.site.site_property.logo_svg.textblock')!)?has_content?then(dskey('portal.site.site_property.logo_svg.textblock'), '')>
 <#local logoWidth><#attempt>${dskey('portal.site.site_property.logo.width')}<#recover>24</#attempt></#local>
@@ -354,4 +354,4 @@ document.addEventListener( 'DOMContentLoaded', () => {
 </#if>
 <!-- END NAVBAR  -->
 <div class="page-wrapper">
-</#macro>	
+</#macro>

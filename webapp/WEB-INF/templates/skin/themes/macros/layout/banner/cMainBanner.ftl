@@ -37,7 +37,7 @@ Snippet:
 <#-- TODO data n'est pas disponible dans ce contexte, à vérifier -->
 <#local isHomePage=false />
 <#if data??><#local isHomePage=data.homePage! /><#else><!-- NO DATA --></#if>
-<#local hasInternalBanner><#if isHomePage>true<#else><#if !isOnlyHome?boolean>false<#else>true</#if></#if></#local>
+<#local hasInternalBanner = ( isHomePage || isOnlyHome?boolean )?then('true', 'false') />
 <#if hasInternalBanner?trim?boolean>
 <#local titleStyle='' />
 <#local imageStyle='' />
@@ -45,10 +45,10 @@ Snippet:
 <#local bannerClass=class />
 <#local dsTitle><#if dskey('portal.theme.site_property.banner.title')?starts_with('DS')><#else>${dskey('portal.theme.site_property.banner.title')}</#if></#local>
 <#if dsTitle !=''><#local title=dsTitle /><#else><#local title=title /></#if>
-<#local hasBannerTitle><#if !dskey('portal.theme.site_property.banner.title.checkbox')?starts_with('DS')&& dskey('portal.theme.site_property.banner.title.checkbox') == '1'>true<#else>false</#if></#local>
-<#local isBannerImage><#if !dskey('portal.theme.site_property.banner.showSiteImg.checkbox')?starts_with('DS') && dskey('portal.theme.site_property.banner.showSiteImg.checkbox') == '1'>true<#else>false</#if></#local>
+<#local hasBannerTitle = ( !dskey('portal.theme.site_property.banner.title.checkbox')?starts_with('DS') && dskey('portal.theme.site_property.banner.title.checkbox') == '1' )?then('true', 'false') />
+<#local isBannerImage = ( !dskey('portal.theme.site_property.banner.showSiteImg.checkbox')?starts_with('DS') && dskey('portal.theme.site_property.banner.showSiteImg.checkbox') == '1' )?then('true', 'false') />
 <#local hasBannerFormTitle>${dskey('portal.theme.site_property.bannerForm.showFormTitle.checkbox')}</#local>
-<#local isBannerFormImage><#if dskey('portal.theme.site_property.bannerForm.showBannerImg.checkbox') == '1'>true<#else>false</#if></#local>
+<#local isBannerFormImage = ( dskey('portal.theme.site_property.bannerForm.showBannerImg.checkbox') == '1' )?then('true', 'false') />
 <#local bannerCredits=dskey('portal.theme.site_property.banner.credits')>
 <#local bannerTitleColor=dskey('portal.theme.site_property.banner.title.color')>
 <#local bannerTitleBGColor=dskey('portal.theme.site_property.banner.title.bgcolor')>

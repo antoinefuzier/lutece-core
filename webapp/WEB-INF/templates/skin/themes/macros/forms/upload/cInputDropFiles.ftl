@@ -54,7 +54,7 @@ Snippet:
 <#local cId><#if id!=''>${id!}<#else>${name!}</#if></#local>
 <#local nbFiles = nbFiles?number >
 <#local maxFileSize = maxFileSize?number >
-<#local isDisabled><#if nbFiles?number = nbUplodadedFiles?number >true<#elseif disabled>true<#else>false</#if></#local>
+<#local isDisabled = ( nbFiles?number == nbUplodadedFiles?number || disabled )?then('true', 'false') />
 <#if handler?has_content>
 <#local deleteBtnName='_form_upload_delete_${cId}' >
 <@cInput type='hidden' name='asynchronousupload.handler' value=handler.handlerName />

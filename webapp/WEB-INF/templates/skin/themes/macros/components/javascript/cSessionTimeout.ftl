@@ -49,7 +49,7 @@ Snippet:
 -->
 <#macro cSessionTimeout deprecated...>
 <@deprecatedWarning args=deprecated />
-<#assign sessionTimeoutEnabled><#if !dskey('portal.theme.site_property.sessiontimeout.enabled.checkbox')?starts_with('DS') && dskey('portal.theme.site_property.sessiontimeout.enabled.checkbox') == '1'>true<#else>false</#if></#assign>
+<#assign sessionTimeoutEnabled = ( !dskey('portal.theme.site_property.sessiontimeout.enabled.checkbox')?starts_with('DS') && dskey('portal.theme.site_property.sessiontimeout.enabled.checkbox') == '1' )?then('true', 'false') />
 <#if sessionTimeoutEnabled == 'true'>
 <#assign sessionTimeoutDuration><#if !dskey('portal.theme.site_property.sessiontimeout.duration')?starts_with('DS') && dskey('portal.theme.site_property.sessiontimeout.duration') != ''>${dskey('portal.theme.site_property.sessiontimeout.duration')}<#else>1800</#if></#assign>
 <#assign sessionWarningDelay><#if !dskey('portal.theme.site_property.sessiontimeout.warningDelay')?starts_with('DS') && dskey('portal.theme.site_property.sessiontimeout.warningDelay') != ''>${dskey('portal.theme.site_property.sessiontimeout.warningDelay')}<#else>120</#if></#assign>
