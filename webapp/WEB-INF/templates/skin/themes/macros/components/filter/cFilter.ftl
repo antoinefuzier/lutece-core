@@ -36,12 +36,12 @@ Snippet:
 			<@cIcon name='filter' title='Filter' class='main-info-color me-3' />
 		</@cBtn>
 	</@cRow>
-	<@cRow id='filters-container' class=class! params=params!>
+	<@cRow id='filters-container' class=(class!) params=(params!)>
 		<#local legendClass><#if !showLegend>visually-hidden</#if></#local>
 		<@cFieldset legend=fieldSetLabel legendClass=legendClass class="d-flex m-0 flex-wrap w-auto">
 			<#list checkboxes as checkbox>
 		        <@cField class='mt-0'>
-		            <@cCheckbox class='me-3 pt-3 pb-4 px-3 form-check' name='selectCheckbox' id='${checkbox.id!}' label='${checkbox.title!}' value='filter' selectionButton=true />
+		            <@cCheckbox class='me-3 pt-3 pb-4 px-3 form-check' name='selectCheckbox' id=(checkbox.id!) label=(checkbox.title!) value='filter' selectionButton=true />
 		        </@cField>
 		    </#list>
 		</@cFieldset>

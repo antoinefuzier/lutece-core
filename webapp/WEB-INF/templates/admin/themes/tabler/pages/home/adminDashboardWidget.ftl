@@ -35,9 +35,9 @@ Snippet:
 -->
 <#macro adminDashboardWidget id title hasHeader=true sm=12 md=4 color='primary' url='' class='' bodyClass='vmax-dvh-50 overflow-y-auto ' boxContentFooter='' actions=true actionMenu='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<@box style='solid' color='${color}' id='${id}_dashboard_card' class='box-widget' params=' data-id="${id}" draggable="true"'>
+<@box style='solid' color=color id='${id}_dashboard_card' class='box-widget' params=' data-id=id draggable="true"'>
 <#if hasHeader>
-<@boxHeader titleLevel='h3' title=title! titleActions=actions>
+<@boxHeader titleLevel='h3' title=(title!) titleActions=actions>
 <div class="dropdown">
 	<a href="#" class="btn-action" data-bs-toggle="dropdown">
 	<!-- Download SVG icon from http://tabler.io/icons/icon/dots-vertical -->
@@ -49,13 +49,13 @@ Snippet:
 	</a>
 	<div class="dropdown-menu dropdown-menu-end">
 		<#if actionMenu?has_content>${actionMenu!}</#if>
-		<#if url?has_content><@aButton color='link' class='dropdown-item' href=url! title='#i18n{portal.util.labelShow} ${title!}' /></#if>
+		<#if url?has_content><@aButton color='link' class='dropdown-item' href=(url!) title='#i18n{portal.util.labelShow} ${title!}' /></#if>
 		<@button color='link' class='dropdown-item text-danger' style='card-control remove' buttonTargetId='#${id}_dashboard_card' title='#i18n{portal.util.labelHide}' />
 	</div>
 </div>
 </@boxHeader>
 </#if>
-<@boxBody class='${bodyClass}' id='${id}_dashboard_card_body'>
+<@boxBody class=bodyClass id='${id}_dashboard_card_body'>
 <#if !hasHeader><h3 class="card-title">${title}</h3></#if>
 <@row>
 <@columns>

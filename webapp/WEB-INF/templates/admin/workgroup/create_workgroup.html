@@ -2,7 +2,7 @@
     <@pageColumn>
         <@pageHeader title='#i18n{portal.workgroup.create_workgroup.titleCreationForm}' />
 		<@tform method='post' id="create-workgroup-form" action='jsp/admin/workgroup/DoCreateWorkgroup.jsp'>
-			<@input type='hidden' name='token' value='${token}' />
+			<@input type='hidden' name='token' value=token />
 			<@formGroup labelKey='#i18n{portal.workgroup.create_workgroup.labelKey}' labelFor='workgroup_key' mandatory=true rows=2>
 				<@input type='text' id='workgroup_key' name='workgroup_key' maxlength=50 />
 			</@formGroup>

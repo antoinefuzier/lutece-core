@@ -45,15 +45,15 @@ Snippet:
 <@div class='step step-done ${class!}' id=id params=params>
 	<@div class='step-title'>
         <@div class='d-flex justify-content-between align-items-baseline w-100'>
-            <@h class='title' level=titleLevel params='title="${title}"' >
+            <@h class='title' level=titleLevel params='title=title' >
                 <@span class='step-number'>${stepNumber}</@span>
                 <@span>${title?replace('- hidden','')}</@span>
             </@h>
             <@span class='d-none d-sm-block pl-2'>
             <#if actionHref?has_content>
-                <@aButton label=actionLabel! class='btn btn-outline-primary ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
+                <@aButton label=(actionLabel!) class='btn btn-outline-primary ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
             <#elseif actionName?has_content>
-                <@button class='outline-primary' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
+                <@button class='outline-primary' label=(actionLabel!) ariaLabel=i18n(actionAriaLabelKey, title) params='name=actionNamevalue=(idx!) formnovalidate' />
             </#if>
             </@span>    
         </@div>    
@@ -64,9 +64,9 @@ Snippet:
         </@ul>
         <@div class='d-block d-sm-none mt-m'>
         <#if actionHref?has_content>
-            <@aButton label=actionLabel! class='btn btn-primary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
+            <@aButton label=(actionLabel!) class='btn btn-primary btn-sm-block ${actionClass!}' href=actionHref ariaLabel=i18n(actionAriaLabelKey, title) params=actionParams />
         <#elseif actionName?has_content>
-            <@button class='primary btn-sm-block' label=actionLabel! ariaLabel=i18n(actionAriaLabelKey, title) params='name="${actionName}"value="${idx!}" formnovalidate' />
+            <@button class='primary btn-sm-block' label=(actionLabel!) ariaLabel=i18n(actionAriaLabelKey, title) params='name=actionNamevalue=(idx!) formnovalidate' />
         </#if>
         </@div>    
     </@div>

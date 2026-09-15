@@ -55,8 +55,8 @@ Password with confirmation field sync:
 <#if label?has_content><@cLabel label=label for=passId required=required class=labelClass /></#if>
 <#if helpMsg?has_content><@cFormHelp passId helpMsg /></#if>
 <@cInputGroup class='password'>
-    <#if icon?has_content><@cIcon name='${icon!}' /></#if>
-    <@cInput type='password' class='${passClass!}' size='lg' id=passId name='${name}' maxlength=maxlength required=required placeholder=placeholder autocomplete=autocomplete params='autocomplete="off" ${params!}'>
+    <#if icon?has_content><@cIcon name=(icon!) /></#if>
+    <@cInput type='password' class=(passClass!) size='lg' id=passId name=name maxlength=maxlength required=required placeholder=placeholder autocomplete=autocomplete params='autocomplete="off" ${params!}'>
     <#if btnShowPassword>
     <@cBtn class='secondary toggle-password' type='button' label='' params='data-bs-toggle="#${passId}" aria-pressed="false" title="#i18n{portal.theme.labelPasswordShow}" tabindex="0"'>
          <@cIcon name='eye-off' class='main-info-color' />

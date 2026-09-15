@@ -56,7 +56,7 @@ Snippet:
 <@div id='current_step' class='step step-current ${class!}' params=params >
 	<@div class='step-title d-flex justify-content-between'>
 		<#if hasSteps>
-			<@h class='title' level=titleLevel params='data-step="${step}" title="${title} - #i18n{theme.labelCurrentStep}" aria-current="step"'>
+			<@h class='title' level=titleLevel params='data-step=step title="${title} - #i18n{theme.labelCurrentStep}" aria-current="step"'>
 				<@span class='step-number'>${step}</@span>
 				<@span>${title}</@span>
 			</@h>

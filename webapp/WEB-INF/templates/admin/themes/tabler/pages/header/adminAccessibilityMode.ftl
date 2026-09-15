@@ -18,7 +18,7 @@ Snippet:
 <#--
 <div class="nav-item">
 <@tform method='post' action='jsp/admin/DoModifyAccessibilityMode.jsp' >
-	<@input type='hidden' name='token' value='${token}' />
+	<@input type='hidden' name='token' value=token />
 	<#local btnIcon='eye-slash me-1' > 
 	<#local btnTitle='#i18n{portal.users.admin_header.labelActivateAccessibilityMode}' >
 	<#if user.accessibilityMode>

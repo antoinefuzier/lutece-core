@@ -23,7 +23,7 @@ Snippet:
 
     Select field populated from a list of items:
 
-    <@select name='category' id='category' items=categoryList default_value='${currentCategory}' />
+    <@select name='category' id='category' items=categoryList default_value=currentCategory />
 
     Sorted select with mandatory flag:
 

@@ -61,7 +61,7 @@ Snippet:
 <div class="card ${class!}"<#if id?has_content> id="${id}"</#if><#if params?has_content> ${params!}</#if>>
     <#if header?has_content>
     <div class="card-header<#if headerClass?has_content> ${headerClass}</#if><#if headerImg?has_content> card-header-img</#if>"<#if headerImg?has_content>style="background-image:url(${headerImg});"</#if>>
-    <#if headerLabelClass?has_content><#if headerLevel gt 0><@cTitle level=headerLevel class="${headerLabelClass!}">${header!}</@cTitle><#else><span class="${headerLabelClass!}">${header!}</span></#if></#if>
+    <#if headerLabelClass?has_content><#if headerLevel gt 0><@cTitle level=headerLevel class=(headerLabelClass!)>${header!}</@cTitle><#else><span class="${headerLabelClass!}">${header!}</span></#if></#if>
     </div>
     </#if>
     <#if subHeader?has_content><div class="card-sub-header<#if subHeaderClass?has_content> ${subHeaderClass}</#if>">${subHeader!}</div>
@@ -69,7 +69,7 @@ Snippet:
     <#if img?has_content>
     <figure<#if hoverEffect> class="card-figure ${imgClass}"</#if>>
     <#if imgType !='svg'>
-        <@cImg src=img! class='card-img-top' alt=imgAlt! />
+        <@cImg src=(img!) class='card-img-top' alt=(imgAlt!) />
     <#else>
         ${img!}
     </#if>
@@ -89,7 +89,7 @@ Snippet:
 			<div class="<#if vcolsInit gt 0>col-${vcolsInit} col-md-${vcols[0]}<#else>col-${vcols[0]}</#if> ${imgClass} p-0">
 			    <figure<#if hoverEffect> class="card-figure ${imgClass}"</#if>>
 				    <#if imgType !='svg'>
-				        <@cImg src=img! class='card-img-top' alt=imgAlt! />
+				        <@cImg src=(img!) class='card-img-top' alt=(imgAlt!) />
 				    <#else>
 				        ${img!}
 				    </#if>

@@ -11,7 +11,7 @@
 					<#list feature_group.features as feature >
 						<#if feature.documentationUrl?exists>
 						<@li>
-							<@h level=4><@link href='${feature.documentationUrl}' target='_blank'>${feature.name}</@link></@h>
+							<@h level=4><@link href=feature.documentationUrl target='_blank'>${feature.name}</@link></@h>
 							<@p>${feature.description}</@p>
 						</@li>
 						</#if>

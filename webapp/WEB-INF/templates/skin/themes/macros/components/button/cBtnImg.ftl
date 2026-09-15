@@ -40,7 +40,7 @@ Snippet:
     <#if type='svg'>
     <@cFigure>${src}</@cFigure>
     <#else>
-    <@cImg src="${src!}" alt='' />
+    <@cImg src=(src!) alt='' />
     </#if>
 </#if>
 <@cText type='span'><#nested></@cText>
@@ -48,7 +48,7 @@ Snippet:
     <#if type='svg'>
         <@cFigure>${src}</@cFigure>
     <#else>
-        <@cImg src="${src!}" title="${title!}" alt='' class='after' />
+        <@cImg src=(src!) title=(title!) alt='' class='after' />
     </#if>
 </#if>
 </@cBtn>

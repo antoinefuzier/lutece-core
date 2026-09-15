@@ -29,7 +29,7 @@ Snippet:
 <#local title=dskey('theme.site_property.Url.accessibilityLabel') /><#else><#local title='#i18n{portal.theme.labelAccessibility}' /></#if>
 <@_footerLinkItem title=title url=footerLinkAccessibility role='' target='_blank' />
 </#if>
-<@_footerLinkItem title='${mainSite}' url=urlMainSite role='' target='_blank' />
+<@_footerLinkItem title=mainSite url=urlMainSite role='' target='_blank' />
 <#if hasSiteMap?boolean>
 <@_footerLinkItem title='#i18n{portal.site.site_map.pageTitle} 'role='' url="jsp/site/Portal.jsp?page=map" />
 </#if>

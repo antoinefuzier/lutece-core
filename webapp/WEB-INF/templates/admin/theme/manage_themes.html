@@ -12,7 +12,7 @@
 						<@p class='display-5 fw-bold my-3'>${theme.codeTheme!?capitalize}</@p>
 						<@p class='my-2'>${theme.themeDescription!}</@p>
 						<@ul class='list-unstyled lh-lg'>
-							<@li><strong>#i18n{portal.theme.manage_themes.author}</strong> : <@link class='link-info link-offset-2' href=theme.themeAuthorUrl! target='_author_url' label='${theme.themeAuthor}' /></@li>
+							<@li><strong>#i18n{portal.theme.manage_themes.author}</strong> : <@link class='link-info link-offset-2' href=(theme.themeAuthorUrl!) target='_author_url' label=theme.themeAuthor /></@li>
 							<@li><strong>#i18n{portal.theme.manage_themes.version}</strong> : ${theme.themeVersion}</@li>
 							<@li><strong>#i18n{portal.theme.manage_themes.licence}</strong> : ${theme.themeLicence}</@li>
 						</@ul>
@@ -34,7 +34,7 @@
 						<@p class='display-5 fw-bold my-3'>${theme.codeTheme!?capitalize}</@p>
 						<@p class='my-2'>${theme.themeDescription!}</@p>
                     	<@ul class='list-unstyled lh-lg'>
-							<@li><strong>#i18n{portal.theme.manage_themes.author}</strong> : <@link class='link-info link-offset-2' href=theme.themeAuthorUrl! target='_author_url' label='${theme.themeAuthor}' /></@li>
+							<@li><strong>#i18n{portal.theme.manage_themes.author}</strong> : <@link class='link-info link-offset-2' href=(theme.themeAuthorUrl!) target='_author_url' label=theme.themeAuthor /></@li>
 							<@li><strong>#i18n{portal.theme.manage_themes.version}</strong> : ${theme.themeVersion}</@li>
 							<@li><strong>#i18n{portal.theme.manage_themes.licence}</strong> : ${theme.themeLicence}</@li>
 						</@ul>

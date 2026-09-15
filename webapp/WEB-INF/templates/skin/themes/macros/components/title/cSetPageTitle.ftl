@@ -27,12 +27,14 @@ Snippet:
 <#macro cSetPageTitle title srcElement='' init=false type='text' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#if title?? && title?has_content>
+<#if title?is_markup_output><#local scriptTitle = title?markup_string><#else><#local scriptTitle = title></#if>
+<#if srcElement?is_markup_output><#local scriptSrcElement = srcElement?markup_string><#else><#local scriptSrcElement = srcElement></#if>
 const pageTitle = document.querySelector('title');
 <#if init>
-pageTitle.textContent = '${title}';
+pageTitle.textContent = '${scriptTitle?js_string?no_esc}';
 <#else>
 const mainTitleText = pageTitle.textContent;
-const complementaryTitleText = <#if !srcElement?has_content>'${title!}'<#else><#if type='text'>document.querySelector('${srcElement}').textContent<#else>document.querySelector('${srcElement}').value</#if></#if>;
+const complementaryTitleText = <#if !srcElement?has_content>'${scriptTitle?js_string?no_esc}'<#else><#if type='text'>document.querySelector('${scriptSrcElement?js_string?no_esc}').textContent<#else>document.querySelector('${scriptSrcElement?js_string?no_esc}').value</#if></#if>;
 pageTitle.textContent = `<#noparse>${mainTitleText} ${complementaryTitleText}</#noparse>`;
 </#if>
 <#nested>

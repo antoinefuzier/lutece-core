@@ -59,12 +59,12 @@ Snippet:
 <#macro cStepCurrent step title showTitle=true titleLevel=2 titleClass='h3' formId='form-validate' actionNextStep='' titleNextStep='' labelNextStep='#i18n{portal.theme.labelNextStep}' actionPrevStep='' titlePrevStep='' labelPrevStep='#i18n{portal.theme.labelPrevStep}' actionSaveStep='' titleSaveStep='' labelSaveStep='#i18n{portal.theme.labelSaveStep}' actionSaveForBackUpStep='' titleSaveForBackUpStep='' labelForBackUpStep='#i18n{portal.theme.labelSaveResponse}' actionResetBackUpStep='' titleResetBackUpStep='' labelResetBackUpStep='#i18n{portal.theme.labelResetResponse}' showPrevStep=true hasSteps=true hasMandatory=true id='current_step' class='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
 <#local stepClass><#if !showTitle> step-no-title</#if></#local>
-<@cSection id='${id}' class='step step-current ${class!}${stepClass!}' params=params >
+<@cSection id=id class='step step-current ${class!}${stepClass!}' params=params >
 <#if showTitle>
 <@cBlock class='step-title'>
 	<@cContainer>
 		<#if hasSteps>
-			<@cTitle class='title ${titleClass}' level=titleLevel params='data-step="${step}" title="${title} - #i18n{portal.theme.labelCurrentStep}" aria-current="step" tabindex="0"'>
+			<@cTitle class='title ${titleClass}' level=titleLevel params='data-step=step title="${title} - #i18n{portal.theme.labelCurrentStep}" aria-current="step" tabindex="0"'>
 				<#if step?number!=0><@cText type='span' class='step-number'>${step}</@cText></#if>
 				<@cText type='span'>${title?replace('- hidden','')}</@cText>
 			</@cTitle>

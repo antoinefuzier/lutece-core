@@ -1,14 +1,14 @@
 <@pageContainer>
     <@pageColumn> 
-        <@pageHeader title='${securityheader.name}' />
+        <@pageHeader title=securityheader.name />
 		<@tform method='post' id='modify-securityheader-form' action='jsp/admin/system/ManageSecurityHeaders.jsp' boxed=true>
-			<@input type='hidden' id='id_securityheader' name='id_securityheader' value='${securityheader.id}' />
-			<@input type='hidden' id='name' name='name' value='${securityheader.name}' />
+			<@input type='hidden' id='id_securityheader' name='id_securityheader' value=securityheader.id />
+			<@input type='hidden' id='name' name='name' value=securityheader.name />
 			<@formGroup labelKey='#i18n{portal.securityheader.modify_securityheader.labelValue}' labelFor='value' mandatory=true>
-				<@input type='text' name='value' id='value' value='${securityheader.value}' maxlength=1024 />
+				<@input type='text' name='value' id='value' value=securityheader.value maxlength=1024 />
 			</@formGroup>
 			<@formGroup labelKey='#i18n{portal.securityheader.modify_securityheader.labelDescription}' labelFor='description'>
-				<@input type='textarea' name='description' id='description' value='${securityheader.description}' maxlength=1024 cols=80 rows=5 />
+				<@input type='textarea' name='description' id='description' value=securityheader.description maxlength=1024 cols=80 rows=5 />
 			</@formGroup>
 			<@formGroup labelKey='#i18n{portal.securityheader.modify_securityheader.labelType}' labelFor='type' mandatory=true>
 				<@select name='type'>

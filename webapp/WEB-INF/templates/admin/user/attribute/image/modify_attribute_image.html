@@ -7,10 +7,10 @@
 			<@breadcrumbItem>#i18n{portal.users.modify_attribute.pageTitleAttributeImage}</@breadcrumbItem>
 		</@breadcrumbs>
 		<@tform action='jsp/admin/user/attribute/DoModifyAttribute.jsp' method='post' boxed=true>
-			<@input type='hidden' name='token' value='${token}' />
-			<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
+			<@input type='hidden' name='token' value=token />
+			<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 			<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelTitle} *' labelFor='attr_title' helpKey='#i18n{portal.users.modify_attribute.labelTitleComment}' mandatory=true>
-				<@input name='title' id='attr_title' maxlength=255 value='${attribute.title}' />
+				<@input name='title' id='attr_title' maxlength=255 value=attribute.title />
 			</@formGroup>
 			<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelHelpMessage}' labelFor='help_message' helpKey='#i18n{portal.users.modify_attribute.labelHelpMessageComment}'>
 				<@input type='textarea' name='help_message' id='help_message' cols=80 rows=5>${attribute.helpMessage}</@input>
@@ -27,7 +27,7 @@
 			<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelWidth}' labelFor='width'>
 				<#list attribute_fields_list as attribute_field>
 					<#if attribute_field.width != -1>
-						<@input name='width' id='width' value='${attribute_field.width}' />
+						<@input name='width' id='width' value=attribute_field.width />
 					<#else>
 						<@input name='width' id='width' value='' />
 					</#if>
@@ -36,7 +36,7 @@
 			<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelHeight}' labelFor='height'>
 				<#list attribute_fields_list as attribute_field>
 					<#if attribute_field.height != -1>
-						<@input name='height' id='height' value='${attribute_field.height}' />
+						<@input name='height' id='height' value=attribute_field.height />
 					<#else>
 						<@input name='height' id='height' value='' />
 					</#if>

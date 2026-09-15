@@ -18,7 +18,7 @@ Snippet:
 
     Generate options with IDs on each element:
 
-    <@options items=categoryList id=true selected='${currentCategoryCode}' />
+    <@options items=categoryList id=true selected=currentCategoryCode />
 
 -->
 

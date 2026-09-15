@@ -10,22 +10,22 @@
 			<@breadcrumbItem>'#i18n{${emailLabel}}</@breadcrumbItem>
 		</@breadcrumbs>
 		<@tform action='jsp/admin/user/DoModifyAccountLifeTimeEmails.jsp' boxed=true>
-			<@input type='hidden' name='token' value='${token!}' />
-			<@input type='hidden' name='email_type' value='${email_type!}' />
+			<@input type='hidden' name='token' value=(token!) />
+			<@input type='hidden' name='email_type' value=(email_type!) />
 			<@row>
 				<@columns sm=12 md=9 lg=6>
-					<@formGroup labelFor='email_sender' labelKey='${i18n("portal.users.accountLifeTime.labelSenderEmail")}' mandatory=true>
-						<@input type='text' name='email_sender' id='email_sender' value="${email_sender!}" />
+					<@formGroup labelFor='email_sender' labelKey=i18n("portal.users.accountLifeTime.labelSenderEmail") mandatory=true>
+						<@input type='text' name='email_sender' id='email_sender' value=(email_sender!) />
 					</@formGroup>  
-					<@formGroup labelFor='email_subject' labelKey='${i18n("portal.users.accountLifeTime.labelSubjectEmail")}' mandatory=true>
-						<@input type='text' name='email_subject' id='email_subject' value="${email_subject!}" />
+					<@formGroup labelFor='email_subject' labelKey=i18n("portal.users.accountLifeTime.labelSubjectEmail") mandatory=true>
+						<@input type='text' name='email_subject' id='email_subject' value=(email_subject!) />
 					</@formGroup>
 				</@columns>    
 			</@row>  
 			<@row>
 				<@columns sm=9>
-					<@formGroup labelFor='email_body' labelKey='${i18n("portal.users.accountLifeTime.labelBodyEmail")}' mandatory=true>
-						<@input type='textarea' name='email_body' richtext=true id='email_body' value="${email_body!}" />
+					<@formGroup labelFor='email_body' labelKey=i18n("portal.users.accountLifeTime.labelBodyEmail") mandatory=true>
+						<@input type='textarea' name='email_body' richtext=true id='email_body' value=(email_body!) />
 					</@formGroup>
 				</@columns>
 				<@columns sm=3>

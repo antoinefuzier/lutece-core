@@ -17,7 +17,7 @@
 		<@box color='success'>
 			<@boxBody>
 				<@tform method='post' name='create_user' action='jsp/admin/user/DoCreateUser.jsp' params='enctype="multipart/form-data"'>
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='token' value=token />
 					<@row>
 						<@columns md=4 lg=3>
 							<@fieldSet legend='#i18n{portal.users.create_user.labelIdentity}' >
@@ -57,12 +57,12 @@
 									<@input type='text' id='access_code' name='access_code' value='' maxlength=100 size='' />
 								</@inputGroup>
 							</@formGroup>
-							<@formGroup labelFor='first_password' labelKey='#i18n{portal.users.create_user.labelFirstPassword}' helpKey='${i18n("portal.users.message.password.minimumPasswordLength",minimumPasswordSize)}' mandatory=true groupStyle='addons' rows=2>
+							<@formGroup labelFor='first_password' labelKey='#i18n{portal.users.create_user.labelFirstPassword}' helpKey=i18n("portal.users.message.password.minimumPasswordLength",minimumPasswordSize) mandatory=true groupStyle='addons' rows=2>
 								<@inputGroup class='control has-icons-left is-expanded is-flex'>
 									<@inputGroupItem type='text'>
 										<@icon style='lock' />
 									</@inputGroupItem>
-									<@input type='password' id='first_password' name='first_password' maxlength=100 value='' size='' helpKey='${i18n("portal.users.message.password.minimumPasswordLength",minimumPasswordSize)}' />
+									<@input type='password' id='first_password' name='first_password' maxlength=100 value='' size='' helpKey=i18n("portal.users.message.password.minimumPasswordLength",minimumPasswordSize) />
 									<@inputGroupItem type='btn' pos='is-expanded'>
 										<@button type='button' title='#i18n{portal.admin.admin_login.passwordShow}' hideTitle=['all'] id='lutece-password-toggler' buttonIcon='eye' color='secondary' />
 									</@inputGroupItem>
@@ -110,10 +110,10 @@
 											</@select>
 										</@formGroup>
 										<@formGroup labelKey='#i18n{portal.role.create_role.labelWorkgroupKey}' rows=2 >
-											<@select name='workgroup_key' default_value='${workgroup_key_default_value}' items=workgroup_key_list sort=true />
+											<@select name='workgroup_key' default_value=workgroup_key_default_value items=workgroup_key_list sort=true />
 										</@formGroup>
 										<@formGroup labelKey='#i18n{portal.users.create_user.labelLanguage}' labelFor='language' rows=2>
-											<@select name='language' default_value='${default_user_language}' items=languages_list sort=true />									
+											<@select name='language' default_value=default_user_language items=languages_list sort=true />
 										</@formGroup>
 									</#if>
 									<#list attributes_list as attribute>

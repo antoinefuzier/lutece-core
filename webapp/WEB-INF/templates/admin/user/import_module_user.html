@@ -7,17 +7,17 @@
             <@boxHeader title=boxtitle />
             <@boxBody>
 				<@tform name='searchUsers' id='searchUsers' action='jsp/admin/user/ImportUser.jsp' >
-					<@formGroup labelFor='last_name' labelKey='${i18n("portal.users.modify_user.labelLastName")}'>
+					<@formGroup labelFor='last_name' labelKey=i18n("portal.users.modify_user.labelLastName")>
 						<#if user??><#assign value = user.lastName /></#if>
-						<@input type='text' name='last_name' id='last_name' value=value! />
+						<@input type='text' name='last_name' id='last_name' value=(value!) />
 					</@formGroup> 
-					<@formGroup labelFor='first_name' labelKey='${i18n("portal.users.modify_user.labelFirstName")}'>
+					<@formGroup labelFor='first_name' labelKey=i18n("portal.users.modify_user.labelFirstName")>
 						<#if user??><#assign value = user.firstName /></#if>
-						<@input type='text' name='first_name' id='first_name' value=value! />
+						<@input type='text' name='first_name' id='first_name' value=(value!) />
 					</@formGroup> 
-					<@formGroup labelFor='email' labelKey='${i18n("portal.users.modify_user.labelEmail")}'>
+					<@formGroup labelFor='email' labelKey=i18n("portal.users.modify_user.labelEmail")>
 						<#if user??><#assign value = user.email /></#if>
-						<@input type='email' name='email' id='email' value=value! />
+						<@input type='email' name='email' id='email' value=(value!) />
 					</@formGroup>
 					<@formGroup>
 						<@button type='submit' buttonIcon='search' title='#i18n{portal.users.import_module_user.searchBoxbuttonLabelSearch}' />
@@ -45,7 +45,7 @@
 					<@td>${user.email!}</@td>
 					<@td>
 						<@tform name='importUsers' id='importUsers' action='jsp/admin/user/DoSelectImportUser.jsp' >
-							<@input type='hidden' name='access_code' value='${user.accessCode!}' />
+							<@input type='hidden' name='access_code' value=(user.accessCode!) />
 							<@button type='submit' title='#i18n{portal.users.import_module_user.resultButtonLabelImportUser}' buttonIcon='file-import' color='primary' size='' />
 						</@tform>
 					</@td>

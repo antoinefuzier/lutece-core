@@ -1,10 +1,10 @@
 <@tabPanel id='search'>
     <@pageHeader title="#i18n{portal.search.manage_advanced_parameters.pageTitle}" titleClass="pb-3" />
     <@tform  name='search_advanced_parameters' action='jsp/admin/search/DoModifyAdvancedParameters.jsp' boxed=true>
-        <@input type='hidden' name='token' value='${token}' />
+        <@input type='hidden' name='token' value=token />
         <@row>
             <@columns sm=12 md=12 lg=6 xl=4>
-                <@formGroup labelFor='type_filter' labelKey='${i18n("portal.search.advanced_parameters.typeFilter.label")}' rows=2>
+                <@formGroup labelFor='type_filter' labelKey=i18n("portal.search.advanced_parameters.typeFilter.label") rows=2>
                     <@select name="type_filter">
                         <#list [ "none", "option", "radio", "checkbox"] as display_option>
                             <@option value=display_option selected=(display_option==type_filter) label='#i18n{portal.search.advanced_parameters.typeFilter.${display_option}}' />
@@ -14,7 +14,7 @@
             </@columns>
             <@columns  sm=12 md=12 lg=6 xl=3>
                 <!-- DATE FILTER -->
-                <@formGroup labelFor='date_filter' labelKey='${i18n("portal.search.advanced_parameters.dateFilter.label")}' rows=2>
+                <@formGroup labelFor='date_filter' labelKey=i18n("portal.search.advanced_parameters.dateFilter.label") rows=2>
                     <@select name="date_filter">
                         <#list [ "0", "1"] as b_active>
                             <@option value=b_active selected=(b_active==date_filter) label='#i18n{portal.search.advanced_parameters.activeLabel.${b_active}}' />
@@ -24,7 +24,7 @@
             </@columns>
             <@columns  sm=12 md=12 lg=6 xl=2>
                 <!-- TAG FILTER -->
-                <@formGroup labelFor='tag_filter' labelKey='${i18n("portal.search.advanced_parameters.tagFilter.label")}' rows=2>
+                <@formGroup labelFor='tag_filter' labelKey=i18n("portal.search.advanced_parameters.tagFilter.label") rows=2>
                     <@select name="tag_filter">
                         <#list [ "0", "1"] as b_active>
                             <@option value=b_active selected=(b_active==tag_filter) label='#i18n{portal.search.advanced_parameters.activeLabel.${b_active}}' />
@@ -34,7 +34,7 @@
             </@columns>
             <@columns  sm=12 md=12 lg=6 xl=3>
                 <!-- DEFAULT OPERATOR -->
-                <@formGroup labelFor='default_operator' labelKey='${i18n("portal.search.advanced_parameters.defaultOperator.label")}' rows=2>
+                <@formGroup labelFor='default_operator' labelKey=i18n("portal.search.advanced_parameters.defaultOperator.label") rows=2>
                     <@select name="default_operator">
                         <#list [ "OR", "AND"] as operator>
                             <@option value=operator selected=(operator==default_operator) label='#i18n{portal.search.advanced_parameters.defaultOperator.${operator}}' />
@@ -44,11 +44,11 @@
             </@columns>
         </@row>
         <!-- HELP MESSAGE -->
-        <@formGroup labelFor='help_message' labelKey='${i18n("portal.search.advanced_parameters.helpMessage.label")}'>
+        <@formGroup labelFor='help_message' labelKey=i18n("portal.search.advanced_parameters.helpMessage.label")>
             <@input type='textarea' name='help_message' id='help_message' value=help_message!'' />
         </@formGroup>   
         <@formGroup hideLabel=['all']>
-            <@button name='submit' type='submit' title='${i18n("portal.util.labelModify")}' buttonIcon='check' color='primary'/>
+            <@button name='submit' type='submit' title=i18n("portal.util.labelModify") buttonIcon='check' color='primary'/>
         </@formGroup>   
     </@tform>
 </@tabPanel>

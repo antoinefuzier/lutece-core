@@ -2,7 +2,7 @@
 	<@pageColumn>
 		<@pageHeader title='#i18n{portal.search.manage_indexer.labelIndexersList}'>
 			<@tform method='get' name='doIndexing' action='jsp/admin/search/DoIndexing.jsp'>
-				<@input type='hidden' name='token' value='${token}' />
+				<@input type='hidden' name='token' value=token />
 				<@button type='submit' buttonIcon='redo' title='#i18n{portal.search.manage_indexer.buttonDoIndex}' name='total' />
 				<@button type='submit' buttonIcon='sync' title='#i18n{portal.search.manage_indexer.buttonDoIncrementalIndex}' name='incremental' />
 			</@tform>

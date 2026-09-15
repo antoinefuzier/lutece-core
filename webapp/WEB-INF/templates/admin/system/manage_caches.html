@@ -10,7 +10,7 @@
 			</@formGroup>
 		</@tform>
 		<@tform method='post' action='jsp/admin/system/DoResetCaches.jsp' type='inline'>
-			<@input type='hidden' name='token' value='${token}' />
+			<@input type='hidden' name='token' value=token />
 			<@button type='submit' buttonIcon='trash' title='#i18n{portal.system.manage_caches.buttonFlush}' color='danger'	hideTitle=['xs','sm'] />
 		</@tform>
 	</@pageHeader>
@@ -34,11 +34,11 @@
 			<@p>#i18n{portal.system.manage_caches.columnTitleCacheSize} : ${service.cacheSize!}</@p>
 			</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn cols='12 col-md-5' class='ms-auto' >
-				<@offcanvas targetUrl="jsp/admin/system/CacheInfos.jsp?id_cache=${id}" targetElement="#cache-infos" id="cache-${id}" title="${service.name}" btnIcon="eye me-2" btnTitle="#i18n{portal.util.labelMore}" btnTitleShow=false  btnColor="outline-secondary w-50" position="end" />
+				<@offcanvas targetUrl="jsp/admin/system/CacheInfos.jsp?id_cache=${id}" targetElement="#cache-infos" id="cache-${id}" title=service.name btnIcon="eye me-2" btnTitle="#i18n{portal.util.labelMore}" btnTitleShow=false  btnColor="outline-secondary w-50" position="end" />
 				<@tform method='post' type='inline' align="middle"
 					action='jsp/admin/system/ConfirmToggleCache.jsp'>
-					<@input type='hidden' name='id_cache' value='${id}' />
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='id_cache' value=id />
+					<@input type='hidden' name='token' value=token />
 					<#if service.cacheEnable>
 						<@button type='submit' buttonIcon='player-stop me-1' title='#i18n{portal.system.manage_caches.actionDisable}' color='danger' />
 					<#else>
@@ -46,8 +46,8 @@
 					</#if>
 				</@tform>
 				<@tform method='post' type='inline' align="middle" action='jsp/admin/system/DoResetCaches.jsp'>
-					<@input type='hidden' name='id_cache' value='${id}' />
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='id_cache' value=id />
+					<@input type='hidden' name='token' value=token />
 					<@button type='submit' buttonIcon='trash' title='#i18n{portal.system.manage_caches.actionClear}' color='danger' />
 				</@tform>
 			</@manageFeatureItemColumn>

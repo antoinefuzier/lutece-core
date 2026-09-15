@@ -2,12 +2,12 @@
 	<@pageColumn>
 		<@pageHeader title='${role.description} [${role.key}]' class='col-md-3'>
 			<@tform type='inline' align="middle" method='post' action='jsp/admin/rbac/AddControlToRole.jsp'>
-				<@input type='hidden' name='role_key' value='${role.key}' />
+				<@input type='hidden' name='role_key' value=role.key />
 				<@formGroup groupStyle='inline' formStyle='inline'>
 					<@inputGroup>
 						<@select name='resource_type' size=''>
 						<#list resource_type_list?sort_by('resourceTypeLabel') as resource_type>
-							<@option value=resource_type.resourceTypeKey label='${resource_type.resourceTypeLabel}' />
+							<@option value=resource_type.resourceTypeKey label=resource_type.resourceTypeLabel />
 						</#list>
 						</@select>
 						<@button type='submit' title='#i18n{portal.rbac.view_role_description.buttonLabelAddControl}' hideTitle=['xs','sm'] buttonIcon='plus' size='' />
@@ -17,13 +17,13 @@
 			<@aButton href='jsp/admin/rbac/AssignUsersRole.jsp?role_key=${role.key}' title='#i18n{portal.rbac.manage_roles.buttonLabelAssignUsers} ' buttonIcon='user' color='primary' />
 			<@offcanvas id="edit-role" title="#i18n{portal.rbac.modify_role.titleModifyRole}" position="end" btnTitle="#i18n{portal.rbac.modify_role.titleModifyRole}" btnIcon="edit">
 				<@tform method='post' action='jsp/admin/rbac/DoModifyRole.jsp' name='modify_role'>
-					<@input type='hidden' name='role_key_previous' value='${role.key}' />
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='role_key_previous' value=role.key />
+					<@input type='hidden' name='token' value=token />
 					<@formGroup labelKey='#i18n{portal.rbac.modify_role.labelKey}' labelFor='role_key' mandatory=true rows=2>
-						<@input type='text' id='role_key' name='role_key' value='${role.key}' readonly=true />
+						<@input type='text' id='role_key' name='role_key' value=role.key readonly=true />
 					</@formGroup>
 					<@formGroup labelKey='#i18n{portal.rbac.modify_role.labelDescription}' labelFor='role_description' mandatory=true rows=2>
-						<@input type='text' id='role_description' name='role_description' value='${role.description}'
+						<@input type='text' id='role_description' name='role_description' value=role.description
 							maxlength=255 />
 					</@formGroup>
 					<#if has_right_manage_front_role>
@@ -57,7 +57,7 @@
 			</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn auto=true>
 				<@tform method='post' action='jsp/admin/rbac/DoConfirmRemoveControlFromRole.jsp'>
-					<@input type='hidden' name='rbac_id' value='${controled_resource.RBACId}' />
+					<@input type='hidden' name='rbac_id' value=controled_resource.RBACId />
 					<@button type='submit' title='#i18n{portal.rbac.view_role_description.buttonLabelDeleteControl}' buttonIcon='trash' color='danger' />
 				</@tform>
 			</@manageFeatureItemColumn>

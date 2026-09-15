@@ -37,7 +37,7 @@ Snippet:
     <div class="row align-items-center border-bottom py-5">
       <div class="col-lg-2">
         <a class="logo hide-icon-target" href="${logoUrl}" target="_blank">
-            <@cImg src=logoFooter! class='d-inline-block' id='footer-img' alt=logoAlt />
+            <@cImg src=(logoFooter!) class='d-inline-block' id='footer-img' alt=logoAlt />
         </a>
       </div>
       <div class="col-lg-6">

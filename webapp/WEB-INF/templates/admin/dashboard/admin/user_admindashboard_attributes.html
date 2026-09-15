@@ -24,30 +24,30 @@
 		<#if attribute.plugin?exists && attribute.plugin.name?has_content>
 			<#if cpt != 1>
 				<@tform type="inline" align='middle' method='post' action='jsp/admin/user/attribute/DoMoveUpAttribute.jsp#list'>
-					<@input type='hidden' name='token' value='${token}' />
-					<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
+					<@input type='hidden' name='token' value=token />
+					<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 					<@button type='submit' buttonIcon='chevron-up' title='#i18n{portal.users.modify_attribute.buttonLabelMoveUp}' />
 					</@tform>
 			</#if>
 			<#if attribute_has_next>
 				<@tform type="inline" align='middle' method='post' action='jsp/admin/user/attribute/DoMoveDownAttribute.jsp#list'>
-					<@input type='hidden' name='token' value='${token}' />
-					<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
+					<@input type='hidden' name='token' value=token />
+					<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 					<@button type='submit' buttonIcon='chevron-down' title='#i18n{portal.users.modify_attribute.buttonLabelMoveDown}' />
 				</@tform>
 			</#if>
 		<#else>
 			<#if cpt != 1>
 				<@tform type="inline" align='middle' method='post' action='jsp/admin/user/attribute/DoMoveUpAttribute.jsp#list'>
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='token' value=token />
 					<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 					<@button type='submit' buttonIcon='chevron-up' title='#i18n{portal.users.modify_attribute.buttonLabelMoveUp}' />
 				</@tform>
 			</#if>
 			<#if attribute_has_next>
 				<@tform type="inline" align='middle' method='post' action='jsp/admin/user/attribute/DoMoveDownAttribute.jsp#list'>
-					<@input type='hidden' name='token' value='${token}' />
-					<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
+					<@input type='hidden' name='token' value=token />
+					<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 					<@button type='submit' buttonIcon='chevron-down' title='#i18n{portal.users.modify_attribute.buttonLabelMoveDown}' />
 				</@tform>
 			</#if>

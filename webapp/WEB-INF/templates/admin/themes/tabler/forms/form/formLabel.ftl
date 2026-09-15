@@ -24,8 +24,11 @@ Snippet:
 -->
 <#macro formLabel class='form-label' labelFor='' labelId='' labelKey='' labelKeyDesc='' hideLabel=[] mandatory=false deprecated...>
 <@deprecatedWarning args=deprecated />	
+<#if class?is_markup_output><#local classText = class?markup_string><#else><#local classText = class></#if>
+<#if labelKey?is_markup_output><#local labelKeyText = labelKey?markup_string><#else><#local labelKeyText = labelKey></#if>
+<#if labelKeyDesc?is_markup_output><#local labelKeyDescText = labelKeyDesc?markup_string><#else><#local labelKeyDescText = labelKeyDesc></#if>
 <#local labelClass = ' ' + displaySettings(hideLabel,'') />
-<label class="<#if class?has_content>${class?trim}</#if><#if hideLabel?seq_contains('all')> visually-hidden</#if>"<#if labelFor?has_content> for="${labelFor}"</#if><#if labelId?has_content> id="${labelId}"</#if>>
-<#if labelKey?trim?has_content><#if labelClass?trim?has_content><span class="${labelClass}"></#if>${labelKey}<#if mandatory> <span class="text-danger">*</span></#if><#if labelClass?trim?has_content></span></#if><#if labelKeyDesc?trim?has_content><span class="form-label-description">${labelKeyDesc}</span></#if><#else><#nested></#if>
+<label class="<#if classText?has_content>${classText?trim}</#if><#if hideLabel?seq_contains('all')> visually-hidden</#if>"<#if labelFor?has_content> for="${labelFor}"</#if><#if labelId?has_content> id="${labelId}"</#if>>
+<#if labelKeyText?trim?has_content><#if labelClass?trim?has_content><span class="${labelClass}"></#if>${labelKeyText}<#if mandatory> <span class="text-danger">*</span></#if><#if labelClass?trim?has_content></span></#if><#if labelKeyDescText?trim?has_content><span class="form-label-description">${labelKeyDescText}</span></#if><#else><#nested></#if>
 </label>
 </#macro>

@@ -19,7 +19,7 @@ Snippet:
         <div class="row g-2 align-items-center">
             <div class="col">
                 <!-- Page pre-title -->
-                <div class="page-pretitle" id="feature-title"><#if feature_url??><@link href='${feature_url}' title='${feature_title!""}'>${feature_title!''}</@link><#else>${feature_title!''}</#if></div>
+                <div class="page-pretitle" id="feature-title"><#if feature_url??><@link href=feature_url title=feature_title!"">${feature_title!''}</@link><#else>${feature_title!''}</#if></div>
                 <#if page_title?has_content && page_title != feature_title><h2 class="page-title mt-2">${page_title!''}</h2></#if>
             </div>
             <div class="page-header-buttons col-auto ms-auto d-print-none"></div>

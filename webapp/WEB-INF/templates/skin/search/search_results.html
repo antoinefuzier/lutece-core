@@ -6,7 +6,7 @@
         <@cBlock class='d-md-flex justify-content-between align-items-center'>
             <@cBreadCrumb home='Home' type='fluid' items=breadcrumbItems listClass='ms-md-m' />
             <@cBlock class='result-stats'>
-                <@cInline><@cInline type='strong'>${paginator.itemsCount} ${'#i18n{portal.search.search_results.labelResultsRange}'?lower_case}</@cInline> #i18n{portal.search.search_results.labelResultsFor}</@cInline> <@cBadge label='${query}' />
+                <@cInline><@cInline type='strong'>${paginator.itemsCount} ${'#i18n{portal.search.search_results.labelResultsRange}'?lower_case}</@cInline> #i18n{portal.search.search_results.labelResultsFor}</@cInline> <@cBadge label=query />
             </@cBlock>
         </@cBlock>
     <#else>
@@ -24,7 +24,7 @@
         <@cBlock class='search-box'>
             <@cInput type='hidden' name='page' value='search' class='' />
             <svg class="icon-search" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <@cInput type='search' id='q' name='query' value='${query!}' autocomplete='off' placeholder='Démarche, rendez-vous, contact, document…' />
+            <@cInput type='search' id='q' name='query' value=(query!) autocomplete='off' placeholder='Démarche, rendez-vous, contact, document…' />
             <@cBtn type='button' noclass=true class='search-box__clear' label='' params=' aria-label="Effacer"'>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
             </@cBtn>
@@ -51,14 +51,14 @@
                         <@cSelect id='type_filter' name='type_filter'>
                             <#list list_type_and_link as map>
                                 <#assign optLabel><#if map_index != 0>${map.type}<#else>#i18n{portal.search.search_results.typeFilterNone}</#if></#assign>
-                                <@cOption value=map.type! label=optLabel selected=(selected_types![])?seq_contains(map.type) />
+                                <@cOption value=(map.type!) label=optLabel selected=(selected_types![])?seq_contains(map.type) />
                             </#list>
                         </@cSelect>
                     <#else>
                         <#list list_type_and_link as map>
                             <#if type_filter != "checkbox" || map_index != 0>
                             <#assign tfLabel><#if map_index != 0>${map.type?lower_case?capitalize}<#else>#i18n{portal.search.search_results.typeFilterNone}</#if></#assign>
-                            <@cFormCheck type=type_filter! name='type_filter' value=map.type! labelClass='filter-check' checked=(selected_types![])?seq_contains(map.type) label=tfLabel />
+                            <@cFormCheck type=(type_filter!) name='type_filter' value=(map.type!) labelClass='filter-check' checked=(selected_types![])?seq_contains(map.type) label=tfLabel />
                             </#if>
                         </#list>
                     </#if>
@@ -67,7 +67,7 @@
                     <@cLabel for='default_operator' label='#i18n{portal.search.search_results.operator}' />
                     <@cSelect id='default_operator' name='default_operator' class='sort-select'>
                         <#list ["OR","AND"] as operator>
-                            <@cOption value=operator! selected=(operator = default_operator) label='#i18n{portal.search.advanced_parameters.defaultOperator.${operator?upper_case}}' />
+                            <@cOption value=(operator!) selected=(operator = default_operator) label='#i18n{portal.search.advanced_parameters.defaultOperator.${operator?upper_case}}' />
                         </#list>
                     </@cSelect>
                 </@cBlock>
@@ -78,7 +78,7 @@
                     <#-- tag_filter -->
                     <#list taglist?split(" ") as tag>
                         <#if tag?? && tag?trim?has_content>
-                            <@cFormCheck type='checkbox' checked=true labelClass='filter-check' label='${tag?lower_case?capitalize}' />
+                            <@cFormCheck type='checkbox' checked=true labelClass='filter-check' label=tag?lower_case?capitalize />
                         </#if>
                     </#list>
                 </@cBlock>
@@ -94,10 +94,10 @@
                     <@cFormCheck type="radio" labelClass='filter-check' id="filter-all" name="datefilter" value="all" checked=(selected_datefilter!'') == 'all' label='Toutes dates' />
                     <@cFieldset id='date_filter' legend='#i18n{portal.search.search_results.dateFilter}' >
                         <@cField label='#i18n{portal.search.search_results.dateFilterAfter}' for='date_after'>
-                            <@cInputDate name='date_after' label='#i18n{portal.search.search_results.dateFilterAfter}' value='${date_after_value!""}' format='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' showFormat='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' />
+                            <@cInputDate name='date_after' label='#i18n{portal.search.search_results.dateFilterAfter}' value=date_after_value!"" format=(date_picker_format!"dd/mm/yyyy")?js_string?no_esc showFormat=(date_picker_format!"dd/mm/yyyy")?js_string?no_esc />
                         </@cField>
                         <@cField label='#i18n{portal.search.search_results.dateFilterBefore}' for='date_before' >
-                            <@cInputDate name='date_before' label='#i18n{portal.search.search_results.dateFilterBefore}' value='${date_before_value!""}' format='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' showFormat='${(date_picker_format!"dd/mm/yyyy")?js_string?no_esc}' />
+                            <@cInputDate name='date_before' label='#i18n{portal.search.search_results.dateFilterBefore}' value=date_before_value!"" format=(date_picker_format!"dd/mm/yyyy")?js_string?no_esc showFormat=(date_picker_format!"dd/mm/yyyy")?js_string?no_esc />
                         </@cField>
                     </@cFieldset>
                 </@cBlock>

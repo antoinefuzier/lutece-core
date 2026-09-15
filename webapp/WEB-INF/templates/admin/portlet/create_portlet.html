@@ -1,9 +1,9 @@
 <@coreAdminCSSLinks />
 <@tform method='post' name='form' id='form-portlet' action='jsp/admin/${portletType.doCreateUrl}' params='target="_top"'>  
-<@input type='hidden' name='page_id' value='${portlet_page_id}' />
-<@input type='hidden' name='portlet_type_id' value='${portletType.id}' />
+<@input type='hidden' name='page_id' value=portlet_page_id />
+<@input type='hidden' name='portlet_type_id' value=portletType.id />
 <@box class='manage-portlet'>
-	<@boxHeader title='${portletType.name}' boxTools=true >
+	<@boxHeader title=portletType.name boxTools=true >
 	<#if portletType.createSpecificTemplate?has_content || portletType.createSpecificFormTemplate?has_content>
 		<@button buttonIcon='layout-navbar-expand' id='btn-toggle-properties' size='sm' color='default' title='#i18n{portal.util.labelMore}' hideTitle=['all'] params='aria-expanded="false"'/>
 	</#if>
@@ -30,7 +30,7 @@
 			</#if>
 			<@columns sm=2 md=1>
 				<@formGroup labelFor='page_id' labelKey='#i18n{portal.site.modify_portlet.labelPortletPageId}' rows=2>
-					<@input type='text' name='page_id' disabled=true readonly=true value='${portlet_page_id}'/>
+					<@input type='text' name='page_id' disabled=true readonly=true value=portlet_page_id/>
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>

@@ -59,7 +59,7 @@ Snippet:
 	<@btnToolbar class='d-none d-md-block'>
 		<@tform type='' class='justify-content-end d-flex' id='search-page-id' action='jsp/admin/site/AdminSite.jsp' role='search'>
 			<@inputGroup>
-				<@input type='number' name='page_id' id='page_id' min=1 title=i18n('portal.site.admin_page.buttonSearchPage') value=page.id!  pattern='\\d' />
+				<@input type='number' name='page_id' id='page_id' min=1 title=i18n('portal.site.admin_page.buttonSearchPage') value=(page.id!)  pattern='\\d' />
 				<@button type='submit' color='primary' title=i18n('portal.site.admin_page.buttonSearchPage') hideTitle=['all'] buttonIcon='search' />
 				<@button buttonIcon='sitemap' title='Page ' + page.name + ' - Id ' + page.id hideTitle=['all'] params='data-bs-toggle="offcanvas" data-bs-target="#offcanvasSiteMap" aria-controls="offcanvasSiteMap"' >
 					<@span hide=['all']>#i18n{portal.site.admin_page.tabAdminMapSite}</@span>

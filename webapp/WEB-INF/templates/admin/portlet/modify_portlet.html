@@ -1,10 +1,10 @@
 <@coreAdminCSSLinks />
 <#if portletType.modifyScriptTemplate?has_content ><#include portletType.modifyScriptTemplate /></#if>
 <@tform typ='inline' id='form-portlet' name='form' action='jsp/admin/${portletType.doModifyUrl}' params='target="_top"'>
-<@input type='hidden' name='portlet_id' value='${portlet.id}' />
-<@input type='hidden' name='portlet_type_id' value='${portletType.id}' />
+<@input type='hidden' name='portlet_id' value=portlet.id />
+<@input type='hidden' name='portlet_type_id' value=portletType.id />
 <@box class='manage-portlet'>
-	<@boxHeader title='${portletType.name}' boxTools=true >
+	<@boxHeader title=portletType.name boxTools=true >
 	<#if portletType.modifySpecificTemplate?has_content || portletType.modifySpecificFormTemplate?has_content>
 		<@button buttonIcon='layout-navbar-expand' id='btn-toggle-properties' size='sm' color='default' title='#i18n{portal.util.labelMore}' hideTitle=['all'] params='aria-expanded="false"'/>
 	</#if>
@@ -14,7 +14,7 @@
 		<@row class='position-relative pt-2 px-2 pb-0'>
 			<@columns sm=4 md=2>
 				<@formGroup labelFor='portlet_name' labelKey='#i18n{portal.site.create_portlet.labelPortletTitle}' rows=2 mandatory=true >
-					<@input type='text' name='portlet_name' value='${portlet.name}' maxlength=dskey('portal.site.site_property.portlet.title.maxlength')?number!70 />
+					<@input type='text' name='portlet_name' value=portlet.name maxlength=dskey('portal.site.site_property.portlet.title.maxlength')?number!70 />
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>
@@ -28,23 +28,23 @@
 			<#if !portletType.id?starts_with('ALIAS') && !portletType.id?starts_with('BLOG') && !portletType.id?starts_with('HTML_UNTRANSFORMED') >
 				<@columns sm=4 md=2>
 					<@formGroup labelFor='style' labelKey='#i18n{portal.site.create_portlet.labelStyle}' rows=2>
-						<@select name='style' default_value='${portlet.styleId}' items=portlet_style_combo />
+						<@select name='style' default_value=portlet.styleId items=portlet_style_combo />
 					</@formGroup>
 				</@columns>
 			</#if>
 			<@columns sm=2 md=1>
 				<@formGroup labelFor='page_id' labelKey='#i18n{portal.site.modify_portlet.labelPortletPageId}' rows=2>
-					<@input type='text' name='page_id' value='${portlet.pageId}'  />
+					<@input type='text' name='page_id' value=portlet.pageId  />
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>
 				<@formGroup labelFor='column' labelKey='#i18n{portal.site.create_portlet.labelColumn}' rows=2>
-					<@select name='column' default_value='${portlet.column}' items=portlet_columns_combo />
+					<@select name='column' default_value=portlet.column items=portlet_columns_combo />
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>
 				<@formGroup labelFor='order' labelKey='#i18n{portal.site.create_portlet.labelOrder}' rows=2>
-					<@select name='order' default_value='${portlet.order}' items=portlet_order_combo />
+					<@select name='order' default_value=portlet.order items=portlet_order_combo />
 				</@formGroup>
 			</@columns>
 			<@columns sm=2 md=1>
@@ -69,7 +69,7 @@
 			</@columns>
 			<@columns sm=4 md=1>
 				<@formGroup labelFor='role' labelKey='#i18n{portal.site.create_portlet.labelRole}' rows=2>
-					<@select name='role' default_value='${portlet.role}' items=portlet_role_combo />
+					<@select name='role' default_value=portlet.role items=portlet_role_combo />
 				</@formGroup>
 			</@columns>
 			<@columns sm=1>

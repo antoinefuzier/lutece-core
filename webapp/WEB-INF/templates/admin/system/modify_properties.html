@@ -34,7 +34,7 @@
                 <#assign index = group?index>
                 <#if index == 0 ><#assign tabactive = true><#else><#assign tabactive = false></#if>
                     <@tabPanel active=tabactive id='group-' + index>
-                        <@input type='hidden' name='token' value='${token}' />
+                        <@input type='hidden' name='token' value=token />
                         <#assign groups = group.localizedDataList?map( prop -> prop.group )>
                         <#assign groupList = []>
                         <#list groups?sort as groupGroup><#if !groupList?seq_contains(groupGroup)><#assign groupList = groupList + [groupGroup]></#if></#list>
@@ -42,7 +42,7 @@
                         <@row class='g-3' params=masonryRowParams>
                         <#list groupList?sort as groupCol>
                         <#if groupCol?trim?has_content>
-                        <@columns xs=12 sm=6 md=4 class='mb-3' params='data-prop="${groupCol}"'>
+                        <@columns xs=12 sm=6 md=4 class='mb-3' params='data-prop=groupCol'>
                            <@box class='properties-group'>
                               <@boxBody>
                                 <#assign groupName=''>
@@ -62,7 +62,7 @@
                                         <#assign helpText=groupItem.help!''>
                                         <@box id='box_${groupItem.key}' class=boxClass>
                                             <@boxBody class='searchable'>
-                                            <@formGroup class='property' labelKey=labelText labelFor=groupItem.key helpKey=helpText params=' data-property="${groupItem.key}"' rows=2>
+                                            <@formGroup class='property' labelKey=labelText labelFor=groupItem.key helpKey=helpText params=' data-property=groupItem.key' rows=2>
                                                 <#if groupItem.key?ends_with( ".textblock" )>
                                                     <@input type='textarea' name=groupItem.key id=groupItem.key>${groupItem.value}</@input>
                                                 <#elseif groupItem.key?ends_with( ".htmlblock" )>
@@ -73,12 +73,12 @@
                                                     <#else>
                                                         <@checkBox orientation='switch' name=groupItem.key id=groupItem.key labelKey=groupItem.label  value='1' checked=false />
                                                     </#if>
-                                                    <@input type='hidden' name='${groupItem.key}' value='0' />
+                                                    <@input type='hidden' name=groupItem.key value='0' />
                                                 <#elseif groupItem.key?ends_with( ".select" )>
                                                     <#assign optionsKey = groupItem.key + ".options">
                                                     <#assign optionsRaw = dskey(optionsKey)!''>
                                                     <#if optionsRaw?starts_with('DS')><#assign optionsRaw = ''></#if>
-                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value id='${groupItem.key}_value' />
+                                                    <@input type='hidden' name=groupItem.key value=groupItem.value id='${groupItem.key}_value' />
                                                     <select class="form-select property-select" id="${groupItem.key}" data-target="${groupItem.key}_value">
                                                     <#list optionsRaw?split('|') as opt>
                                                         <#assign optValue = opt?trim>
@@ -89,7 +89,7 @@
                                                     <#assign optionsKey = groupItem.key + ".options">
                                                     <#assign optionsRaw = dskey(optionsKey)!''>
                                                     <#if optionsRaw?starts_with('DS')><#assign optionsRaw = ''></#if>
-                                                    <@input type='hidden' name='${groupItem.key}' value=groupItem.value id='${groupItem.key}_value' />
+                                                    <@input type='hidden' name=groupItem.key value=groupItem.value id='${groupItem.key}_value' />
                                                     <div class="property-radio" data-target="${groupItem.key}_value">
                                                         <#list optionsRaw?split('|') as opt>
                                                             <#assign optValue = opt?trim>

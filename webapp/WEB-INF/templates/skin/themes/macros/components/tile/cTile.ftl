@@ -84,7 +84,7 @@ Snippet:
 	</#if>
 	<@cBlock class="tile-body">
 		<#if badge?has_content><@cBlock class="tile-badge"><@cBadge label=badge class=badgeClass /></@cBlock ></#if>
-		<@cLink href=url! class=tileLinkClass label='' target=tileTarget params=tileDownload>
+		<@cLink href=(url!) class=tileLinkClass label='' target=tileTarget params=tileDownload>
 			<@cTitle level=tileLevel class='tile-title truncate'>${title}</@cTitle>
 		</@cLink>
 		<#if detail?has_content><@cText class="tile-detail truncate">${detail}</@cText></#if>

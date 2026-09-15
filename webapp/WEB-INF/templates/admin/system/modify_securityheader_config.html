@@ -1,6 +1,6 @@
 <@pageContainer>
 	<@pageColumn>
-		<@pageHeader title='${securityheader.name}'>
+		<@pageHeader title=securityheader.name>
 			<@aButton href='jsp/admin/system/ManageSecurityHeaders.jsp' color='secondary' class='me-1' buttonIcon='arrow-left' title='#i18n{portal.securityheader.manage_securityheaders_config.buttonBack}' hideTitle=['xs','sm'] />
 			<#if !securityheader.active>
 				<@offcanvas targetUrl="jsp/admin/system/ManageSecurityHeaders.jsp?view=modifySecurityHeader&id_securityheader=${securityheader.id}" targetElement="#modify-securityheader-form" redirectForm=false id="edit-securityheader-${securityheader.id}" title="#i18n{portal.securityheader.modify_securityheader.buttonModify}" btnTitle="#i18n{portal.securityheader.modify_securityheader.buttonModify}" btnIcon="pencil" btnColor="primary" position="end" />

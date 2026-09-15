@@ -5,14 +5,14 @@
                <@columns class='d-none d-md-block flex-1'>
                 <@breadcrumbs class='breadcrumb-arrows has-arrow-separator '>
                     <#if page.id=1>
-                        <@breadcrumbItem><@link href='jsp/admin/site/AdminSite.jsp?page_id=1' title='${page.name}'><@icon style='home' /> ${page.name} [${page.id}]</@link></@breadcrumbItem>
+                        <@breadcrumbItem><@link href='jsp/admin/site/AdminSite.jsp?page_id=1' title=page.name><@icon style='home' /> ${page.name} [${page.id}]</@link></@breadcrumbItem>
                     <#else>
                         <@breadcrumbItem>
-                            <@link href='jsp/admin/site/AdminSite.jsp?page_id=1' title='${page.name}'><@icon style='home' /></@link>
+                            <@link href='jsp/admin/site/AdminSite.jsp?page_id=1' title=page.name><@icon style='home' /></@link>
                         </@breadcrumbItem>
                         <#if page.parentPageId gt 1>
                             <@breadcrumbItem>
-                                <@link href='jsp/admin/site/AdminSite.jsp?page_id=${page.parentPageId}' title='${page.name}'>... [${page.parentPageId}]</@link>
+                                <@link href='jsp/admin/site/AdminSite.jsp?page_id=${page.parentPageId}' title=page.name>... [${page.parentPageId}]</@link>
                             </@breadcrumbItem>
                         </#if>
                         <@breadcrumbItem class='active'>${page.name} [${page.id}]</@breadcrumbItem>

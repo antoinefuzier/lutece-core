@@ -18,28 +18,28 @@
 		<@box>
 			<@boxBody>
 				<@tform name='create_user' action='jsp/admin/user/DoCreateUser.jsp' params='enctype="multipart/form-data"' >
-				<@input type='hidden' name='token' value='${token}' />
+				<@input type='hidden' name='token' value=token />
 				<@row>
 					<@columns md=4>
 						<@fieldSet legend='#i18n{portal.users.create_user.labelAccount}'>
-							<@formGroup labelFor='access_code' labelKey='${i18n("portal.users.modify_password_default_module.form.password.new")}' mandatory=true rows=2>
-								<@input type='text' name='access_code' id='access_code' value='${import_user.accessCode!}' />
+							<@formGroup labelFor='access_code' labelKey=i18n("portal.users.modify_password_default_module.form.password.new") mandatory=true rows=2>
+								<@input type='text' name='access_code' id='access_code' value=(import_user.accessCode!) />
 							</@formGroup>   
 						</@fieldSet>
 						<@fieldSet legend='#i18n{portal.users.create_user.labelIdentity}'>
-							<@formGroup labelFor='last_name' labelKey='${i18n("portal.users.modify_user.labelLastName")}' mandatory=true rows=2>
-								<@input type='text' name='last_name' id='last_name' value='${import_user.lastName!}' maxlength=100 />
+							<@formGroup labelFor='last_name' labelKey=i18n("portal.users.modify_user.labelLastName") mandatory=true rows=2>
+								<@input type='text' name='last_name' id='last_name' value=(import_user.lastName!) maxlength=100 />
 							</@formGroup>  
-							<@formGroup labelFor='first_name' labelKey='${i18n("portal.users.modify_user.labelFirstName")}' mandatory=true rows=2>
+							<@formGroup labelFor='first_name' labelKey=i18n("portal.users.modify_user.labelFirstName") mandatory=true rows=2>
 								<@inputGroup>
 									<@inputGroupItem type='text'>
 										<@icon style='user' />
 									</@inputGroupItem>
-									<@input type='text' name='first_name' id='first_name' value='${import_user.firstName!}' maxlength=100 />
+									<@input type='text' name='first_name' id='first_name' value=(import_user.firstName!) maxlength=100 />
 								</@inputGroup>
 							</@formGroup>   
-							<@formGroup labelFor='email' labelKey='${i18n("portal.users.modify_user.labelEmail")}' mandatory=true rows=2>
-								<@input type='email' name='email' id='email' value='${import_user.email!}' maxlength=100 />
+							<@formGroup labelFor='email' labelKey=i18n("portal.users.modify_user.labelEmail") mandatory=true rows=2>
+								<@input type='email' name='email' id='email' value=(import_user.email!) maxlength=100 />
 							</@formGroup>  
 						</@fieldSet>
 					</@columns>
@@ -47,18 +47,18 @@
 						<@fieldSet legend='#i18n{portal.users.create_user.labelAttributes}'>
 							<#if displayFieldset( user_levels attributes_list )>
 								<#if (user_levels?has_content)>
-									<@formGroup labelFor='user_level' labelKey='${i18n("portal.users.create_user.userLevelLabel")}' rows=2>
+									<@formGroup labelFor='user_level' labelKey=i18n("portal.users.create_user.userLevelLabel") rows=2>
 										<@select class='input-sm' name='user_level'>
 										<#list user_levels as user_level>
 											<@option value=user_level.id selected=user_level.id = default_user_level.id label=user_level.name />
 										</#list>
 										</@select>
 									</@formGroup>  
-									<@formGroup labelFor='workgroup_key' labelKey='${i18n("portal.role.create_role.labelWorkgroupKey")}' mandatory=true rows=2>
-										<@select name='workgroup_key' default_value='${workgroup_key_default_value}' items=workgroup_key_list sort=true />
+									<@formGroup labelFor='workgroup_key' labelKey=i18n("portal.role.create_role.labelWorkgroupKey") mandatory=true rows=2>
+										<@select name='workgroup_key' default_value=workgroup_key_default_value items=workgroup_key_list sort=true />
 									</@formGroup> 	
-									<@formGroup labelFor='workgroup_key' labelKey='${i18n("portal.users.create_user.labelLanguage")}' rows=2>
-										<@select name='language' default_value='${default_user_language}' items=languages_list sort=true />
+									<@formGroup labelFor='workgroup_key' labelKey=i18n("portal.users.create_user.labelLanguage") rows=2>
+										<@select name='language' default_value=default_user_language items=languages_list sort=true />
 									</@formGroup> 	
 								</#if>
 							</#if>
@@ -69,7 +69,7 @@
 					</@columns>
 					<@columns md=4>
 						<@fieldSet legend='#i18n{portal.users.create_user.labelComplementaryAttributes}'>
-							<@formGroup labelFor='status' labelKey='${i18n("portal.users.modify_user.labelStatus")}' rows=2>
+							<@formGroup labelFor='status' labelKey=i18n("portal.users.modify_user.labelStatus") rows=2>
 								<@select name="status">
 									<@option value="0" selected=default_user_status!=1 label='#i18n{portal.users.create_user.statusLabelEnabled}' />
 									<@option value="1" selected=default_user_status=1 label='#i18n{portal.users.create_user.statusLabelDisabled}' />

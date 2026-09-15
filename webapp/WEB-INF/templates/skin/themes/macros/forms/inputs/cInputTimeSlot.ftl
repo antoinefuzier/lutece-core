@@ -46,16 +46,16 @@ Snippet:
 <@deprecatedWarning args=deprecated />
 <#local idLocal><#if id?has_content>${id}<#else>${name!}</#if></#local>
 <#local inputParams>min="${beginHour!}" max="${endHour!}"</#local>
-<@cFieldset legend=legend! legendClass=legendClass id=idLocal! required=required helpMsg=helpMsg helpPos='after' params=params >
+<@cFieldset legend=(legend!) legendClass=legendClass id=(idLocal!) required=required helpMsg=helpMsg helpPos='after' params=params >
 	<@cRow>
 		<@cCol cols='6 col-md-4 col-lg-2'>
 			<@cField label='#i18n{portal.theme.labelFrom}' id='label_${name}_begin!' for='${name}_begin!' required=required showLabel=false > 
-				<@cInput type='time' class=class!'' id='${idLocal}_begin' name='${name}_begin' autocomplete=autocomplete required=required html5Required=html5Required value=beginHour! disabled=disabled! readonly=readonly! errorMsg=errorMsg! hideErrorMsg=hideErrorMsg step=step?number params=inputParams />
+				<@cInput type='time' class=class!'' id='${idLocal}_begin' name='${name}_begin' autocomplete=autocomplete required=required html5Required=html5Required value=(beginHour!) disabled=(disabled!) readonly=(readonly!) errorMsg=(errorMsg!) hideErrorMsg=hideErrorMsg step=step?number params=inputParams />
 			</@cField>	
 		</@cCol>
 		<@cCol cols='6 col-md-4 col-lg-2'>
 			<@cField label='#i18n{portal.theme.labelTo}' id='label_${name}_end!' for='${name}_end!' required=required showLabel=false > 
-				<@cInput type='time' class=class!'' id='${idLocal}_end' name='${name}_end' autocomplete=autocomplete required=required html5Required=html5Required value=endHour! disabled=disabled! readonly=readonly! errorMsg=errorMsg! hideErrorMsg=hideErrorMsg step=step?number params=inputParams />
+				<@cInput type='time' class=class!'' id='${idLocal}_end' name='${name}_end' autocomplete=autocomplete required=required html5Required=html5Required value=(endHour!) disabled=(disabled!) readonly=(readonly!) errorMsg=(errorMsg!) hideErrorMsg=hideErrorMsg step=step?number params=inputParams />
 			</@cField>	
 		</@cCol>
 	</@cRow>

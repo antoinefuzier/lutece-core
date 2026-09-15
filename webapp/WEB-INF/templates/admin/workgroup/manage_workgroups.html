@@ -13,10 +13,10 @@
             <@offcanvas id='search-workgroups' title='#i18n{portal.workgroup.manage_workgroups.search_workgroups.buttonSearch}' position='end' btnTitle='#i18n{portal.workgroup.manage_workgroups.search_workgroups.buttonSearch}' btnIcon='search'>
                 <@tform method='post' name='search_workgroups' action='jsp/admin/workgroup/ManageWorkgroups.jsp' id='workgroupSearch'>
                     <@formGroup title='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelKey}' labelFor='key' rows=2>
-                        <@input type='text' id='key' name='search_key' value='${search_admin_workgroup_filter.key}' maxlength=50 placeHolder='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelKey}' size=''/>
+                        <@input type='text' id='key' name='search_key' value=search_admin_workgroup_filter.key maxlength=50 placeHolder='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelKey}' size=''/>
                     </@formGroup>
                     <@formGroup title='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelDescription}' labelFor='description' rows=2>
-                        <@input type='text' id='description' name='search_description' value='${search_admin_workgroup_filter.description}' maxlength=50 placeHolder='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelDescription}' size=''/>
+                        <@input type='text' id='description' name='search_description' value=search_admin_workgroup_filter.description maxlength=50 placeHolder='#i18n{portal.workgroup.manage_workgroups.search_workgroups.labelDescription}' size=''/>
                     </@formGroup>
                     <@formGroup rows=2>
                         <@button type='submit' buttonIcon='search' name='search_is_search' title='#i18n{portal.workgroup.manage_workgroups.search_workgroups.buttonSearch}' color='primary' size='' />
@@ -25,8 +25,8 @@
                 <@tform method='post' action='jsp/admin/workgroup/ManageWorkgroups.jsp'>
                     <#if search_is_search >
                         <@input type='hidden' name='search_is_search' value='true' />
-                        <@input type='hidden' name='search_key' value='${search_admin_workgroup_filter.key}' />
-                        <@input type='hidden' name='search_description' value='${search_admin_workgroup_filter.description}' />
+                        <@input type='hidden' name='search_key' value=search_admin_workgroup_filter.key />
+                        <@input type='hidden' name='search_description' value=search_admin_workgroup_filter.description />
                     </#if>
                 </@tform>
             </@offcanvas>

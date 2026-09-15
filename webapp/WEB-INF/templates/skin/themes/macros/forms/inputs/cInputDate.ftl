@@ -62,7 +62,7 @@ Snippet:
 <#local inputClass><#if errorMsg?has_content>is-invalid</#if></#local>
 <#local isRequired = ( propagateRequired?? && propagateRequired) || required />
 <#local isHtml5Required = ( typeLocal='date' && isRequired ) || html5Required />
-<#if label?has_content><@cLabel label=label for='${idLocal}' /></#if>
+<#if label?has_content><@cLabel label=label for=idLocal /></#if>
 <#if helpMsg?has_content><@cFormHelp idLocal helpMsg /></#if>
 <#if errorMsg?has_content && errorMsg !='_error'><@cFormError idLocal errorMsg /></#if>
 <@cInputGroup>
@@ -264,7 +264,7 @@ separator : boolean default true, séparateur auto-inséré lors de la saisie (v
 <#assign errorClass = errorMsg?has_content?then('is-invalid','') >
 <#if helpMsg?has_content><@cFormHelp idLocal helpMsg /></#if>
 <#if errorMsg?has_content><@cFormError idMsg errorMsg /></#if>
-<@cBlock class='daterange ${class!} ${errorClass!}' id='${idLocal}' params=params >
+<@cBlock class='daterange ${class!} ${errorClass!}' id=idLocal params=params >
   <@cRow>
     <@cCol>
         <@cLabel label=label[0] for='${idLocal}_range_start' required=isRequired0 class=(showLabel[0]?then('', 'visually-hidden')) />
@@ -295,7 +295,7 @@ separator : boolean default true, séparateur auto-inséré lors de la saisie (v
 <#nested>
 </@cBlock>
 <#local optionsLocal><#if options?size = 0>{inputs:["${idLocal}_range_start","${idLocal}_range_start"]}</#if></#local>
-<#if type='datepicker'><@getThemeDatePicker idField='' range=true rangeIdWrapper='${idLocal}' options=options /></#if>
+<#if type='datepicker'><@getThemeDatePicker idField='' range=true rangeIdWrapper=idLocal options=options /></#if>
 <#if separator && type != 'date'>
 <@cInputDateTypingSeparator idField='${idLocal}_range_start' hasDatepicker=(type='datepicker') />
 <@cInputDateTypingSeparator idField='${idLocal}_range_end' hasDatepicker=(type='datepicker') />

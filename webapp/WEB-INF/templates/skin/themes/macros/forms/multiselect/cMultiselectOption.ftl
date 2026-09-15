@@ -26,7 +26,7 @@ Snippet:
 -->
 <#macro cMultiselectOption name label class='' classCheckbox='' value='' id='' params='' disabled=false deprecated...>
 <@deprecatedWarning args=deprecated />
-<@chItem class=class!>
+<@chItem class=(class!)>
     <@cCheckbox class=classCheckbox name=name id=id label=label value=value type='button' disabled=disabled params=params/>
 </@chItem>    
 </#macro>

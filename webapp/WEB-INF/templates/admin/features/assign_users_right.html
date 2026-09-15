@@ -1,10 +1,10 @@
 <#assign boxTitle> ${right.name} <small>[ #i18n{portal.features.assign_users.right.level} : ${right.level} ]</small></#assign>
 <@pageContainer>
 	<@pageColumn>
-		<@pageHeader title='${boxTitle}'>
+		<@pageHeader title=boxTitle>
 			<@offcanvas id="search-users" title="#i18n{portal.users.manage_users.search_users.buttonSearch}" position="end" btnTitle="#i18n{portal.users.manage_users.search_users.buttonSearch}" btnIcon="search" size="auto">
 				<@tform method='post' name='search_users' action='jsp/admin/features/AssignUsersRight.jsp'>
-					<@input type='hidden' name='id_right' value='${right.id}' />
+					<@input type='hidden' name='id_right' value=right.id />
 					<#if (user_levels?has_content)>
 						<@formGroup title='#i18n{portal.users.manage_users.search_users.userLevelLabel}' labelFor='user_level' rows=2 labelKey=''>
 							<@select id='user_level' name='search_user_level' size=''>
@@ -17,16 +17,16 @@
 					</#if>
 					<@formGroup title='#i18n{portal.users.manage_users.search_users.labelAccessCode}'
 						labelFor='access_code' rows=2>
-						<@input type='text' name='search_access_code' id='access_code' value='${search_admin_user_filter.accessCode}' size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelAccessCode}' />
+						<@input type='text' name='search_access_code' id='access_code' value=search_admin_user_filter.accessCode size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelAccessCode}' />
 					</@formGroup>
 					<@formGroup title='#i18n{portal.users.manage_users.search_users.labelFistName}' labelFor='first_name' rows=2>
-						<@input type='text' id='first_name' name='search_first_name' value='${search_admin_user_filter.firstName}' maxlength=100 placeHolder='#i18n{portal.users.manage_users.search_users.labelFirstName}' size='' />
+						<@input type='text' id='first_name' name='search_first_name' value=search_admin_user_filter.firstName maxlength=100 placeHolder='#i18n{portal.users.manage_users.search_users.labelFirstName}' size='' />
 					</@formGroup>
 					<@formGroup title='#i18n{portal.users.manage_users.search_users.labelLastName}' labelFor='last_name' rows=2>
-						<@input type='text' name='search_last_name' id='last_name' value='${search_admin_user_filter.lastName}' maxlength=100 size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelLastName}' />
+						<@input type='text' name='search_last_name' id='last_name' value=search_admin_user_filter.lastName maxlength=100 size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelLastName}' />
 					</@formGroup>
 					<@formGroup title='#i18n{portal.users.manage_users.search_users.labelEmail}' labelFor='email' rows=2>
-						<@input type='email' name='search_email' id='email' value='${search_admin_user_filter.email}' maxlength=100 size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelEmail}' />
+						<@input type='email' name='search_email' id='email' value=search_admin_user_filter.email maxlength=100 size='' placeHolder='#i18n{portal.users.manage_users.search_users.labelEmail}' />
 					</@formGroup>
 					<@formGroup title='#i18n{portal.users.manage_users.search_users.labelStatus}' rows=2 labelKey='' labelFor='status'>
 						<@select id='status' name='search_status' size=''>
@@ -69,8 +69,8 @@
 					<@boxBody>
 						<#if available_users_list?size gt 0>
 							<@tform name='assignUser' method='post' action='jsp/admin/features/DoAssignUsersRight.jsp'>
-								<@input type='hidden' name='id_right' value='${right.id}' />
-								<@input type='hidden' name='token' value='${token}' />
+								<@input type='hidden' name='id_right' value=right.id />
+								<@input type='hidden' name='token' value=token />
 								<@formGroup labelFor='available_users_list'>
 									<@select name='available_users_list' default_value='' multiple=20 items=available_users_list />
 								</@formGroup>
@@ -86,23 +86,23 @@
 				<@tform method='post' action='jsp/admin/features/AssignUsersRight.jsp'>
 					<#if search_is_search>
 						<@input type='hidden' name='search_is_search' value='true' />
-						<@input type='hidden' name='search_user_level' value='${search_admin_user_filter.userLevel}' />
-						<@input type='hidden' name='search_access_code' value='${search_admin_user_filter.accessCode}' />
-						<@input type='hidden' name='search_last_name' value='${search_admin_user_filter.lastName}' />
-						<@input type='hidden' name='search_email' value='${search_admin_user_filter.email}' />
-						<@input type='hidden' name='search_status' value='${search_admin_user_filter.status}' />
+						<@input type='hidden' name='search_user_level' value=search_admin_user_filter.userLevel />
+						<@input type='hidden' name='search_access_code' value=search_admin_user_filter.accessCode />
+						<@input type='hidden' name='search_last_name' value=search_admin_user_filter.lastName />
+						<@input type='hidden' name='search_email' value=search_admin_user_filter.email />
+						<@input type='hidden' name='search_status' value=search_admin_user_filter.status />
 					</#if>
 					<#if search_admin_user_field_filter.listUserFields?exists &&
 						search_admin_user_field_filter.listUserFields?has_content>
 						<#list search_admin_user_field_filter.listUserFields as user_field>
 							<#if user_field.attribute.attributeType.className=="fr.paris.lutece.portal.business.user.attribute.AttributeComboBox">
-								<@input type='hidden' name='attribute_${user_field.attribute.idAttribute}' value='${user_field.attributeField.idField}' />
+								<@input type='hidden' name='attribute_${user_field.attribute.idAttribute}' value=user_field.attributeField.idField />
 							<#else>
-								<@input type='hidden' name='attribute_${user_field.attribute.idAttribute}' value='${user_field.value}' />
+								<@input type='hidden' name='attribute_${user_field.attribute.idAttribute}' value=user_field.value />
 							</#if>
 						</#list>
 					</#if>
-					<@input type='hidden' name='id_right' value='${right.id}' />
+					<@input type='hidden' name='id_right' value=right.id />
 				</@tform>
 				<@box>
 					<@boxHeader title='#i18n{portal.features.assign_users.labelAssignedUser} (${assigned_users_number})' />
@@ -115,14 +115,14 @@
 								<@manageFeatureItem id='anchor-${assigned_user_index}'>
 									<@manageFeatureItemColumn auto=true flex=false>
 										<@p class='mb-1'>#i18n{portal.users.manage_users.columnTitleLastName} : ${assigned_user.lastName} - #i18n{portal.users.manage_users.columnTitleFirstName} : ${assigned_user.firstName}</@p>
-										<@p class='mb-0'>#i18n{portal.users.manage_users.columnTitleAccessCode} : <em>${assigned_user.accessCode}</em> - #i18n{portal.users.manage_users.columnTitleEmail} : <@link href='mailto:${assigned_user.email}' title='${assigned_user.email}'> ${assigned_user.email}</@link></@p>
+										<@p class='mb-0'>#i18n{portal.users.manage_users.columnTitleAccessCode} : <em>${assigned_user.accessCode}</em> - #i18n{portal.users.manage_users.columnTitleEmail} : <@link href='mailto:${assigned_user.email}' title=assigned_user.email> ${assigned_user.email}</@link></@p>
 									</@manageFeatureItemColumn>
 									<@manageFeatureItemColumn align='end'>
 										<@tform method='post' action='jsp/admin/features/DoUnassignUserRight.jsp'>
-											<@input type='hidden' name='id_user' value='${assigned_user.userId}' />
-											<@input type='hidden' name='id_right' value='${right.id}' />
+											<@input type='hidden' name='id_user' value=assigned_user.userId />
+											<@input type='hidden' name='id_right' value=right.id />
 											<@input type='hidden' name='anchor' value='anchor-${anchor}' />
-											<@input type='hidden' name='token' value='${token}' />
+											<@input type='hidden' name='token' value=token />
 											<@aButton href='jsp/admin/user/ModifyUser.jsp?id_user=${assigned_user.userId}' buttonIcon='edit' title='#i18n{portal.features.assign_users.actionModify}' color='primary' />
 											<@button type='submit' buttonIcon='playlist-x' title='#i18n{portal.features.assign_users.actionUnassign}' color='danger' />
 										</@tform>

@@ -76,7 +76,7 @@ Snippet:
 	<input class="form-control<#if size?has_content> form-control-${size}</#if><#if type='color'> input-color</#if><#if class?has_content> ${class}</#if> <#if patternValidationRules?? && patternValidationRules?size!=0>input-validation</#if>"<#if helpKey?has_content && id?has_content> aria-describedby="help_${id}"</#if> type="${type}" name="${name}" value="${value}"<#if autoComplete?has_content> autocomplete="${autoComplete}"</#if><#if tabIndex?has_content> tabindex="${tabIndex}"</#if><#if placeHolder?has_content> placeholder="${placeHolder}"</#if><#if title?has_content> title="${title}"</#if><#if maxlength &gt; 0> maxlength="${maxlength}"</#if><#if inputSize!=0> size="${inputSize}"</#if><#if disabled> disabled</#if><#if readonly> readonly</#if><#if id?has_content> id="${id}"</#if><#if params?has_content> ${params}</#if><#if pattern?has_content>pattern=${pattern}</#if><#if accept?has_content && type='file'>accept=${accept}</#if><#if min?number!=max?number> min="${min}"</#if><#if max?number!=0> max="${max}"</#if><#if step!=0> step="${step}"</#if><#if mandatory> required </#if><#if labelFor?? && labelFor?has_content && helpkey?? && helpKey?has_content> aria-describedby="${labelFor}_help"</#if><#if type='datalist'> list="${name}_list"</#if>>
 	<#if type='file'>
 		<input type="hidden" id=${id}Key name="${name}Key" value="${value}" />
-		<#if showFileUrl && fileURL?? && fileName??><@link href="${fileURL}">${fileName}</@link></#if>
+		<#if showFileUrl && fileURL?? && fileName??><@link href=fileURL>${fileName}</@link></#if>
 	</#if>
 	<#if type='datalist'>
 		<#if id?has_content && datalist?has_content >

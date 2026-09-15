@@ -32,22 +32,29 @@ Snippet:
 -->
 <#macro tabLink class='' hide=[] id='' active=false href='' title='' tabLabel='' tabIcon='' tabClass='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<li class="nav-item<#if tabClass?has_content> ${tabClass}</#if>"<#if id?has_content> id="${id}"</#if><#if params?has_content> ${params}</#if>>
-<#local tabLinkClass = class + ' nav-link' />
+<#if class?is_markup_output><#local classText = class?markup_string><#else><#local classText = class></#if>
+<#if id?is_markup_output><#local idText = id?markup_string><#else><#local idText = id></#if>
+<#if href?is_markup_output><#local hrefText = href?markup_string><#else><#local hrefText = href></#if>
+<#if title?is_markup_output><#local titleText = title?markup_string><#else><#local titleText = title></#if>
+<#if tabLabel?is_markup_output><#local tabLabelText = tabLabel?markup_string><#else><#local tabLabelText = tabLabel></#if>
+<#if tabIcon?is_markup_output><#local tabIconText = tabIcon?markup_string><#else><#local tabIconText = tabIcon></#if>
+<#if tabClass?is_markup_output><#local tabClassText = tabClass?markup_string><#else><#local tabClassText = tabClass></#if>
+<li class="nav-item<#if tabClassText?has_content> ${tabClassText}</#if>"<#if idText?has_content> id="${idText}"</#if><#if params?has_content> ${params}</#if>>
+<#local tabLinkClass = classText + ' nav-link' />
 <#if active><#local tabLinkClass += ' active' /></#if>
-<#local tabTarget = href?remove_beginning('#') />
+<#local tabTarget = hrefText?remove_beginning('#') />
 <#local tabToggle = '' />
-<#if href?contains('#') && href?contains('.jsp') == false>
+<#if hrefText?contains('#') && hrefText?contains('.jsp') == false>
 	<#local tabToggle = 'tab' />
 	<#local tabLinkId = tabTarget + '-tab' />
 <#else>
-	<#local tabLinkId = href?keep_after_last('/')?keep_before('.')?lower_case />
+	<#local tabLinkId = hrefText?keep_after_last('/')?keep_before('.')?lower_case />
 </#if>
-<#if !href?has_content>
+<#if !hrefText?has_content>
 	<#nested>
 <#else>
-	<@link class=tabLinkClass?trim href=href id=tabLinkId title=title role='tab' ariaSelected=active?c ariaControls=tabTarget dataBsToggle=tabToggle>
-		<#if tabIcon?has_content><@icon style=tabIcon class='mr-1 me-1'/></#if> <#if tabLabel?has_content>${tabLabel!}<#else>${title!}</#if>
+	<@link class=tabLinkClass?trim href=hrefText id=tabLinkId title=titleText role='tab' ariaSelected=active?c ariaControls=tabTarget dataBsToggle=tabToggle>
+		<#if tabIconText?has_content><@icon style=tabIconText class='mr-1 me-1'/></#if> <#if tabLabelText?has_content>${tabLabelText!}<#else>${titleText!}</#if>
 		<#nested>
 	</@link>
 </#if>

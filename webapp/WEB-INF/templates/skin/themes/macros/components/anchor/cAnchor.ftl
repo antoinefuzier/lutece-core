@@ -31,11 +31,11 @@ Snippet:
 -->
 <#macro cAnchor anchors id='' class='' listClass='' listItemClass='' anchorsClass='' params='' deprecated...>
 <@deprecatedWarning args=deprecated />
-<@cBlock id=id! class='anchors ${class}'>
+<@cBlock id=(id!) class='anchors ${class}'>
 	<@chList class=listClass >
 		<#list anchors as anchor>
 			<@chItem class=listItemClass>
-				<@cLink href=anchor.href! label=anchor.label! class=anchorsClass! />
+				<@cLink href=(anchor.href!) label=(anchor.label!) class=(anchorsClass!) />
 			</@chItem>
 		</#list>
 	</@chList>

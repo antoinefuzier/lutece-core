@@ -42,7 +42,7 @@ Snippet:
             <div class="main-footer justify-content-${align} py-4">
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-start w-100">
                     <a class="logo hide-icon-target" href="${logoUrl}" target="_blank">
-                        <@cImg src=logoFooter! class='d-inline-block' id='footer-img' alt=logoAlt />
+                        <@cImg src=(logoFooter!) class='d-inline-block' id='footer-img' alt=logoAlt />
                     </a>
                     <hr aria-hidden="true">
                     <a class="site" title="#i18n{portal.theme.labelGoToSite} ${title}" href=".">${title}</a>

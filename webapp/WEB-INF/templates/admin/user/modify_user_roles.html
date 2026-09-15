@@ -30,8 +30,8 @@
                         <@aButton href='jsp/admin/user/ManageUsers.jsp' color='secondary' buttonIcon='times' title='#i18n{portal.util.labelBack}' size='' />
                     </@btnGroup>
                 </@div>
-                <@input type='hidden' name='id_user' value='${user.userId}' />
-                <@input type='hidden' name='token' value='${token}' />
+                <@input type='hidden' name='id_user' value=user.userId />
+                <@input type='hidden' name='token' value=token />
                 <@row>
                     <@columns>
                         <@listGroup id="user-role-list">
@@ -44,7 +44,7 @@
                                     </#if>
                                 </#list>
                                 <@listGroupItem>
-                                    <@checkBox orientation='switch' id='${role.key}' name='roles' value='${role.key}' labelKey='${role.key} - ${role.description}' checked=checked mandatory=false />
+                                    <@checkBox orientation='switch' id=role.key name='roles' value=role.key labelKey='${role.key} - ${role.description}' checked=checked mandatory=false />
                                 </@listGroupItem>
                             </#list>
                         </@listGroup>

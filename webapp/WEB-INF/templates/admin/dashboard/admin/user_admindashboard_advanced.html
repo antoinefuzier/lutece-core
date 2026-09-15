@@ -2,7 +2,7 @@
 <@tabPanel id='defaultUserParameterValues'>
 <@pageHeader title="#i18n{portal.users.manage_advanced_parameters.defaultUserParameterValues}" class="col-md-12" titleClass="pb-3" />
 <@tform method='post' name='default_user_parameters' action='jsp/admin/user/DoModifyDefaultUserParameterValues.jsp' boxed=true>
-<@input type='hidden' name='token' value='${token!""}' />
+<@input type='hidden' name='token' value=token!"" />
 <@input type='hidden' name='tab' value='defaultUserParameterValues' />
 <@row>
 	<@columns md=6>
@@ -18,7 +18,7 @@
 	<@columns md=6>
 		<!-- USER LANGUAGE -->
 		<@formGroup labelKey='#i18n{portal.users.manage_advanced_parameters.labelLanguage}' labelFor='language' rows=2>
-			<@select name='language' default_value='${default_user_language}' items=languages_list sort=true />
+			<@select name='language' default_value=default_user_language items=languages_list sort=true />
 		</@formGroup>
 	</@columns>
 	<@columns md=6>
@@ -60,7 +60,7 @@
 <@tabPanel id='modifyEmailPattern'>
 <@pageHeader title="#i18n{portal.users.manage_advanced_parameters.labelModifyEmailPattern}" />
 	<@tform method='post' name='email_pattern_form' action='jsp/admin/user/DoModifyEmailPattern.jsp' boxed=true>
-	<@input type='hidden' name='token' value='${token!""}' />
+	<@input type='hidden' name='token' value=token!"" />
 	<#if plugin_regularexpression>
 		<@formGroup labelKey='#i18n{portal.users.manage_advanced_parameters.labelIsEmailPatternSetManually}' labelFor='is_email_pattern_set_manually'>
 			<@checkBox orientation='switch' name='is_email_pattern_set_manually' id='is_email_pattern_set_manually' labelKey='#i18n{portal.users.manage_advanced_parameters.labelIsEmailPatternSetManuallyComment}' checked= is_email_pattern_set_manually />
@@ -71,12 +71,12 @@
 	<#if is_email_pattern_set_manually>
 		<@formGroup labelKey='#i18n{portal.users.manage_advanced_parameters.labelEmailPattern}' labelFor='email_pattern' class='has-addons'>
 			<@inputGroup class=''>
-				<@input type='text' id='email_pattern' name='email_pattern' value='${email_pattern}' />
+				<@input type='text' id='email_pattern' name='email_pattern' value=email_pattern />
 				<@button type="submit" name="reset" value="reset" buttonIcon='refresh' title='#i18n{portal.users.manage_advanced_parameters.buttonResetEmailPattern}' />
 			</@inputGroup>
 		</@formGroup>
 	<#else>
-		<@input type='hidden' name='email_pattern' value='${email_pattern}' />
+		<@input type='hidden' name='email_pattern' value=email_pattern />
 	</#if>
 	<@formGroup>
 		<@button type='submit' buttonIcon='check' title='#i18n{portal.users.manage_advanced_parameters.buttonModify}' color='primary' />
@@ -84,7 +84,7 @@
 	</@tform>
 	<#if plugin_regularexpression && !is_email_pattern_set_manually>
 	<@tform method='post' action='jsp/admin/user/DoInsertRegularExpression.jsp#list-regularexpressions'>
-		<@input type='hidden' name='token' value='${token!""}' />
+		<@input type='hidden' name='token' value=token!"" />
 		<@fieldSet legend='#i18n{portal.users.manage_advanced_parameters.labelRegularExpression}'>
 		<@formGroup labelKey='#i18n{portal.users.manage_advanced_parameters.labelRegularExpression}' labelFor='id_expression'>
 			<@select name='id_expression' items=available_regularexpressions default_value='-1' sort=true />
@@ -112,8 +112,8 @@
 			</@manageFeatureItemColumn>
 			<@manageFeatureItemColumn align='end'>
 				<@tform method='post' action='jsp/admin/user/DoRemoveRegularExpression.jsp#list-regularexpressions'>
-					<@input type='hidden' name='token' value='${token!""}' />
-					<@input type='hidden' name='id_expression' value='${expression.idExpression}' />
+					<@input type='hidden' name='token' value=token!"" />
+					<@input type='hidden' name='id_expression' value=expression.idExpression />
 					<@button type='submit' title='#i18n{portal.users.manage_advanced_parameters.buttonDelete}' hideTitle=['all'] buttonIcon='trash' color='danger' size='' />
 				</@tform>
 			</@manageFeatureItemColumn>

@@ -81,7 +81,7 @@ Snippet:
     <#local cFCClass><#if btnClass?has_content>${btnClass}<#else>btn btn-outline-primary</#if><#if labelClass?has_content> ${labelClass}</#if></#local>
     <#local cFCRequired=required />
     <#if !showRequiredLabel><#local cFCRequired=false /></#if>
-    <@cLabel label=label! class=cFCClass for=cId required=cFCRequired  />
+    <@cLabel label=(label!) class=cFCClass for=cId required=cFCRequired  />
 </#if>  
 </#macro>
 <#--

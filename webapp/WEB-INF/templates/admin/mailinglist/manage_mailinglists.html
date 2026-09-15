@@ -24,7 +24,7 @@
             <@tform type='inline' align="middle" method='post' name='search_mailinglist' action='jsp/admin/mailinglist/ManageMailingLists.jsp'>
                 <@formGroup labelKey='#i18n{portal.mailinglist.manage_mailinglists.labelName}' labelFor='name' hideLabel=['all'] groupStyle='inline' formStyle="inline" >
                     <@inputGroup>
-                        <@input type='text' id='name' name='name' value='${mailinglistFilter.name!}' />
+                        <@input type='text' id='name' name='name' value=(mailinglistFilter.name!) />
                         <@button type='submit' buttonIcon='search' title='#i18n{portal.mailinglist.manage_mailinglists.buttonSearch}' color='primary' hideTitle=['xs','sm'] />
                     </@inputGroup>
                 </@formGroup>

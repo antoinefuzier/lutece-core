@@ -74,8 +74,8 @@ Snippet:
 <#local ariaRole='status' />
 </#if>
 <#local alertClass>alert alert-outline alert-${type} d-flex align-items-center<#if dismissible> alert-dismissible</#if><#if allClass?size gt 0><#list allClass as x> ${x}</#list></#if></#local>
-<@cBlock class=alertClass! params='role="${ariaRole!}" ${params!}' id=id!>
-    <@cIcon name=alertIconName! class='flex-shrink-0 me-2' params='aria-label="${alertIconTitle!}"' />
+<@cBlock class=(alertClass!) params='role=(ariaRole!) ${params!}' id=(id!)>
+    <@cIcon name=(alertIconName!) class='flex-shrink-0 me-2' params='aria-label=alertIconTitle!' />
     <#if title?has_content><@cText class="alert-title">${title!}</@cText></#if>
     <#nested />
     <#if dismissible><@cBtn type='button' label='' class='close py-xs px-xs' params='data-bs-dismiss="alert" aria-label="#i18n{portal.theme.labelClose}"' /></#if>

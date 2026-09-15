@@ -15,7 +15,7 @@ Snippet:
 <#if feature_documentation?has_content >
 <#if feature_documentation?exists>
 <div class="position-fixed bottom-0 end-0 mb-1 me-1">
-	<@link target="_blank" href="${feature_documentation}" title="#i18n{portal.features.documentation.help} [Nouvelle fenêtre]">
+	<@link target="_blank" href=feature_documentation title="#i18n{portal.features.documentation.help} [Nouvelle fenêtre]">
 		<@icon class="fa-life-ring" /> <small>#i18n{portal.features.documentation.help}</small> 
 	</@link>
 </div>

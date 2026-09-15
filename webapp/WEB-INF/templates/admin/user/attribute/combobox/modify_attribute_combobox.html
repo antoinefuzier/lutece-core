@@ -9,9 +9,9 @@
 		<@row>
 			<@columns md=4>
 				<@tform action='jsp/admin/user/attribute/DoModifyAttribute.jsp' method='post' boxed=true>
-					<@input type='hidden' name='token' value='${token}' />
+					<@input type='hidden' name='token' value=token />
 					<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelTitle}' labelFor='attr_title' helpKey='#i18n{portal.users.modify_attribute.labelTitleComment}' mandatory=true>
-						<@input type='text' name='title' id='attr_title' value='${attribute.title}' maxlength=255   />
+						<@input type='text' name='title' id='attr_title' value=attribute.title maxlength=255   />
 					</@formGroup>
 					<@formGroup labelKey='#i18n{portal.users.modify_attribute.labelHelpMessage}' labelFor='help_message' helpKey='#i18n{portal.users.modify_attribute.labelHelpMessageComment}'>
 						<@input type='textarea' name='help_message' id='help_message' cols=80 rows=5>${attribute.helpMessage}</@input>
@@ -37,7 +37,7 @@
 						</#list>
 					</@formGroup>
 					<@formGroup>
-						<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
+						<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
 						<@button type='submit' name='validate' value='validate' buttonIcon='check' title='#i18n{portal.users.create_attribute.buttonValidate}' color='primary' class='form-validation' />
 						<@button type='submit' name='apply' value='apply' buttonIcon='device-floppy' title='#i18n{portal.users.create_attribute.buttonApply}' color='primary' />
 						<@button type='submit' name='cancel' value='cancel' buttonIcon='times' title='#i18n{portal.admin.message.buttonCancel}' cancel=true color='secondary' class='form-validation' />
@@ -66,17 +66,17 @@
 									<@manageFeatureItemColumn align='end'>
 										<#if cpt != 1>
 											<@tform method='post' action='jsp/admin/user/attribute/DoMoveUpAttributeField.jsp#list'>
-												<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
-												<@input type='hidden' name='id_field' value='${attribute_field.idField}' />
-												<@input type='hidden' name='token' value='${token}' />
+												<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
+												<@input type='hidden' name='id_field' value=attribute_field.idField />
+												<@input type='hidden' name='token' value=token />
 												<@button type='submit' title='#i18n{portal.users.modify_attribute.buttonLabelMoveUp}' buttonIcon='chevron-up' hideTitle=['all'] />
 											</@tform>
 										</#if>
 										<#if attribute_field_has_next>
 											<@tform method='post' action='jsp/admin/user/attribute/DoMoveDownAttributeField.jsp#list'>
-												<@input type='hidden' name='id_attribute' value='${attribute.idAttribute}' />
-												<@input type='hidden' name='id_field' value='${attribute_field.idField}' />
-												<@input type='hidden' name='token' value='${token}' />
+												<@input type='hidden' name='id_attribute' value=attribute.idAttribute />
+												<@input type='hidden' name='id_field' value=attribute_field.idField />
+												<@input type='hidden' name='token' value=token />
 												<@button type='submit' title='#i18n{portal.users.modify_attribute.buttonLabelMoveDown}' buttonIcon='chevron-down' hideTitle=['all'] />
 											</@tform>
 										</#if>

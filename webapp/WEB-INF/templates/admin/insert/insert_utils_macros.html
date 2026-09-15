@@ -1,5 +1,5 @@
 <#macro linkProperties input selected_text >
-<@input type='hidden' name='input' value='${input}' />
+<@input type='hidden' name='input' value=input />
 <@table headeBody=true >
 <@tr>
     <@th colspan=2>#i18n{portal.insert.labelLinkProperties}</@th>
@@ -22,7 +22,7 @@
 </@table>
 </#macro>
 <#macro linkTextInput selected_text >
-<@input type='text' name='text' value='${selected_text}' inputSize='30' maxlength='50' />
+<@input type='text' name='text' value=selected_text inputSize='30' maxlength='50' />
 </#macro>
 <#macro linkTitleInput>
 <@input type='text' name='title' value='' inputSize='30' maxlength='50' />

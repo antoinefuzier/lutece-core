@@ -2,7 +2,7 @@
     <@pageColumn> 
         <@pageHeader title='#i18n{portal.securityheader.create_securityheader_config_item.pageTitle}' />
 		<@tform method='post' id='create-securityheader-config-item-form' action='jsp/admin/system/ModifySecurityHeaderConfig.jsp' boxed=true>
-			<@input type='hidden' name='id_securityheader' value='${id_securityheader}' />
+			<@input type='hidden' name='id_securityheader' value=id_securityheader />
 			<@formGroup labelKey='#i18n{portal.securityheader.create_securityheader_config_item.labelHeaderCustomValue}' labelFor='headerCustomValue' mandatory=true>
 				<@input type='text' name='headerCustomValue' id='headerCustomValue' value='' maxlength=1024 />
 			</@formGroup>			
